@@ -8,3 +8,7 @@
  ## Photos
  ---
  ![alt text](https://github.com/JohnWom/LED-Controller/blob/main/Physicals/Photos/Isometric.PNG?raw=true)
+ 
+ ![alt text](https://github.com/JohnWom/LED-Controller/blob/main/Physicals/Photos/Isometric%20Closed.PNG?raw=true)
+ 
+  ![alt text](https://github.com/JohnWom/LED-Controller/blob/main/Physicals/Photos/Top.PNG?raw=true)
