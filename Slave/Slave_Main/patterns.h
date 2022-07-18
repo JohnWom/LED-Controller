@@ -12,7 +12,7 @@ void Led_Setup(); //Functions for Setting up Strip
 
 void Solid_Color(int,int,int); //Fills the Strip with a solid Color
 
-void Color_Cycle(int, int, int); //Cylces Through Colors
+void Color_Cycle(); //Cylces Through Colors
 
 //Music Pattern Functions =============================================================================
 

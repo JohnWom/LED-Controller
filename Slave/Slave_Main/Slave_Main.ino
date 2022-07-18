@@ -45,9 +45,9 @@ void loop() {
 //Runs Repeatedly
 
     //Power Control
-    readSerial();
+    //readSerial();
     //PowerToggle();
-    colorFunction(colornum);
+    //colorFunction(colornum);
     //Audio Processing
     /*if (mode) { //Only do this when in music mode
       sampler();
@@ -56,10 +56,10 @@ void loop() {
     }*/
     
     //Pattern Calling
-    patternFunction(pattern);
-    
+    //patternFunction(pattern);
+    Color_Cycle();
     Serial.print(colornum);
-    Serial.println(pattern);
+    //Serial.println(pattern);
 
 }
 
@@ -144,7 +144,7 @@ void patternFunction(int pat) {
         Solid_Color(r,g,b);
         break; }
       case 1: {//Led Off
-        Color_Cycle(r, g, b);
+        Color_Cycle();
         break;}
       default: {
         Solid_Color(r,g,b);

@@ -21,13 +21,18 @@ void Solid_Color(int r, int g, int b) {
 }
 
 // Color Cycle -------------------------------------------------------------------------------------------------
-void Color_Cycle(int r, int g, int b) {
-  //Solid_Color(r, g, b);
-  for (int i = 1; i < 255; i + 5) {
-    pixels.setBrightness(i);
-    delay(1);
+void Color_Cycle() {
+  int pallet[7][3] = {{128,0,0},{255,100,0},{255,0,0},{0,128,0},{0,0,205},{75,0,130},{128,0,128}};
+  int c = 0;
+
+  for (int i = 0; i < 255; i++) {
+    Serial.println(pallet[c][1]);
+    pixels.setPixelColor(i, pallet[c][0], pallet[c][1], pallet[c][2]);
+    c+= 1;
+    if (c > 6) {c = 0;}
   }
-  
+  c += 1;
+  pixels.show();
 }
 
 // Music Patterns ===============================================================================================
