@@ -18,13 +18,30 @@ public:
     start_y = y;
   }
 
-  void writeOnQuadrant(char text[]) {
-    lcd.setCursor(start_x, start_y)
-  } 
-}
+  writeText(char text[8]) {
+    for (int i = 0; i < 8; i++) { // If one character in the string 
+      if (text[i] != last) {      // is not the same, update the display
+        setCursor(start_x,start_y);
+        lcd.print(text);
+      break;
+      }
+    }
+  }
 
-class Cursor {
-  
+
+class Cursor 
+{
+private:
+  class Quadrant* cursor_location;
+
+  class friend Screen;
+
+public:
+  void moveCursorAdj1(); // Moves Cursor to Adj1
+  void moveCursorAdj2(){
+    cursor_location ==
+  }
+
 }
 
 class Screen {
