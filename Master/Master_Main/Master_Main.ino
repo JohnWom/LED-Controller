@@ -1,7 +1,7 @@
 
 #include <Wire.h>
 #include <DFRobot_RGBLCD1602.h>
-
+#include "Menu_Tree.h"
 //Set up LCD  ========================================================
 DFRobot_RGBLCD1602 lcd( 6, 2); // (collumns, rows)
 
