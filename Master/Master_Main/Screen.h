@@ -9,26 +9,43 @@ class Screen
 {
   public:
     // Default Parameterized Constructor
-    Screen(Selectable* top, Selectable* bottom);
-
-    // Executes Func on item 
-    void exec_func();
-
-    // returns next screen
-    Screen* exec_screen();
+    Screen(Selectable*, Selectable*);
 
     // Scroll Up
-    void scrollUp();
+    int scrollUp();
 
     // Scroll Down
-    void scrollDown();
+    int scrollDown();
 
   private:
     Selectable* top_item;
     Selectable* bottom_item;
     int cursor_pos;
 
-
 };
 
+
+
+class Operator
+{
+  public:
+    // Draws text to Screen
+    void draw();
+
+    // Scrolls Up through screen options
+    void Upscroll();
+
+    // Scrolls Down through screen options
+    void Downscroll();
+
+    // Execute Command
+    void click();
+
+    // Read Joystick
+    void joystick_readings();
+
+  private:
+    Screen* current_screen;
+
+}
 #endif

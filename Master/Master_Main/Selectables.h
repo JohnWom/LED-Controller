@@ -1,28 +1,46 @@
 #ifndef SELECCTABLES.H
 #define SELECTABLES .H
 
+// define function pointer type
+typedef void (*funcptr)();
+
 class Selectable {
   public:
-  // Parameterized Constructor with default blank screen and null pointers
-  Selectable(char text[15], Selectable* next, Selectable* prev, Screen* scr, void *funcpoint());
-
   //goes to next
-  typedef Selectable*(Selectable::*next)(void);
+  Selectable* next();
 
   //goes to prev
 
-  typedef Selectable*(Selectable::*prev)(void);
-
-  //executes function
-  typedef void(Selectable::*exec)(void);
+  Selectable* prev();
 
   private:
     char text[15];
     void *funcpoint();
     Selectable* next;
-    Selectable* prev;
-    Screen* screen;
 };
 
+//selectable for functions
+class FuncSelectable:Selectable 
+{
+  public:
+    Selectable(char, Selectable*, Selectable*, funcptr);
+
+    void exec();
+
+  private:
+    funcptr;
+};
+
+//selectable for screens
+class ScreenSelectable:Selectable 
+{
+  public:
+    Selectable(char, Selectable*, Selectable*, Screen*);
+
+    Screen* nextScreen();
+
+  private:
+    Screen* Screen;
+};
 
 #endif
