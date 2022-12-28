@@ -1,8 +1,7 @@
 #ifndef SELECCTABLES.H
 #define SELECTABLES .H
 
-// define function pointer type
-typedef void (*funcptr)();
+#include "types.h"
 
 class Selectable {
   public:
@@ -26,9 +25,12 @@ class FuncSelectable:Selectable
     Selectable(char, Selectable*, Selectable*, funcptr);
 
     void exec();
-
+    
   private:
-    funcptr;
+    funcptr FPn;
+    Selectable* next;
+    Selectable* prev;
+    char text[15];
 };
 
 //selectable for screens

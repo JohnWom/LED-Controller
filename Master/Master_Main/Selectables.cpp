@@ -28,7 +28,7 @@ class FuncSelectable:Selectable
       text = text;
       next = next;
       prev = prev;
-      funcptr = FPn;
+      F = FPn;
     }
 
     void exec() {
@@ -36,7 +36,10 @@ class FuncSelectable:Selectable
     }
 
   private:
-   funcptr;
+   funcptr F;
+   Selectable* next;
+   Selectable* prev;
+   char text[15];
 };
 
 //selectable for screens

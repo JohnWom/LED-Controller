@@ -96,7 +96,7 @@ class Operator
     void joystick_readings() {
       int xPosition = analogRead(VRx);
       int yPosition = analogRead(VRy);
-      SW_state = digitalRead(SW);
+      int SW_state = digitalRead(SW);
 
       if (SW_state == 0) {
         click();
