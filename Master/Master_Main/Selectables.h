@@ -12,10 +12,18 @@ class Selectable {
 
   Selectable* prev();
 
+  //set next
+  Selectable* setNext(Selectable*);
+
+  //set prev
+  Selectable* setPrev(Selectable*);
+
   private:
     char text[15];
     void *funcpoint();
     Selectable* next;
+    Selectable* prev;
+
 };
 
 //selectable for functions
@@ -28,9 +36,6 @@ class FuncSelectable:Selectable
     
   private:
     funcptr FPn;
-    Selectable* next;
-    Selectable* prev;
-    char text[15];
 };
 
 //selectable for screens
@@ -40,6 +45,8 @@ class ScreenSelectable:Selectable
     Selectable(char, Selectable*, Selectable*, Screen*);
 
     Screen* nextScreen();
+
+    Screen* setScreen(Screen* s);
 
   private:
     Screen* Screen;

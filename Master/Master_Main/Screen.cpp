@@ -50,6 +50,11 @@ class Screen
 class Operator
 {
   public:
+
+    Operator(Screen* s){
+      current_screen = s;
+    }
+
     // Draws text to Screen
     void draw(){
       // Draw Top Text

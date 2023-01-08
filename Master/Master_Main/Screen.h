@@ -34,6 +34,9 @@ class Screen
 class Operator
 {
   public:
+
+    Operator(Screen*);
+    
     // Draws text to Screen
     void draw();
 

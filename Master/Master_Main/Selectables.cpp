@@ -13,6 +13,17 @@ class Selectable {
       return prev;
     }
 
+      //set next
+    Selectable* setNext(Selectable* n){
+      next = n;
+    }
+
+    //set prev
+    Selectable* setPrev(Selectable* p) {
+      prev = p;
+    }
+
+
   private:
     char text[15];
     Selectable* next;
@@ -50,11 +61,15 @@ class ScreenSelectable:Selectable
       text = text;
       next = next;
       prev = prev;
-      screen = sc;
+      Screen = sc;
     }
     
     Screen* nextScreen() {
       return Screen;
+    }
+
+    Screen* setScreen(Screen* s){
+      Screen = s;
     }
 
   private:
