@@ -1,41 +1,5 @@
-
+#include "Function.h"
 #include "Operator.h"
-#include <DFRobot_RGBLCD1602.h>
-
-//Set up LCD  ========================================================
-DFRobot_RGBLCD1602 lcd(16, 2);  // (collumns, rows)
-
-
-bool power = true;
-
-// Board Stuff =======================================================
-void setup() {
-  //Joystick Startup
-  Serial.begin(115200);
-  Serial1.begin(115200);
-  pinMode(VRx, INPUT);
-  pinMode(VRy, INPUT);
-  pinMode(SW, INPUT_PULLUP);
-
-  //LCD Startup
-  Serial.println("Starting LCD")
-  lcd.init();
-  lcd.setRGB(0, 0, 255);
-  lcd.print("Weclome to LED ");
-  lcd.setCursor(1, 1);
-  lcd.print("Controller");
-  delay(3000);
-  lcd.clear();
-
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, HIGH);
-  
-  // Log
-  Serial.println("Creating Menu Framework")
-  lcd.setCursor(0, 0);
-  lcd.print("Starting Up    ");
-  lcd.setCursor(0, 0);
-  lcd.print("               ");
 
   //Initialize Function Selectables
   FuncSelectable Red("Red            ", RedPtr);
@@ -50,7 +14,7 @@ void setup() {
   FuncSelectable Fishpole("Fishpole       ", FishpolePtr);
   FuncSelectable Rainbow("Rainbow        ", RainbowPtr);
 
-  FuncSelectable SimpleMusic("Simple Music   ", setSimpleMusic)
+  FuncSelectable SimpleMusic("Simple Music   ", SimpleMusicPtr);
 
   //Initialize Pointer Selectables
   ScreenSelectable toColors("Colors         ");
@@ -63,28 +27,28 @@ void setup() {
   ScreenSelectable backPattern("back           ");
 
   //CreateSelectablePointers
-  ScreenSelectable *ptrRed = &Red;
-  ScreenSelectable *ptrOrange = &Orange;
-  ScreenSelectable *ptrYellow = &Yellow;
-  ScreenSelectable *ptrGreen = &Green;
-  ScreenSelectable *ptrBlue = &Blue;
-  ScreenSelectable *ptrIndigo = &Indigo;
-  ScreenSelectable *ptrViolet = &Violet;
+ Selectable *ptrRed = &Red;
+ Selectable *ptrOrange = &Orange;
+ Selectable *ptrYellow = &Yellow;
+ Selectable *ptrGreen = &Green;
+ Selectable *ptrBlue = &Blue;
+ Selectable *ptrIndigo = &Indigo;
+ Selectable *ptrViolet = &Violet;
 
-  ScreenSelectable *ptrtoColors = &toColors;
-  ScreenSelectable *ptrtoPatterns = &toPatterns;
-  ScreenSelectable *ptrtoMusic = &toMusic;
-  ScreenSelectable *ptrtoStatic = &toStatic;
-  ScreenSelectable *ptrbackColor = &backColor;
-  ScreenSelectable *ptrbackMusic = &backMusic;
-  ScreenSelectable *ptrbackStatic = &backStatic;
-  ScreenSelectable *ptrbackPattern = &backPattern;
+ Selectable *ptrtoColors = &toColors;
+ Selectable *ptrtoPatterns = &toPatterns;
+ Selectable *ptrtoMusic = &toMusic;
+ Selectable *ptrtoStatic = &toStatic;
+ Selectable *ptrbackColor = &backColor;
+ Selectable *ptrbackMusic = &backMusic;
+ Selectable *ptrbackStatic = &backStatic;
+ Selectable *ptrbackPattern = &backPattern;
 
-  ScreenSelectable *ptrSolid = &Solid;
-  ScreenSelectable *ptrFishpole = &Fishpole;
-  ScreenSelectable *ptrRainbow = &Rainbow;
+ Selectable *ptrSolid = &Solid;
+ Selectable *ptrFishpole = &Fishpole;
+ Selectable *ptrRainbow = &Rainbow;
 
-  ScreenSelectable *ptrSimpleMusic = &SimpleMusic;
+ Selectable *ptrSimpleMusic = &SimpleMusic;
 
   //Create Selectable Loops
   Red.setNext(ptrOrange);
@@ -155,12 +119,31 @@ void setup() {
   backPattern.setScreen(ptrPatterns);
 
   //Initialize Operator
-  Operator operator(ptrHome);
-  operator.draw();
+  Operator Op(ptrHome);
+
+
+// Board Stuff =======================================================
+void setup() {
+  //Joystick Startup
+  Serial.begin(115200);
+  Serial1.begin(115200);
+  pinMode(VRx, INPUT);
+  pinMode(VRy, INPUT);
+  pinMode(SW, INPUT_PULLUP);
+
+  //LCD Startup
+  Serial.println("Starting LCD");
+  delay(3000);
+
+  pinMode(LED_BUILTIN, OUTPUT);
+  digitalWrite(LED_BUILTIN, HIGH);
+  
+  // Log
+  Serial.println("Finshed Boot-Up");
 
 }
 
 void loop() {
-  operator.joystick_readings();
+ Op.joystick_readings();
 }
 // End Board Stuff ====================================================

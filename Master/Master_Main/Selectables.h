@@ -1,7 +1,9 @@
-#ifndef SELECCTABLES.H
-#define SELECTABLES .H
+#ifndef SELECTABLES.H
+#define SELECTABLES.H
 
 #include "types.h"
+
+class Screen;
 
 class Selectable {
   public:
@@ -18,11 +20,21 @@ class Selectable {
   //set prev
   void setPrev(Selectable*);
 
+  //exec for function derrived class
+  virtual void exec(){}
+
+  virtual Screen* nextScreen(){}
+
   private:
-    char text[15];
+    char* text;
     void *funcpoint();
-    Selectable* next;
-    Selectable* prev;
+    Selectable* nextItem;
+    Selectable* prevItem;
+
+  friend class Screen;
+  friend class Operator;
+  friend class FuncSelectable;
+  friend class ScreenSelectable;
 
 };
 

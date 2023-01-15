@@ -1,8 +1,7 @@
 #ifndef FUNCTION.H
 #define FUNCTION.H
-
 #include "types.h"
-
+#include <Arduino.h>
 //===================== Codes ======================
 // --- Functions that send codes to Slave Device ---
 //    Core:
@@ -58,7 +57,7 @@ void setRainbow();
 
 void setSimpleMusic();
 
-#create Function Pointers
+//create Function Pointers
 
 funcptr powerPtr = powerToggle;
 
@@ -73,7 +72,7 @@ funcptr VioletPtr = &setColorViolet;
 funcptr SolidPtr = setSolid;
 funcptr FishpolePtr = setFishpole;
 funcptr RainbowPtr = setRainbow;
-funcptr SimpleMusic = setSimpleMusic;
+funcptr SimpleMusicPtr = setSimpleMusic;
 
 
 

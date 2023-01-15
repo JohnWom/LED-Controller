@@ -1,10 +1,8 @@
 #ifndef SCREEN.H
-#define SCREEN .H
+#define SCREEN.H
 
 #include "ScreenSelectable.h"
 #include "FuncSelectable.h"
-
-
 
 class Screen
 {
@@ -23,6 +21,7 @@ class Screen
     Selectable* bottom_item;
     int cursor_pos;
 
+  friend class Operator;
 };
 
 #endif

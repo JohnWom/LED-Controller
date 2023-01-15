@@ -1,14 +1,17 @@
 #ifndef SCREENSELECTABLE.H
 #define SCREENSELECTABLE.H
 
-#include "Selectables.h"
 #include "Screen.h"
+#include "Selectables.h"
+
+//forward declaration
+class Screen;
 
 //selectable for screens
-class ScreenSelectable:Selectable 
+class ScreenSelectable : public Selectable 
 {
   public:
-    ScreenSelectable(char, Selectable*, Selectable*, Screen*);
+    ScreenSelectable(char* = "               ");
 
     Screen* nextScreen();
 

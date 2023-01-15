@@ -1,18 +1,18 @@
-
+#include "Selectables.h"
 
 
 Selectable* Selectable::next() {
-  return next;
+  return nextItem;
 }
 
 Selectable* Selectable::prev() {
-  return prev;
+  return prevItem;
 }
 
 void Selectable::setNext(Selectable* n){
-  next = n;
+  nextItem = n;
 }
 
 void Selectable::setPrev(Selectable* p) {
-  prev = p;
+  prevItem = p;
 }

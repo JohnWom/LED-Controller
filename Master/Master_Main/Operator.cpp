@@ -2,26 +2,29 @@
 
 
 Operator::Operator(Screen* s){
+  // (collumns, rows)
   current_screen = s;
 }
 
 void Operator::draw(){
+  DFRobot_RGBLCD1602 lcd(16, 2);
+  lcd.init();
   // Draw Top Text
   lcd.setCursor(1,0);
   lcd.print(current_screen->top_item->text);
 
   // Draw Bottom Text
   lcd.setCursor(1,1);
-  lcd.print(current_screen->bottom_item->text)
+  lcd.print(current_screen->bottom_item->text);
 }
 
 void Operator::Upscroll(){
-  int redraw = current_screen->scrollUp()
+  int redraw = current_screen->scrollUp();
   if (redraw == 1) {draw();}
 }
 
 void Operator::Downscroll(){
-  int redraw = current_screen->scrollDown()
+  int redraw = current_screen->scrollDown();
   if (redraw == 1) {draw();}
 }
 
@@ -34,14 +37,12 @@ void Operator::click(){
     current = current_screen->bottom_item;
   }
 
-  // See if item has func or not
-  if (typeid(*current).name() == "class FuncSelectable") {
+    // execute both, one will be undefined
     current->exec();
+    if (current->nextScreen()) {
+      current_screen = current->nextScreen();
+    }
   }
-  else if typeid(*current).name() == "class ScreenSelectable") {
-    current_screen = current->nextScreen();
-  }
-}
 
 // Read Joystick
 void Operator::joystick_readings() {

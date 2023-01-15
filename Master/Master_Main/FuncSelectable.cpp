@@ -1,12 +1,10 @@
 #include "FuncSelectable.h"
 
-FuncSelectable::FuncSelectable(char text[15] = "               ", Selectable* next = NULL, Selectable* prev = NULL, funcptr FPn) {
-  text = text;
-  next = next;
-  prev = prev;
-  F = FPn;
+FuncSelectable::FuncSelectable(char* t, funcptr F) {
+  text = t;
+  FPn = F;
 }
 
 void FuncSelectable::exec() {
-  (*funcptr)();
+  (*FPn)();
 }

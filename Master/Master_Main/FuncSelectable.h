@@ -2,12 +2,12 @@
 #define FUNCSELECTABLE
 
 #include "Selectables.h"
+#include <Arduino.h>    
 
-
-class FuncSelectable:Selectable 
+class FuncSelectable : public Selectable 
 {
   public:
-    FuncSelectable(char, Selectable*, Selectable*, funcptr);
+    FuncSelectable(char* = "               ", funcptr = NULL);
 
     void exec();
     

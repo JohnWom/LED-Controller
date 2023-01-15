@@ -1,10 +1,8 @@
 #include "ScreenSelectable.h"
 
-ScreenSelectable::ScreenSelectable(char text[15] = "               ", Selectable* next = NULL, Selectable* prev = NULL, Screen* sc = NULL) {
-  text = text;
-  next = next;
-  prev = prev;
-  screen = sc;
+
+ScreenSelectable::ScreenSelectable(char* t) {
+  text = t;
 }
 
 Screen* ScreenSelectable::nextScreen() {
