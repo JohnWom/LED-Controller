@@ -1,6 +1,5 @@
 
-#include <Wire.h>
-#include "Screen.h"
+#include "Operator.h"
 #include <DFRobot_RGBLCD1602.h>
 
 //Set up LCD  ========================================================
@@ -156,10 +155,12 @@ void setup() {
   backPattern.setScreen(ptrPatterns);
 
   //Initialize Operator
-  Operator Operator(ptrHome);
-  Operator.draw();
+  Operator operator(ptrHome);
+  operator.draw();
+
 }
 
 void loop() {
+  operator.joystick_readings();
 }
 // End Board Stuff ====================================================

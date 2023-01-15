@@ -1,13 +1,9 @@
 #ifndef SCREEN.H
 #define SCREEN .H
 
-#include <DFRobot_RGBLCD1602.h>
-#include "Selectables.h"
+#include "ScreenSelectable.h"
+#include "FuncSelectable.h"
 
-//Set up Joystick ====================================================
-const VRx = A3;     //X direction analog pin
-const VRy = A2;     //Y direction analog pin
-const SW = 4;      //Button/Click Digital Pin
 
 
 class Screen
@@ -29,31 +25,4 @@ class Screen
 
 };
 
-
-
-class Operator
-{
-  public:
-
-    Operator(Screen*);
-    
-    // Draws text to Screen
-    void draw();
-
-    // Scrolls Up through screen options
-    void Upscroll();
-
-    // Scrolls Down through screen options
-    void Downscroll();
-
-    // Execute Command
-    void click();
-
-    // Read Joystick
-    void joystick_readings();
-
-  private:
-    Screen* current_screen;
-
-}
 #endif

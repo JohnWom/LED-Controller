@@ -13,10 +13,10 @@ class Selectable {
   Selectable* prev();
 
   //set next
-  Selectable* setNext(Selectable*);
+  void setNext(Selectable*);
 
   //set prev
-  Selectable* setPrev(Selectable*);
+  void setPrev(Selectable*);
 
   private:
     char text[15];
@@ -24,32 +24,6 @@ class Selectable {
     Selectable* next;
     Selectable* prev;
 
-};
-
-//selectable for functions
-class FuncSelectable:Selectable 
-{
-  public:
-    Selectable(char, Selectable*, Selectable*, funcptr);
-
-    void exec();
-    
-  private:
-    funcptr FPn;
-};
-
-//selectable for screens
-class ScreenSelectable:Selectable 
-{
-  public:
-    Selectable(char, Selectable*, Selectable*, Screen*);
-
-    Screen* nextScreen();
-
-    Screen* setScreen(Screen* s);
-
-  private:
-    Screen* Screen;
 };
 
 #endif
