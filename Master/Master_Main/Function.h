@@ -57,22 +57,7 @@ void setRainbow();
 
 void setSimpleMusic();
 
-//create Function Pointers
 
-funcptr powerPtr = powerToggle;
-
-funcptr RedPtr = &setColorRed;
-funcptr OrangePtr = &setColorOrange;
-funcptr YellowPtr = &setColorYellow;
-funcptr GreenPtr = &setColorGreen;
-funcptr BluePtr = &setColorBlue;
-funcptr IndigoPtr = &setColorIndigo;
-funcptr VioletPtr = &setColorViolet;
-
-funcptr SolidPtr = setSolid;
-funcptr FishpolePtr = setFishpole;
-funcptr RainbowPtr = setRainbow;
-funcptr SimpleMusicPtr = setSimpleMusic;
 
 
 

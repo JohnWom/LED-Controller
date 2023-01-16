@@ -76,3 +76,5 @@ void setRainbow(){
 void setSimpleMusic(){
   Serial1.println("MP00000000");
 }
+
+
