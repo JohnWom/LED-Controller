@@ -11,11 +11,11 @@ void Operator::draw(){
   lcd.init();
   // Draw Top Text
   lcd.setCursor(1,0);
-  lcd.print(current_screen->top_item->text);
+  lcd.print(*current_screen->top_item->text);
 
   // Draw Bottom Text
   lcd.setCursor(1,1);
-  lcd.print(current_screen->bottom_item->text);
+  lcd.print(*current_screen->bottom_item->text);
 }
 
 void Operator::Upscroll(){

@@ -160,8 +160,7 @@ void setup() {
 }
 
 void loop() {
-  Serial.println("Looping...");
+  Op.draw();
   Op.joystick_readings();
-  delay(1000);
 }
 // End Board Stuff ====================================================

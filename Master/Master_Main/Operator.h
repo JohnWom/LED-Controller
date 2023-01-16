@@ -17,12 +17,13 @@ class Operator
 
     // Read Joystick
     void joystick_readings();
+        // Draws text to Screen
+    void draw();
 
   private:
     Screen* current_screen;
     
-    // Draws text to Screen
-    void draw();
+
 
     // Scrolls Up through screen options
     void Upscroll();
