@@ -13,17 +13,21 @@ class Operator
 {
   public:
 
-    Operator(Screen* = NULL);
+    Operator(Screen* = NULL, DFRobot_RGBLCD1602* = NULL);
 
     // Read Joystick
     void joystick_readings();
         // Draws text to Screen
     void draw();
 
+    void draw_cursor();
+
   private:
     Screen* current_screen;
     
+    DFRobot_RGBLCD1602* display; 
 
+    
 
     // Scrolls Up through screen options
     void Upscroll();

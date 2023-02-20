@@ -15,7 +15,7 @@ int Screen::scrollUp() {
         return 0;
       } else {  // Otherwise Rotate Items
         bottom_item = top_item;
-        top_item = top_item->prev();
+        //top_item = top_item->prev();
         return 1;
       }
     }
@@ -27,7 +27,7 @@ int Screen::scrollDown() {
       return 0;
     } else {  // Otherwise Rotate Items
       top_item = bottom_item;
-      bottom_item = bottom_item->next();
+      //bottom_item = bottom_item->next();
       return 1;
   }
 }

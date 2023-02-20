@@ -3,6 +3,16 @@
 
 Operator Op;
 
+byte cursor_symbol[8] {
+      0b00000,
+      0b01000,
+      0b00100,
+      0b00010,
+      0b00001,
+      0b00010,
+      0b00100,
+      0b01000,
+    };
 
 // Board Stuff =======================================================
 void setup() {
@@ -15,6 +25,9 @@ void setup() {
 
   //LCD Startup
   Serial.println("Starting LCD");
+  DFRobot_RGBLCD1602 lcd(16, 2);
+  lcd.init();
+  lcd.customSymbol(0, cursor_symbol);
   delay(3000);
 
   pinMode(LED_BUILTIN, OUTPUT);
@@ -153,14 +166,17 @@ void setup() {
   backPattern.setScreen(ptrPatterns);
 
   //Initialize Operator
-  Operator Op(ptrHome);
+  Operator Op(ptrHome, &lcd);
 
   // Log
   Serial.println("Finshed Boot-Up");
+  Op.draw();
+  lcd.setCursor(0, 0);
+  lcd.write((unsigned char)0);
 }
 
 void loop() {
-  Op.draw();
+  
   Op.joystick_readings();
 }
 // End Board Stuff ====================================================
