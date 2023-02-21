@@ -32,7 +32,8 @@ void setup() {
 
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
-  // Create Function Pointers
+ 
+  
   //create Function Pointers
   funcptr powerPtr = powerToggle;
 
@@ -48,125 +49,140 @@ void setup() {
   funcptr FishpolePtr = setFishpole;
   funcptr RainbowPtr = setRainbow;
   funcptr SimpleMusicPtr = setSimpleMusic;
+
   //Initialize Function Selectables
-  FuncSelectable Red("Red            ", RedPtr);
-  FuncSelectable Orange("Orange         ", OrangePtr);
-  FuncSelectable Yellow("Yellow         ", YellowPtr);
-  FuncSelectable Green("Green          ", GreenPtr);
-  FuncSelectable Blue("Blue           ", BluePtr);
-  FuncSelectable Indigo("Indigo         ", IndigoPtr);
-  FuncSelectable Violet("Violet         ", VioletPtr);
+  Selectable Red;
+  Red.text = "Red            ";
+  Red.functpoint = RedPtr;
 
-  FuncSelectable Solid("Solid          ", SolidPtr);
-  FuncSelectable Fishpole("Fishpole       ", FishpolePtr);
-  FuncSelectable Rainbow("Rainbow        ", RainbowPtr);
+  Selectable Orange;
+  Orange.text = "Orange         ";
+  Orange.functpoint = OrangePtr;
+  
+  Selectable Yellow;
+  Yellow.text = "Yellow         ";
+  Yellow.functpoint = YellowPtr;
 
-  FuncSelectable SimpleMusic("Simple Music   ", SimpleMusicPtr);
+  Selectable Green;
+  Green.text = "Green          ";
+  Green.functpoint = GreenPtr;
+
+  Selectable Blue;
+  Blue.text = "Blue           ";
+  Blue.functpoint = BluePtr;
+
+  Selectable Indigo;
+  Indigo.text = "Indigo         ";
+  Indigo.functpoint = IndigoPtr;
+
+  Selectable Violet;
+  Violet.text = "Violet         ";
+  Violet.functpoint = VioletPtr;
+
+  Selectable Solid;
+  Solid.text = "Solid          ";
+  Solid.functpoint = SolidPtr;
+
+  Selectable Fishpole;
+  Fishpole.text = "Fishpole       ";
+  Fishpole.functpoint = FishpolePtr;
+  
+  Selectable Rainbow;
+  Rainbow.text = "Rainbow        ";
+  Rainbow.functpoint = RainbowPtr;
+
+  Selectable SimpleMusic;
+  SimpleMusic.text = "Simple Music   ";
+  SimpleMusic.functpoint = SimpleMusicPtr;
 
   //Initialize Pointer Selectables
-  ScreenSelectable toColors("Colors         ");
-  ScreenSelectable toPatterns("Patterns       ");
-  ScreenSelectable toMusic("Music Patterns ");
-  ScreenSelectable toStatic("Static Patterns");
-  ScreenSelectable backColor("back           ");
-  ScreenSelectable backMusic("back           ");
-  ScreenSelectable backStatic("back           ");
-  ScreenSelectable backPattern("back           ");
+  Selectable toColors;
+  toColors.text = "Colors         ";
 
-  //CreateSelectablePointers
-  Selectable *ptrRed = &Red;
-  Selectable *ptrOrange = &Orange;
-  Selectable *ptrYellow = &Yellow;
-  Selectable *ptrGreen = &Green;
-  Selectable *ptrBlue = &Blue;
-  Selectable *ptrIndigo = &Indigo;
-  Selectable *ptrViolet = &Violet;
+  Selectable toPatterns;
+  toPatterns.text = "Patterns       ";
 
-  Selectable *ptrtoColors = &toColors;
-  Selectable *ptrtoPatterns = &toPatterns;
-  Selectable *ptrtoMusic = &toMusic;
-  Selectable *ptrtoStatic = &toStatic;
-  Selectable *ptrbackColor = &backColor;
-  Selectable *ptrbackMusic = &backMusic;
-  Selectable *ptrbackStatic = &backStatic;
-  Selectable *ptrbackPattern = &backPattern;
+  Selectable toMusic;
+  toMusic.text = "Music Patterns ";
 
-  Selectable *ptrSolid = &Solid;
-  Selectable *ptrFishpole = &Fishpole;
-  Selectable *ptrRainbow = &Rainbow;
+  Selectable toStatic;
+  toStatic.text = "Static Patterns";
 
-  Selectable *ptrSimpleMusic = &SimpleMusic;
+  Selectable backColor;
+  backColor.text = "back           ";
+
+  Selectable backMusic;
+  backMusic.text = "back           ";
+
+  Selectable backStatic;
+  backStatic.text = "back           ";
+
+  Selectable backPattern;
+  backPattern.text = "back           ";
 
   //Create Selectable Loops
-  Red.setNext(ptrOrange);
-  Red.setPrev(ptrbackColor);
-  Orange.setNext(ptrYellow);
-  Orange.setPrev(ptrRed);
-  Yellow.setNext(ptrGreen);
-  Yellow.setPrev(ptrOrange);
-  Green.setNext(ptrBlue);
-  Green.setPrev(ptrYellow);
-  Blue.setNext(ptrIndigo);
-  Blue.setPrev(ptrGreen);
-  Indigo.setNext(ptrViolet);
-  Indigo.setPrev(ptrBlue);
-  Violet.setNext(ptrbackColor);
-  Violet.setPrev(ptrIndigo);
-  backColor.setNext(ptrRed);
-  backColor.setPrev(ptrViolet);
+  Red.next = &Orange;
+  Red.prev = &backColor;
+  Orange.next = &Yellow;
+  Orange.prev = &Red;
+  Yellow.next = &Green;
+  Yellow.prev = &Orange;
+  Green.next = &Blue;
+  Green.prev = &Yellow;
+  Blue.next = &Indigo;
+  Blue.prev = &Green;
+  Indigo.next = &Violet;
+  Indigo.prev = &Blue;
+  Violet.next = &backColor;
+  Violet.prev = &Indigo;
+  backColor.next = &Red;
+  backColor.prev = &Violet;
 
-  backMusic.setNext(ptrSimpleMusic);
-  backMusic.setPrev(ptrSimpleMusic);
-  SimpleMusic.setNext(ptrbackMusic);
-  SimpleMusic.setPrev(ptrbackMusic);
+  backMusic.next = &SimpleMusic;
+  backMusic.prev = &SimpleMusic;
+  SimpleMusic.next = &backMusic;
+  SimpleMusic.prev = &backMusic;
 
-  backStatic.setNext(ptrSolid);
-  backStatic.setPrev(ptrRainbow);
-  Solid.setNext(ptrFishpole);
-  Solid.setPrev(ptrbackStatic);
-  Fishpole.setNext(ptrRainbow);
-  Fishpole.setPrev(ptrSolid);
-  Rainbow.setNext(ptrbackStatic);
-  Rainbow.setPrev(ptrFishpole);
+  backStatic.next = &Solid;
+  backStatic.prev = &Rainbow;
+  Solid.next = &Fishpole;
+  Solid.prev = &backStatic;
+  Fishpole.next = &Rainbow;
+  Fishpole.prev = &Solid;
+  Rainbow.next = &backStatic;
+  Rainbow.prev = &Fishpole;
 
-  backPattern.setNext(ptrtoMusic);
-  backPattern.setPrev(ptrtoStatic);
-  toMusic.setNext(ptrtoStatic);
-  toMusic.setPrev(ptrbackPattern);
-  toStatic.setNext(ptrbackPattern);
-  toStatic.setPrev(ptrtoMusic);
+  backPattern.next = &toMusic;
+  backPattern.prev = &toStatic;
+  toMusic.next = &toStatic;
+  toMusic.prev = &backPattern;
+  toStatic.next = &backPattern;
+  toStatic.prev = &toMusic;
 
-  toPatterns.setNext(ptrtoColors);
-  toPatterns.setPrev(ptrtoColors);
-  toColors.setNext(ptrtoPatterns);
-  toColors.setPrev(ptrtoPatterns);
+  toPatterns.next = &toColors;
+  toPatterns.prev = &toColors;
+  toColors.next = &toPatterns;
+  toColors.prev = &toPatterns;
 
   //Initialize Screens
-  Screen Home(ptrtoColors, ptrtoPatterns);
-  Screen Patterns(ptrtoStatic, ptrtoMusic);
-  Screen Music(ptrbackMusic, ptrSimpleMusic);
-  Screen Static(ptrbackStatic, ptrSolid);
-  Screen Color(ptrbackColor, ptrRed);
-
-  //Create Screen Pointers
-  Screen *ptrHome = &Home;
-  Screen *ptrPatterns = &Patterns;
-  Screen *ptrMusic = &Music;
-  Screen *ptrStatic = &Static;
-  Screen *ptrColor = &Color;
+  Screen Home(&toColors, &toPatterns);
+  Screen Patterns(&toStatic, &toMusic);
+  Screen Music(&backMusic, &SimpleMusic);
+  Screen Static(&backStatic, &Solid);
+  Screen Color(&backColor, &Red);
 
   //Set Screen Pointers to Screens
-  toColors.setScreen(ptrColor);
-  toPatterns.setScreen(ptrPatterns);
-  toMusic.setScreen(ptrMusic);
-  toStatic.setScreen(ptrStatic);
-  backColor.setScreen(ptrHome);
-  backMusic.setScreen(ptrHome);
-  backStatic.setScreen(ptrPatterns);
-  backPattern.setScreen(ptrPatterns);
+  toColors.next_screen = &Color;
+  toPatterns.next_screen = &Patterns;
+  toMusic.next_screen = &Music;
+  toStatic.next_screen = &Static;
+  backColor.next_screen = &Home;
+  backMusic.next_screen = &Home;
+  backStatic.next_screen = &Patterns;
+  backPattern.next_screen = &Patterns;
 
   //Initialize Operator
-  Operator Op(ptrHome, &lcd);
+  Operator Op(&Home, &lcd);
 
   // Log
   Serial.println("Finshed Boot-Up");

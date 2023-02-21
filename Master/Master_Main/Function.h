@@ -57,6 +57,8 @@ void setRainbow();
 
 void setSimpleMusic();
 
+// Pointers
+
 
 
 

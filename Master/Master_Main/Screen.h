@@ -1,8 +1,18 @@
 #ifndef SCREEN.H
 #define SCREEN.H
 
-#include "ScreenSelectable.h"
-#include "FuncSelectable.h"
+#include "types.h"
+
+class Screen;
+
+struct Selectable {
+    Selectable* next;
+    Selectable* prev;
+
+    char* text;
+    funcptr functpoint;
+    Screen* next_screen;
+};
 
 class Screen
 {
@@ -11,15 +21,14 @@ class Screen
     Screen(Selectable*, Selectable*);
 
     // Scroll Up
-    int scrollUp();
+    void scrollUp();
 
     // Scroll Down
-    int scrollDown();
+    void scrollDown();
 
   private:
     Selectable* top_item;
     Selectable* bottom_item;
-    int cursor_pos;
 
   friend class Operator;
 };

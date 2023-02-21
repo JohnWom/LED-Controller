@@ -27,7 +27,7 @@ class Operator
     
     DFRobot_RGBLCD1602* display; 
 
-    
+    int cursor_position;
 
     // Scrolls Up through screen options
     void Upscroll();
