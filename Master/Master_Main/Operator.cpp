@@ -12,7 +12,6 @@ void Operator::draw() {
   Serial.println("Drawing...");
  
   display->setCursor(1, 0);
-  Serial.println(current_screen->top_item->text);
   display->print(current_screen->top_item->text);
 
   display->setCursor(1, 1);
@@ -21,10 +20,18 @@ void Operator::draw() {
 }
 
 void Operator::draw_cursor() {
-  Serial.println("Cursor drawing called");
   display->setCursor(0, cursor_position);
-  Serial.println("Set Cursor");
   display->write((unsigned char)0);
+  // Clear other cursor
+  if (cursor_position) {
+    display->setCursor(0, 0);
+    display->print(" ");    
+  }
+  else {
+    display->setCursor(0, 1);
+    display->print(" ");
+  }
+  
 }
 
 void Operator::Upscroll() {
@@ -71,20 +78,23 @@ void Operator::click() {
 
 // Read Joystick
 void Operator::joystick_readings() {
-  int xPosition = analogRead(VRx);
+  int yPosition = analogRead(VRy);
   //int yPosition = analogRead(VRy);
   int SW_state = digitalRead(SW);
-  Serial.println(xPosition);
+
   if (SW_state == 0) {
+    Serial.print("Button Clicked!");
     click();
+    draw();
   }
-  Serial.println(current_screen->top_item->text);
   //Define mapY
-  if (xPosition > 910) {
+  if (yPosition > 910) {
     Upscroll();
     Serial.println("Scrolled Up");
-  } else if (xPosition < 150) {
+    delay(200);
+  } else if (yPosition < 150) {
     Downscroll();
     Serial.println("Scrolled Down");
+    delay(200);
   }
 }

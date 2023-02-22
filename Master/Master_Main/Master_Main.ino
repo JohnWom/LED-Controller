@@ -1,18 +1,55 @@
 #include "Operator.h"
 #include "Function.h"
 
-Operator Op;
-
+// Cursor Symbol
 byte cursor_symbol[8] {
-      0b00000,
-      0b01000,
       0b00100,
-      0b00010,
-      0b00001,
-      0b00010,
+      0b01110,
       0b00100,
-      0b01000,
+      0b00100,
+      0b00100,
+      0b00100,
+      0b11011,
+      0b11011,
     };
+
+
+// Initialize Selectables
+Selectable Red;
+Selectable Orange;
+Selectable Yellow;
+Selectable Green;
+Selectable Blue;
+Selectable Indigo;
+Selectable Violet;
+Selectable Solid;
+Selectable Fishpole;
+Selectable Rainbow;
+Selectable SimpleMusic;
+
+Selectable toColors;
+Selectable toPatterns;
+Selectable toMusic;
+Selectable toStatic;
+Selectable backColor;
+Selectable backMusic;
+Selectable backStatic;
+Selectable backPattern;
+
+//Initialize Screens
+Screen Home(&toColors, &toPatterns);
+Screen Patterns(&backPattern, &toMusic);
+Screen Music(&backMusic, &SimpleMusic);
+Screen Static(&backStatic, &Solid);
+Screen Color(&backColor, &Red);
+
+//Initialize LCD
+DFRobot_RGBLCD1602 lcd(16, 2);
+
+//Initialize Operator
+Operator Op(&Home, &lcd);
+
+
 
 // Board Stuff =======================================================
 void setup() {
@@ -25,7 +62,7 @@ void setup() {
 
   //LCD Startup
   Serial.println("Starting LCD");
-  DFRobot_RGBLCD1602 lcd(16, 2);
+  
   lcd.init();
   lcd.customSymbol(0, cursor_symbol);
   delay(3000);
@@ -35,8 +72,9 @@ void setup() {
  
   
   //create Function Pointers
-  funcptr powerPtr = powerToggle;
-
+  /*
+  funcptr powerPtr = &powerToggle;
+  
   funcptr RedPtr = &setColorRed;
   funcptr OrangePtr = &setColorOrange;
   funcptr YellowPtr = &setColorYellow;
@@ -45,82 +83,65 @@ void setup() {
   funcptr IndigoPtr = &setColorIndigo;
   funcptr VioletPtr = &setColorViolet;
 
-  funcptr SolidPtr = setSolid;
-  funcptr FishpolePtr = setFishpole;
-  funcptr RainbowPtr = setRainbow;
-  funcptr SimpleMusicPtr = setSimpleMusic;
-
+  funcptr SolidPtr = &setSolid;
+  funcptr FishpolePtr = &setFishpole;
+  funcptr RainbowPtr = &setRainbow;
+  funcptr SimpleMusicPtr = &setSimpleMusic;
+  */
   //Initialize Function Selectables
-  Selectable Red;
+  
   Red.text = "Red            ";
-  Red.functpoint = RedPtr;
+  Red.functpoint = &setColorRed;
 
-  Selectable Orange;
   Orange.text = "Orange         ";
-  Orange.functpoint = OrangePtr;
+  Orange.functpoint = &setColorOrange;
   
-  Selectable Yellow;
   Yellow.text = "Yellow         ";
-  Yellow.functpoint = YellowPtr;
+  Yellow.functpoint = &setColorYellow;
 
-  Selectable Green;
   Green.text = "Green          ";
-  Green.functpoint = GreenPtr;
+  Green.functpoint = &setColorGreen;
 
-  Selectable Blue;
   Blue.text = "Blue           ";
-  Blue.functpoint = BluePtr;
+  Blue.functpoint = &setColorBlue;
 
-  Selectable Indigo;
   Indigo.text = "Indigo         ";
-  Indigo.functpoint = IndigoPtr;
+  Indigo.functpoint = &setColorIndigo;
 
-  Selectable Violet;
   Violet.text = "Violet         ";
-  Violet.functpoint = VioletPtr;
+  Violet.functpoint = &setColorViolet;
 
-  Selectable Solid;
   Solid.text = "Solid          ";
-  Solid.functpoint = SolidPtr;
+  Solid.functpoint = &setSolid;
 
-  Selectable Fishpole;
   Fishpole.text = "Fishpole       ";
-  Fishpole.functpoint = FishpolePtr;
+  Fishpole.functpoint = &setFishpole;
   
-  Selectable Rainbow;
   Rainbow.text = "Rainbow        ";
-  Rainbow.functpoint = RainbowPtr;
+  Rainbow.functpoint = &setRainbow;
 
-  Selectable SimpleMusic;
   SimpleMusic.text = "Simple Music   ";
-  SimpleMusic.functpoint = SimpleMusicPtr;
+  SimpleMusic.functpoint = &setSimpleMusic;
 
   //Initialize Pointer Selectables
-  Selectable toColors;
   toColors.text = "Colors         ";
 
-  Selectable toPatterns;
   toPatterns.text = "Patterns       ";
 
-  Selectable toMusic;
   toMusic.text = "Music Patterns ";
 
-  Selectable toStatic;
   toStatic.text = "Static Patterns";
 
-  Selectable backColor;
   backColor.text = "back           ";
 
-  Selectable backMusic;
   backMusic.text = "back           ";
 
-  Selectable backStatic;
   backStatic.text = "back           ";
 
-  Selectable backPattern;
   backPattern.text = "back           ";
 
   //Create Selectable Loops
+  backColor.next = &Red;
   Red.next = &Orange;
   Red.prev = &backColor;
   Orange.next = &Yellow;
@@ -133,43 +154,26 @@ void setup() {
   Blue.prev = &Green;
   Indigo.next = &Violet;
   Indigo.prev = &Blue;
-  Violet.next = &backColor;
   Violet.prev = &Indigo;
-  backColor.next = &Red;
-  backColor.prev = &Violet;
+  
 
   backMusic.next = &SimpleMusic;
-  backMusic.prev = &SimpleMusic;
-  SimpleMusic.next = &backMusic;
   SimpleMusic.prev = &backMusic;
 
   backStatic.next = &Solid;
-  backStatic.prev = &Rainbow;
   Solid.next = &Fishpole;
   Solid.prev = &backStatic;
   Fishpole.next = &Rainbow;
   Fishpole.prev = &Solid;
-  Rainbow.next = &backStatic;
   Rainbow.prev = &Fishpole;
 
   backPattern.next = &toMusic;
-  backPattern.prev = &toStatic;
   toMusic.next = &toStatic;
   toMusic.prev = &backPattern;
-  toStatic.next = &backPattern;
   toStatic.prev = &toMusic;
 
-  toPatterns.next = &toColors;
   toPatterns.prev = &toColors;
   toColors.next = &toPatterns;
-  toColors.prev = &toPatterns;
-
-  //Initialize Screens
-  Screen Home(&toColors, &toPatterns);
-  Screen Patterns(&toStatic, &toMusic);
-  Screen Music(&backMusic, &SimpleMusic);
-  Screen Static(&backStatic, &Solid);
-  Screen Color(&backColor, &Red);
 
   //Set Screen Pointers to Screens
   toColors.next_screen = &Color;
@@ -177,12 +181,12 @@ void setup() {
   toMusic.next_screen = &Music;
   toStatic.next_screen = &Static;
   backColor.next_screen = &Home;
-  backMusic.next_screen = &Home;
+  backMusic.next_screen = &Patterns;
   backStatic.next_screen = &Patterns;
-  backPattern.next_screen = &Patterns;
+  backPattern.next_screen = &Home;
 
   //Initialize Operator
-  Operator Op(&Home, &lcd);
+  
 
   // Log
   Serial.println("Finshed Boot-Up");
