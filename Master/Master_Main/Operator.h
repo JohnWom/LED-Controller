@@ -4,6 +4,15 @@
 #include "Screen.h"
 #include <DFRobot_RGBLCD1602.h>
 
+//============================ Operator =============================
+//  The Operator class is responsible for reading input and 
+//  generating the response on the screen
+//
+//  uses Arduino basic analog and digital commands to read ports
+//
+//===================================================================
+
+
 //Set up Joystick ====================================================
 #define VRx A3     //X direction analog pin
 #define VRy A2     //Y direction analog pin
@@ -15,11 +24,13 @@ class Operator
 
     Operator(Screen* = NULL, DFRobot_RGBLCD1602* = NULL);
 
-    // Read Joystick
+    // Reads Joystick
     void joystick_readings();
-        // Draws text to Screen
-    void draw();
 
+    // Draws text on LCD
+    void draw();
+    
+    // Draws curson on LCD
     void draw_cursor();
 
   private:
