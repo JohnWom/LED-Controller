@@ -12,7 +12,7 @@
 
 ## Useful Articles to Undestand Multithreading
  ---
- [Multithreading on RP2040 using Mbed OS]((https://www.digikey.no/no/maker/blogs/2022/how-to-write-multi-threaded-arduino-programs)
+ [Multithreading on RP2040 using Mbed OS](https://www.digikey.no/no/maker/blogs/2022/how-to-write-multi-threaded-arduino-programs)
 
  ## Photos
  ---
