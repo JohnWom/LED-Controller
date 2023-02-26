@@ -10,6 +10,10 @@
  ---
   [Explains Hamming Function and Windowing](https://towardsdatascience.com/brief-introduction-of-hamming-and-hanning-function-as-the-preprocessing-of-discrete-fourier-8b87fe538bb7)
 
+## Useful Articles to Undestand Multithreading
+ ---
+ [multithreading on RP2040 using Mbed OS]([## Useful Articles to Understand the Fast Fourier Transforms](https://www.digikey.no/no/maker/blogs/2022/how-to-write-multi-threaded-arduino-programs)
+
  ## Photos
  ---
  ![alt text](https://github.com/JohnWom/LED-Controller/blob/main/Physicals/Photos/Isometric.PNG?raw=true)
