@@ -1,51 +1,80 @@
 #include "patterns.h"
-Adafruit_NeoPixel pixels(NumLeds, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-extern int analyzed[8];
+Patterns::Patterns(LED_Controller* L, AudioProcessor* P)
+{
+  leds = L;
+  ap = P;
 
-void Led_Setup() {
-  pixels.begin();
-  pixels.show();
-  pixels.setBrightness(10);
+  r = 0;
+  g = 0;
+  b = 0;
 }
 
 // Static Patterns =============================================================================================
 //==============================================================================================================
 
 //Solid Color --------------------------------------------------------------------------------------------------
-void Solid_Color(int r, int g, int b) {
-  for (int i = 0; i < NumLeds; i++) {
-    pixels.setPixelColor(i, r, g, b); 
-  }
-  pixels.show();
+void Patterns::Solid_Color() {
+  leds->lightAll(r, g, b);
+  
 }
 
-// Color Cycle -------------------------------------------------------------------------------------------------
-void Color_Cycle() {
-  int pallet[7][3] = {{128,0,0},{255,100,0},{255,0,0},{0,128,0},{0,0,205},{75,0,130},{128,0,128}};
-  int c = 0;
+//Fishpole --------------------------------------------------------------------------------------------------
+void Patterns::Color_Cycle() {
+  int colors[12][3] = {
+    {255,0,0},
+    {255,127,0},
+    {255,255,0},
+    {127,255,0},
+    {0,255,0},
+    {0,255,127},
+    {0,255,255},
+    {0,127,255},
+    {0,0,255},
+    {127,0,255},
+    {255,0,255},
+    {255,0,127}
+  };
+  int color_num = 0;
 
-  for (int i = 0; i < 255; i++) {
-    Serial.println(pallet[c][1]);
-    pixels.setPixelColor(i, pallet[c][0], pallet[c][1], pallet[c][2]);
-    c+= 1;
-    if (c > 6) {c = 0;}
+  for (int i = 0; i < leds->num_leds; i++) {
+    leds->setOne(i, colors[color_num][0], colors[color_num][1], colors[color_num][2]); 
+
+    if (i / 12 == 0)
+      color_num = color_num++ % 12;
   }
-  c += 1;
-  pixels.show();
+}
+
+
+// Rainbow -------------------------------------------------------------------------------------------------
+void Patterns::Rainbow() {
+  int colors[12][3] = {
+    {255,0,0},
+    {255,127,0},
+    {255,255,0},
+    {127,255,0},
+    {0,255,0},
+    {0,255,127},
+    {0,255,255},
+    {0,127,255},
+    {0,0,255},
+    {127,0,255},
+    {255,0,255},
+    {255,0,127}
+  };
+  int color_num = 0;
+
+  for (int i = 0; i < leds->num_leds; i++) {
+    color_num = color_num++ % 12;
+    leds->lightOne(i, colors[color_num][0], colors[color_num][1], colors[color_num][2]);
+  }
+
 }
 
 // Music Patterns ===============================================================================================
 //===============================================================================================================
 
-// Bass ---------------------------------------------------------------------------------------------------------
-void Bass(int r, int g, int b) {
-  for (int i = 0; i < NumLeds; i++) {
-    pixels.setPixelColor(i, r, g, b);
-  }
-  pixels.show();
-  //int avg_binv = (analyzed_audio[0] + analyzed_audio[1]) / 2;
-  int m = round(0.085 * analyzed[0]);
-  if (m > 255) {m = 255;} //Makes sure it doesn't go over max
-  pixels.setBrightness(m);
+// Simple_Music ---------------------------------------------------------------------------------------------------------
+void Simple_Music() {
+  
 }
