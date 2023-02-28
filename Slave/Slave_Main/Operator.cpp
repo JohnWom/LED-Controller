@@ -5,7 +5,7 @@ Operator::Operator(Thread* t, Patterns* p)
 {
   Patterns* P = p;
 
-  funcptr = &Patterns::Solid_Color;
+  pattern = &Patterns::Solid_Color;
 
   thread = t;
 }
@@ -22,17 +22,17 @@ void Operator::readSerial()
 
     if (code.charAt(0) == 'C')
       processColor(code);
-    else if (code.charAt(0) == "M")
+    else if (code.charAt(0) == 'M')
       processMusicPattern(code);
-    else if (code.charAt(0) == "S")
+    else if (code.charAt(0) == 'S')
       processStaticPattern(code);
 
-    thread->start(mbed::Callback(runPattern));
+    thread->start(mbed::callback(runPattern));
   }
 }
 
 void Operator::runPattern(void){
-  (*pattern)();
+  (P->*pattern)();
 }
 
 void Operator::processColor(String code)

@@ -12,7 +12,7 @@ Adafruit_NeoPixel pixels(NumLeds, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 LED_Controller leds(&pixels, (int) NumLeds);
 
-AudioProcessor AP();
+AudioProcessor AP;
 
 Patterns P(&leds, &AP);
 

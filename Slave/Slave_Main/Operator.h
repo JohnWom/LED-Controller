@@ -1,7 +1,6 @@
 #ifndef OPERATOR
 #define OPERATOR
 
-#include "types.h"
 #include <string.h>
 #include <mbed.h>
 #include <rtos.h>
@@ -19,15 +18,13 @@ class Operator
     
     void readSerial(void);
 
-    void runPattern(void);
-
   private:
 
-    funcptr pattern;
-    Patterns* P;
+    static void (Patterns::*pattern)(void);
+    static Patterns* P;
     Thread* thread;
 
-    void runPattern();
+    static void runPattern();
 
     void processColor(String);
 
