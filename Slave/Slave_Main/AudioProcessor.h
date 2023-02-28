@@ -13,22 +13,25 @@ class AudioProcessor
   public:
     AudioProcessor();
 
-    void followBeat();
+    static void followBeat();
 
-    void threeBand();
+    static void threeBand();
 
-    void fiveBand();
+    static void fiveBand();
 
-    void volume();
+    static void volume();
+
+    static arduinoFFT FFT;
+
+    static double vReal[SAMPLES];
+
+    static double vImag[SAMPLES];
 
   private:
-    arduinoFFT FFT;
-    double vReal[SAMPLES];
-    double vImag[SAMPLES];
+  
+    static void readAudio();
 
-    void readAudio();
-
-    void runFFT();
+    static void runFFT();
 };
 
 #endif

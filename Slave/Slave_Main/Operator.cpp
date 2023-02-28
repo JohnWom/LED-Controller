@@ -1,9 +1,8 @@
 #include "Operator.h"
 
 
-Operator::Operator(Thread* t, Patterns* p)
+Operator::Operator(Thread* t)
 {
-  Patterns* P = p;
 
   pattern = &Patterns::Solid_Color;
 
@@ -32,7 +31,7 @@ void Operator::readSerial()
 }
 
 void Operator::runPattern(void){
-  (P->*pattern)();
+  (*pattern)();
 }
 
 void Operator::processColor(String code)
@@ -43,9 +42,9 @@ void Operator::processColor(String code)
 
   String blue = code.substring(7,9);
 
-  P->r = red.toInt();
-  P->g = green.toInt();
-  P->b = blue.toInt();
+  Patterns::r = red.toInt();
+  Patterns::g = green.toInt();
+  Patterns::b = blue.toInt();
 }
 
 void Operator::processStaticPattern(String code)

@@ -10,13 +10,19 @@ Thread t;
 
 Adafruit_NeoPixel pixels(NumLeds, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-LED_Controller leds(&pixels, (int) NumLeds);
+int LED_Controller::num_leds = NumLeds;
+Adafruit_NeoPixel* LED_Controller::NeoPix = &pixels;
 
-AudioProcessor AP;
+arduinoFFT AudioProcessor::FFT = arduinoFFT(vReal, vImag, SAMPLES, SAMPLING_FREQ);;
+double AudioProcessor::vReal[SAMPLES];
+double AudioProcessor::vImag[SAMPLES];
 
-Patterns P(&leds, &AP);
+int Patterns::r = 0;
+int Patterns::g = 0;
+int Patterns::b = 0;
 
-Operator Op(&t, &P);
+void (*Operator::pattern)(void) = &Patterns::Solid_Color;
+Operator Op(&t);
 
 void main_thread(void) {
   while (true) {

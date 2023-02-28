@@ -14,14 +14,13 @@ class Operator
 {
   public:
 
-    Operator(Thread*, Patterns*);
+    Operator(Thread*);
     
     void readSerial(void);
 
   private:
 
-    static void (Patterns::*pattern)(void);
-    static Patterns* P;
+    static void (*pattern)(void);
     Thread* thread;
 
     static void runPattern();

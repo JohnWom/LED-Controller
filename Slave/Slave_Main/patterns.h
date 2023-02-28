@@ -11,25 +11,21 @@ class Patterns {
 
     //Static Pattern Functions ============================================================================
 
-    void Solid_Color(); //Fills the Strip with a solid Color
+    static void Solid_Color(); //Fills the Strip with a solid Color
 
-    void Color_Cycle(); //Cylces Through Colors
+    static void Color_Cycle(); //Cylces Through Colors
 
-    void Rainbow(); //Plays Moving Rainbow Threw Color
+    static void Rainbow(); //Plays Moving Rainbow Threw Color
 
     //Music Pattern Functions =============================================================================
 
-    void Simple_Music(); // Sets LEDS to go with Bass of song
+    static void Simple_Music(); // Sets LEDS to go with Bass of song
 
-  private:
-    LED_Controller* leds;
-    AudioProcessor* ap;
+    static int r;
 
-    int r;
+    static int g;
 
-    int g;
-
-    int b;
+    static int b;
 
   friend class Operator;
 };

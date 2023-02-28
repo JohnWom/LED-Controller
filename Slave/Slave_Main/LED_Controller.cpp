@@ -2,16 +2,16 @@
 
 LED_Controller::LED_Controller(Adafruit_NeoPixel* p, int n)
 {
-  pixels = p;
+  NeoPix = p;
   num_leds = n;
 }
 
 void LED_Controller::lightAll(int r, int g, int b)
 {
   for (int i=0; i < num_leds; i++) {
-    pixels->setPixelColor(i, r, g, b);
+    NeoPix->setPixelColor(i, r, g, b);
   }
-  pixels->show();
+  NeoPix->show();
 }
 
 void LED_Controller::lightOne(int i, int r, int g, int b)
@@ -20,8 +20,8 @@ void LED_Controller::lightOne(int i, int r, int g, int b)
   if (i >= num_leds || i < 0)
     return;
 
-  pixels->setPixelColor(i, r, g, b);
-  pixels->show();
+  NeoPix->setPixelColor(i, r, g, b);
+  NeoPix->show();
 }
 
 void LED_Controller::setOne(int i, int r, int g, int b)
@@ -29,9 +29,9 @@ void LED_Controller::setOne(int i, int r, int g, int b)
   if (i >= num_leds || i < 0)
     return;
 
-  pixels->setPixelColor(i, r, g, b);
+  NeoPix->setPixelColor(i, r, g, b);
 }
 
 void LED_Controller::show() {
-  pixels->show();
+  NeoPix->show();
 }

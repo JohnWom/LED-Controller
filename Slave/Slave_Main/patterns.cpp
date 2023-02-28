@@ -2,8 +2,6 @@
 
 Patterns::Patterns(LED_Controller* L, AudioProcessor* P)
 {
-  leds = L;
-  ap = P;
 
   r = 0;
   g = 0;
@@ -15,7 +13,7 @@ Patterns::Patterns(LED_Controller* L, AudioProcessor* P)
 
 //Solid Color --------------------------------------------------------------------------------------------------
 void Patterns::Solid_Color() {
-  leds->lightAll(r, g, b);
+  LED_Controller::lightAll(r, g, b);
   
 }
 
@@ -37,8 +35,8 @@ void Patterns::Color_Cycle() {
   };
   int color_num = 0;
 
-  for (int i = 0; i < leds->num_leds; i++) {
-    leds->setOne(i, colors[color_num][0], colors[color_num][1], colors[color_num][2]); 
+  for (int i = 0; i < LED_Controller::num_leds; i++) {
+    LED_Controller::setOne(i, colors[color_num][0], colors[color_num][1], colors[color_num][2]); 
 
     if (i / 12 == 0)
       color_num = color_num++ % 12;
@@ -64,9 +62,9 @@ void Patterns::Rainbow() {
   };
   int color_num = 0;
 
-  for (int i = 0; i < leds->num_leds; i++) {
+  for (int i = 0; i < LED_Controller::num_leds; i++) {
     color_num = color_num++ % 12;
-    leds->lightOne(i, colors[color_num][0], colors[color_num][1], colors[color_num][2]);
+    LED_Controller::lightOne(i, colors[color_num][0], colors[color_num][1], colors[color_num][2]);
   }
 
 }
@@ -75,6 +73,6 @@ void Patterns::Rainbow() {
 //===============================================================================================================
 
 // Simple_Music ---------------------------------------------------------------------------------------------------------
-void Simple_Music() {
-  return;
-}
+void Patterns::Simple_Music() {
+    LED_Controller::lightAll(r, g, b);
+} 

@@ -8,17 +8,17 @@ class LED_Controller
   public:
     LED_Controller(Adafruit_NeoPixel*, int);
 
-    void lightAll(int, int, int);
+    static void lightAll(int, int, int);
 
-    void lightOne(int, int, int, int);
+    static void lightOne(int, int, int, int);
 
-    void setOne(int, int, int, int);
+    static void setOne(int, int, int, int);
 
-    void show();
+    static void show();
 
-  private:
-    int num_leds;
-    Adafruit_NeoPixel* pixels;
+    static int num_leds;
+
+    static Adafruit_NeoPixel* NeoPix;
 
   friend class Patterns;
 };
