@@ -13,8 +13,8 @@ Patterns::Patterns(LED_Controller* L, AudioProcessor* P)
 
 //Solid Color --------------------------------------------------------------------------------------------------
 void Patterns::Solid_Color() {
-  LED_Controller::lightAll(r, g, b);
-  
+    Serial.println("I'm running Solid Color!!!");
+    LED_Controller::lightAll(r, g, b);
 }
 
 //Fishpole --------------------------------------------------------------------------------------------------
