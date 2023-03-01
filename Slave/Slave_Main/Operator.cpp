@@ -1,12 +1,9 @@
 #include "Operator.h"
 
 
-Operator::Operator(Thread* t)
+Operator::Operator()
 {
-
   pattern = &Patterns::Solid_Color;
-
-  thread = t;
 }
 
 void Operator::readSerial() 
@@ -18,7 +15,7 @@ void Operator::readSerial()
     code.trim();
 
     Serial.println(code);
-    thread->terminate();
+    
 
     if (code.charAt(0) == 'C')
       processColor(code);
@@ -26,9 +23,6 @@ void Operator::readSerial()
       processMusicPattern(code);
     else if (code.charAt(0) == 'S')
       processStaticPattern(code);
-
-    Serial.println(thread->start(runPattern));
-    Serial.println("Thread Start Executed");
   }
 }
 

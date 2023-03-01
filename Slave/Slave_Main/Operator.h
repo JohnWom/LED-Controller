@@ -14,16 +14,15 @@ class Operator
 {
   public:
 
-    Operator(Thread*);
+    Operator();
     
     void readSerial(void);
+
+    static void runPattern();
 
   private:
 
     static void (*pattern)(void);
-    Thread* thread;
-
-    static void runPattern();
 
     void processColor(String);
 
