@@ -24,7 +24,12 @@ int Patterns::b = 0;
 void (*Operator::pattern)(void) = &Patterns::Solid_Color;
 
 Operator Op;
-
+void thread(void) {
+  while(1) {
+    Op.readSerial();
+  }
+  
+}
 
 void setup() {
   // put your setup code here, to run once:
@@ -34,12 +39,14 @@ void setup() {
   // Set up pins
   pinMode(AUDIO_PIN, INPUT);
   pinMode(LED_PIN, OUTPUT);
-  //t.start(mbed::callback(Op.runPattern));
+  t.start(mbed::callback(thread));
 
 }
 
 // Loop not needed
 // Threads run in thread1, thread2
 void loop() {
-  Op.readSerial();
+  //Op.runPattern();
+  Serial.println("Main Thead");
+  delay(500);
 }

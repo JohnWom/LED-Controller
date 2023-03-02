@@ -27,10 +27,8 @@ void Operator::readSerial()
 }
 
 void Operator::runPattern(void){
-  Serial.println("Thread Created");
-  while (1) {
-    (*pattern)();
-  }
+    Serial.println("Thread Created");
+    (*Operator::pattern)();
 }
 
 void Operator::processColor(String code)
