@@ -1,21 +1,33 @@
 #ifndef PATTERNS
 #define PATTERNS
-//This contains all pattern functions
-#include "audio-processing.h"
-#include <Adafruit_NeoPixel.h>
-#define LED_PIN D0
-#define NumLeds 300
 
-void Led_Setup(); //Functions for Setting up Strip
+#include "AudioProcessor.h"
+#include "LED_Controller.h"
 
-//Static Pattern Functions ============================================================================
+class Patterns {
+  public:
 
-void Solid_Color(int,int,int); //Fills the Strip with a solid Color
+    Patterns(LED_Controller*, AudioProcessor*);
 
-void Color_Cycle(); //Cylces Through Colors
+    //Static Pattern Functions ============================================================================
 
-//Music Pattern Functions =============================================================================
+    static void Solid_Color(); //Fills the Strip with a solid Color
 
-void Bass(int, int, int); // Sets LEDS to go with Bass of song
+    static void Color_Cycle(); //Cylces Through Colors
+
+    static void Rainbow(); //Plays Moving Rainbow Threw Color
+
+    //Music Pattern Functions =============================================================================
+
+    static void Simple_Music(); // Sets LEDS to go with Bass of song
+
+    static int r;
+
+    static int g;
+
+    static int b;
+
+  friend class Operator;
+};
 
 #endif
