@@ -27,7 +27,6 @@ void Operator::readSerial()
 }
 
 void Operator::runPattern(void){
-    Serial.println("Thread Created");
     (*Operator::pattern)();
 }
 

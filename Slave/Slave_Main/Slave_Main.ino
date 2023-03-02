@@ -2,7 +2,7 @@
 
 using namespace rtos;
 
-#define LED_PIN 0
+#define LED_PIN D0
 #define NumLeds 300
 #define AUDIO_PIN A2
 
@@ -39,14 +39,19 @@ void setup() {
   // Set up pins
   pinMode(AUDIO_PIN, INPUT);
   pinMode(LED_PIN, OUTPUT);
+
+  //Start LEDS
+  pixels.begin();
+  pixels.setBrightness(50);
+
+  //Start Thread
   t.start(mbed::callback(thread));
 
 }
 
-// Loop not needed
-// Threads run in thread1, thread2
 void loop() {
   //Op.runPattern();
   Serial.println("Main Thead");
   delay(500);
+  Operator::runPattern();
 }

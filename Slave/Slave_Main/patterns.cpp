@@ -1,6 +1,6 @@
 #include "patterns.h"
 
-Patterns::Patterns(LED_Controller* L, AudioProcessor* P)
+Patterns::Patterns(LED_Controller* L, AudioProcessor* P)b         
 {
 
   r = 0;
@@ -13,7 +13,6 @@ Patterns::Patterns(LED_Controller* L, AudioProcessor* P)
 
 //Solid Color --------------------------------------------------------------------------------------------------
 void Patterns::Solid_Color() {
-    Serial.println("I'm running Solid Color!!!");
     LED_Controller::lightAll(r, g, b);
 }
 
