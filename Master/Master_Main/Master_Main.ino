@@ -114,7 +114,7 @@ void setup() {
   Solid.text = "Solid          ";
   Solid.functpoint = &setSolid;
 
-  Fishpole.text = "Fishpole       ";
+  Fishpole.text = "Color Cycle    ";
   Fishpole.functpoint = &setFishpole;
   
   Rainbow.text = "Rainbow        ";
