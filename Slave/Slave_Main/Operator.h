@@ -21,6 +21,7 @@ class Operator
     static void runPattern();
 
   private:
+    Thread* t;
 
     static void (*pattern)(void);
 

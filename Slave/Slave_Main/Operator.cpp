@@ -4,6 +4,8 @@
 Operator::Operator()
 {
   pattern = &Patterns::Solid_Color;
+  t = new Thread;
+  t->start(mbed::callback(Operator::runPattern));
 }
 
 void Operator::readSerial() 
@@ -16,6 +18,8 @@ void Operator::readSerial()
 
     Serial.println(code);
     
+    t->terminate();
+    t = new Thread;
 
     if (code.charAt(0) == 'C')
       processColor(code);
@@ -23,6 +27,8 @@ void Operator::readSerial()
       processMusicPattern(code);
     else if (code.charAt(0) == 'S')
       processStaticPattern(code);
+
+      t->start(mbed::callback(Operator::runPattern));
   }
 }
 
