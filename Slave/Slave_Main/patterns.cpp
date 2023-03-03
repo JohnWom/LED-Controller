@@ -1,6 +1,6 @@
 #include "patterns.h"
 
-Patterns::Patterns(LED_Controller* L, AudioProcessor* P)b         
+Patterns::Patterns(LED_Controller* L, AudioProcessor* P)
 {
 
   r = 0;
