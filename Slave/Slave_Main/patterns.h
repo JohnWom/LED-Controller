@@ -4,10 +4,13 @@
 #include "AudioProcessor.h"
 #include "LED_Controller.h"
 
+// Static Class Patterns 
+// More a formality for holding patterns under a single space. 
+// Must be static to run on seperate thread. Pattern control is excuted under Operator class
+// Pulls LED controler from LED_Controller class and Audio Reading from AudioProcessor class
+
 class Patterns {
   public:
-
-    Patterns(LED_Controller*, AudioProcessor*);
 
     //Static Pattern Functions ============================================================================
 
@@ -27,7 +30,6 @@ class Patterns {
 
     static int b;
 
-  friend class Operator;
 };
 
 #endif

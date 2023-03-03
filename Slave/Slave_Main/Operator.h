@@ -9,6 +9,10 @@
 
 using namespace rtos;
 
+// Operator Class
+// Class handles control logic for slave chip system
+// Main responsibilites are reading the serial port for incoming commands
+// and executing those commands, process functions aid in command handling
 
 class Operator
 {

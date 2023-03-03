@@ -1,11 +1,11 @@
 #include "Operator.h"
 
-using namespace rtos;
-
 #define LED_PIN D0
 #define NumLeds 300
 #define AUDIO_PIN A2
 
+// Set Up =================================================================================
+// Static Class Initialization Procedures. Thread requires static functions
 Adafruit_NeoPixel pixels(NumLeds, LED_PIN, NEO_GRB + NEO_KHZ800);
 
 int LED_Controller::num_leds = NumLeds;
@@ -21,7 +21,9 @@ int Patterns::b = 0;
 
 void (*Operator::pattern)(void) = &Patterns::Solid_Color;
 
+// Create Operator Object. Only non-static class currently in system
 Operator Op;
+//=========================================================================================
 
 void setup() {
   // put your setup code here, to run once:
@@ -38,5 +40,9 @@ void setup() {
 }
 
 void loop() {
+  // Main Thread - Simply Reading Serial Port
+  // Side (Pattern) Thread is spawned by main thread whenever changes occur
   Op.readSerial();
 }
+
+
