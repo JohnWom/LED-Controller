@@ -15,14 +15,6 @@
    The Slave Chip controls the LED's and music recongition abilities. It intakes commands from the master chip and adjusts the system accordingling. It operates on two threads, with the main constantly checking its serial port for new commands, the spawned thread running the according pattern on the LED. It also operates all of the audio processing, should a pattern require it. 
    
    
- ## Useful Articles to Understand the Fast Fourier Transforms
- ---
-  [Explains Hamming Function and Windowing](https://towardsdatascience.com/brief-introduction-of-hamming-and-hanning-function-as-the-preprocessing-of-discrete-fourier-8b87fe538bb7)
-
-## Useful Articles to Undestand Multithreading
- ---
- [Multithreading on RP2040 using Mbed OS](https://www.digikey.no/no/maker/blogs/2022/how-to-write-multi-threaded-arduino-programs)
-
  ## Photos
  ---
  ![alt text](https://github.com/JohnWom/LED-Controller/blob/main/Physicals/Photos/Isometric.PNG?raw=true)
