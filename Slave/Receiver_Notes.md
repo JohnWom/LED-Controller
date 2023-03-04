@@ -1,5 +1,8 @@
 # Information for Reciever Code
 --
+## Fast Fourier Transforms
+---
+Here is a helpful link that explains how FFTs (Fast Fourier Transforms) work: [link](https://towardsdatascience.com/brief-introduction-of-hamming-and-hanning-function-as-the-preprocessing-of-discrete-fourier-8b87fe538bb7)
 
 ## Multithreading
 ---
