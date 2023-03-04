@@ -7,12 +7,38 @@ AudioProcessor::AudioProcessor()
 
 void AudioProcessor::followBeat()
 {
+  // Run FFT
+  AudioProcessor::readAudio();
+  AudioProcessor::runFFT();
 
+  // Pull Bass
 }
 
-void AudioProcessor::threeBand()
+int* AudioProcessor::threeBand()
 {
+  AudioProcessor::readAudio();
+  AudioProcessor::runFFT();
 
+  // Divide into bins   Bin size ~156 HZ
+  int* bins = (int*) calloc(3, sizeof(int));
+
+  for (int i = 0; i < SAMPLES / 2; i++) {
+    // Simple Noise Filter
+    if (vReal[i] < 400) {
+      continue;
+    }
+    // Bass 20-200Hz
+    if (i == 0) {
+      bins[0] += AudioProcessor::vReal[i];
+    } // Mids 200-2000Hz
+    else if (i > 0  && i < 14) {
+      bins[1] += AudioProcessor::vReal[i];
+    } // Treble >2000Hz
+    else {
+      bins[2] += AudioProcessor::vReal[i];
+    }
+  }
+  return bins;
 }
 
 void AudioProcessor::fiveBand()

@@ -19,6 +19,8 @@ class LED_Controller
     // set Functions change color but does not show change yet, must call show() to see change
     static void setOne(int, int, int, int);
 
+    static void setBrightness(int);
+
     static void show();
 
     static int num_leds;

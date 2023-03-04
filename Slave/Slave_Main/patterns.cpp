@@ -65,5 +65,14 @@ void Patterns::Rainbow() {
 
 // Simple_Music ---------------------------------------------------------------------------------------------------------
 void Patterns::Simple_Music() {
-    LED_Controller::lightAll(r, g, b);
+  int maxBright = 255;
+    while(1) {
+      int* bins = AudioProcessor::threeBand();
+      int n = (1.5 * bins[0] + 0.5 * bins[1], 0.3*bins[2]);
+
+      Serial.println(n);
+      LED_Controller::setBrightness(n % 210);
+      LED_Controller::lightAll(r, g, b);
+      free(bins);
+  }
 } 
