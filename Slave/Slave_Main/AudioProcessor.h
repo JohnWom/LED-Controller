@@ -2,7 +2,7 @@
 #define AUDIO_PROCESSOR
 
 #include <arduinoFFT.h>
-
+#include <math.h>
 #define SAMPLES 256
 #define SAMPLING_FREQ 40000
 #define AMPLITUDE 1000
@@ -20,6 +20,8 @@ class AudioProcessor
     static void fiveBand();
 
     static void volume();
+
+    static int* Live();
 
     static arduinoFFT FFT;
 

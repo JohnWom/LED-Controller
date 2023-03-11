@@ -24,6 +24,7 @@
 //         - Rainbow:  SP00000002
 //
 //         - Simple M: MP00000000
+//         - Guitar: MP00000001
 //==================================================
 
 // Core Functions ----------------------------------
@@ -56,6 +57,8 @@ void setRainbow();
 
 
 void setSimpleMusic();
+
+void setGuitar();
 
 // Pointers
 

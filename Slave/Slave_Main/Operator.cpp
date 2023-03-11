@@ -92,6 +92,10 @@ void Operator::processMusicPattern(String code)
       pattern = &Patterns::Simple_Music;
       Serial.println("Simple Music Selected");
       break;
+    case 1:
+      pattern = &Patterns::Guitar;
+      Serial.println("Guitar Selected");
+      break;
     default:
       pattern = &Patterns::Simple_Music;
       Serial.println("Default Simple Music Selected");

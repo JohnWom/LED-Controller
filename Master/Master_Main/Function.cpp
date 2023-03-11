@@ -53,4 +53,8 @@ void setSimpleMusic(){
   Serial1.println("MP00000000");
 }
 
+void setGuitar(){
+  Serial1.println("MP00000001");
+}
+
 

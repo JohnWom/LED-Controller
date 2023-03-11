@@ -24,11 +24,17 @@ class Patterns {
 
     static void Simple_Music(); // Sets LEDS to go with Bass of song
 
+    static void Guitar();
+
     static int r;
 
     static int g;
 
     static int b;
+
+  private:
+
+    static int maxInArray(int*, int);
 
 };
 

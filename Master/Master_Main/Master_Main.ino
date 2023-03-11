@@ -26,6 +26,7 @@ Selectable Solid;
 Selectable Fishpole;
 Selectable Rainbow;
 Selectable SimpleMusic;
+Selectable Guitar;
 
 Selectable toColors;
 Selectable toPatterns;
@@ -123,6 +124,9 @@ void setup() {
   SimpleMusic.text = "Simple Music   ";
   SimpleMusic.functpoint = &setSimpleMusic;
 
+  Guitar.text = "Guitar         ";
+  Guitar.functpoint = &setGuitar;
+
   //Initialize Pointer Selectables
   toColors.text = "Colors         ";
 
@@ -159,6 +163,8 @@ void setup() {
 
   backMusic.next = &SimpleMusic;
   SimpleMusic.prev = &backMusic;
+  SimpleMusic.next = &Guitar;
+  Guitar.prev = &SimpleMusic;
 
   backStatic.next = &Solid;
   Solid.next = &Fishpole;
