@@ -23,7 +23,7 @@ Selectable Blue;
 Selectable Indigo;
 Selectable Violet;
 Selectable Solid;
-Selectable Fishpole;
+Selectable ColorCycle;
 Selectable Rainbow;
 Selectable SimpleMusic;
 Selectable Guitar;
@@ -85,7 +85,7 @@ void setup() {
   funcptr VioletPtr = &setColorViolet;
 
   funcptr SolidPtr = &setSolid;
-  funcptr FishpolePtr = &setFishpole;
+  funcptr ColorCyclePtr = &setColorCycle;
   funcptr RainbowPtr = &setRainbow;
   funcptr SimpleMusicPtr = &setSimpleMusic;
   */
@@ -115,8 +115,8 @@ void setup() {
   Solid.text = "Solid          ";
   Solid.functpoint = &setSolid;
 
-  Fishpole.text = "Fishpole       ";
-  Fishpole.functpoint = &setFishpole;
+  ColorCycle.text = "Color Cycle    ";
+  ColorCycle.functpoint = &setColorCycle;
   
   Rainbow.text = "Rainbow        ";
   Rainbow.functpoint = &setRainbow;
@@ -167,11 +167,11 @@ void setup() {
   Guitar.prev = &SimpleMusic;
 
   backStatic.next = &Solid;
-  Solid.next = &Fishpole;
+  Solid.next = &ColorCycle;
   Solid.prev = &backStatic;
-  Fishpole.next = &Rainbow;
-  Fishpole.prev = &Solid;
-  Rainbow.prev = &Fishpole;
+  ColorCycle.next = &Rainbow;
+  ColorCycle.prev = &Solid;
+  Rainbow.prev = &ColorCycle;
 
   backPattern.next = &toMusic;
   toMusic.next = &toStatic;

@@ -10,7 +10,9 @@ void Patterns::Solid_Color() {
 
 //Fishpole --------------------------------------------------------------------------------------------------
 void Patterns::Color_Cycle() {
-  int colors[12][3] = {
+  int color_num = 0;
+  while(1) {
+    int colors[12][3] = {
     {255,0,0},
     {255,127,0},
     {255,255,0},
@@ -24,20 +26,20 @@ void Patterns::Color_Cycle() {
     {255,0,255},
     {255,0,127}
   };
-  int color_num = 0;
-
-  for (int i = 0; i < LED_Controller::num_leds; i++) {
-    LED_Controller::setOne(i, colors[color_num][0], colors[color_num][1], colors[color_num][2]); 
-
-    if (i / 12 == 0)
-      color_num = color_num++ % 12;
+    LED_Controller::lightAll(colors[color_num][0], colors[color_num][1], colors[color_num][2]);
+    color_num = ++color_num % 12;
+    delay(400);
+ 
   }
+ 
 }
 
 
 // Rainbow -------------------------------------------------------------------------------------------------
 void Patterns::Rainbow() {
-  int colors[12][3] = {
+  int color_num = 0;
+  while(1) {
+    int colors[12][3] = {
     {255,0,0},
     {255,127,0},
     {255,255,0},
@@ -51,12 +53,14 @@ void Patterns::Rainbow() {
     {255,0,255},
     {255,0,127}
   };
-  int color_num = 0;
-
+  
+  color_num++;
   for (int i = 0; i < LED_Controller::num_leds; i++) {
-    color_num = color_num++ % 12;
+    color_num = ++color_num % 12;
     LED_Controller::lightOne(i, colors[color_num][0], colors[color_num][1], colors[color_num][2]);
   }
+  }
+  
 
 }
 
@@ -65,31 +69,15 @@ void Patterns::Rainbow() {
 
 // Simple_Music ---------------------------------------------------------------------------------------------------------
 void Patterns::Simple_Music() {
-  int average = 0;
-  int vals[20] = {0};
   int brightness;
-  int count = 0;
     while(1) {
       int* bins = AudioProcessor::threeBand();
-      int n = (3 * bins[0] + 2 * bins[1], 1*bins[2]);
-      
-      //  Update Moving average to last 1 minute
-      count++;
-      if (count % 10 == 0) {
-        for (int i = 20; i>0; i--) 
-          vals[i-1] = vals[i]; 
-        vals[20] = n;
-
-        for (int i = 0; i < 20; i++)
-          average += vals[i];
-        average /= 20;
-        count = 0;
-      }
+      int n = (5 * bins[0] + 2 * bins[1], 1*bins[2]);
       
       // Brightness Equation is based off of Natural Growth with Carrying Capacity
-      brightness = 255 / (1 + 255*exp(-1*0.015*(n-average/1.5)));
-      Serial.print("Average: ");
-      Serial.print(average);
+      brightness = (int) ceil(255 / (1 + 255*exp(-1*0.008*(n))));
+      Serial.print("Volume: ");
+      Serial.print(n);
       Serial.print("   Brightness: ");
       Serial.println(brightness);
       LED_Controller::setBrightness(brightness);
@@ -156,3 +144,23 @@ int Patterns::maxInArray(int* bins, int size) {
   Serial.println(' ');
   return max;
 }
+
+
+// Moving Average
+/*
+//  Update Moving average to last 1 minute
+      count++;
+      if (count % 10 == 0) {
+        for (int i = 20; i>0; i--) 
+          vals[i-1] = vals[i]; 
+        vals[20] = n;
+
+        for (int i = 0; i < 20; i++)
+          average += vals[i];
+        average /= 20;
+        count = 0;
+      }
+      int average = 0;
+  int vals[20] = {0};
+*/
+

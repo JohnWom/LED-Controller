@@ -20,7 +20,7 @@
 //--------------------------------------------------
 //     Patterns:
 //         - Solid:    SP00000000
-//         - Fishpole: SP00000001
+//         - ColorCycle: SP00000001
 //         - Rainbow:  SP00000002
 //
 //         - Simple M: MP00000000
@@ -50,7 +50,7 @@ void setColorViolet();
 // Pattern Functions --------------------------------
 void setSolid();
 
-void setFishpole();
+void setColorCycle();
 
 void setRainbow();
 

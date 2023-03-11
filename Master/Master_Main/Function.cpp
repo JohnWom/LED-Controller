@@ -39,7 +39,7 @@ void setSolid(){
   Serial1.println("SP00000000");
 }
 
-void setFishpole(){
+void setColorCycle(){
   Serial1.println("SP00000001");
 }
 
