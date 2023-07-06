@@ -114,7 +114,7 @@ void setup() {
 
   Solid.text = "Solid          ";
   Solid.functpoint = &setSolid;
-
+  
   ColorCycle.text = "Color Cycle    ";
   ColorCycle.functpoint = &setColorCycle;
   

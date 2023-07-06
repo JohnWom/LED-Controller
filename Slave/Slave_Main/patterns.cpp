@@ -10,6 +10,7 @@ void Patterns::Solid_Color() {
 
 //Fishpole --------------------------------------------------------------------------------------------------
 void Patterns::Color_Cycle() {
+
   int color_num = 0;
   while(1) {
     int colors[12][3] = {
@@ -29,8 +30,7 @@ void Patterns::Color_Cycle() {
     LED_Controller::lightAll(colors[color_num][0], colors[color_num][1], colors[color_num][2]);
     color_num = ++color_num % 12;
     delay(400);
- 
-  }
+   }
  
 }
 
@@ -56,13 +56,12 @@ void Patterns::Rainbow() {
   
   color_num++;
   for (int i = 0; i < LED_Controller::num_leds; i++) {
+
     color_num = ++color_num % 12;
     LED_Controller::lightOne(i, colors[color_num][0], colors[color_num][1], colors[color_num][2]);
   }
-  }
-  
-
 }
+
 
 // Music Patterns ===============================================================================================
 //===============================================================================================================
