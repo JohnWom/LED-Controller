@@ -2,8 +2,8 @@
 #define AUDIO_PROCESSOR
 
 #include <arduinoFFT.h>
-
-#define SAMPLES 1024
+#include <math.h>
+#define SAMPLES 256
 #define SAMPLING_FREQ 40000
 #define AMPLITUDE 1000
 #define AUDIO_IN_PIN A2
@@ -15,11 +15,13 @@ class AudioProcessor
 
     static void followBeat();
 
-    static void threeBand();
+    static int* threeBand();
 
     static void fiveBand();
 
     static void volume();
+
+    static int* Live();
 
     static arduinoFFT FFT;
 
