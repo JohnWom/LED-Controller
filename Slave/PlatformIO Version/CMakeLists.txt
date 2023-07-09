@@ -30,4 +30,4 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_executable(Z_DUMMY_TARGET ${SRC_LIST})
+add_executable(Z_DUMMY_TARGET ${SRC_LIST} src/Patterns/PatternInterface.h src/Patterns/SolidColor.cpp src/Patterns/SolidColor.h src/patterns.h src/Communication/Command.h src/Communication/CommunicatorInterface.h src/Communication/SerialReader.cpp src/Communication/SerialReader.h src/Operator.cpp src/Operator.h)

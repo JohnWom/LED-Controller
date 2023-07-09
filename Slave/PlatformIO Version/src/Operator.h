@@ -1,41 +1,19 @@
-#ifndef OPERATOR
-#define OPERATOR
+//
+// Created by johnw on 7/8/2023.
+//
 
-#include <string.h>
-#include <mbed.h>
-#include <rtos.h>
-#include <platform/Callback.h>
-#include "patterns.h"
+#ifndef OPERATOR_H
+#define OPERATOR_H
 
-using namespace rtos;
-
-// Operator Class
-// Class handles control logic for slave chip system
-// Main responsibilites are reading the serial port for incoming commands
-// and executing those commands, process functions aid in command handling
 
 class Operator
 {
-  public:
-
+public:
     Operator();
-    
-    void readSerial(void);
 
-    static void runPattern();
+private:
 
-  private:
-    Thread* t;
-
-    static void (*pattern)(void);
-
-    void processColor(String);
-
-    void processStaticPattern(String);
-
-    void processMusicPattern(String);
-
-  friend class Patterns;
 };
 
-#endif
+
+#endif //OPERATOR_H
