@@ -7,10 +7,12 @@
 
 #include "PatternInterface.h"
 
-class SolidColor: PatternInterface{
+class SolidColor: public Pattern{
+public:
+    SolidColor(Adafruit_NeoPixel* np, int nleds, unsigned short n_r, unsigned short  n_g, unsigned short  n_b);
 
-    void first_step() override;
-    void next_step() override;
+    void firstStep() override;
+    void nextStep() override;
 };
 
 

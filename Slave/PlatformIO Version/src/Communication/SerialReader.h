@@ -7,17 +7,17 @@
 
 #include "CommunicatorInterface.h"
 #include <Arduino.h>
-#include "string.h"
+#include <string.h>
 
-class SerialReader: CommunicatorInterface
+class SerialReader: public Communicator
 {
 public:
     Command getCommand();
 
 private:
-    void processColor(String code, Command* command);
-    void processStatic(String code, Command* command);
-    void processMusic(String code, Command* command);
+    void processColor(const String& code, Command* command);
+    void processStatic(const String& code, Command* command);
+    void processMusic(const String& code, Command* command);
     void noCommand(Command* command);
 };
 

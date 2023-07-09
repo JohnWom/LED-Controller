@@ -4,12 +4,17 @@
 
 #include "SolidColor.h"
 
-void SolidColor::first_step() {
-    for (int i=0; i<num_leds; i++)
-        leds->setPixelColor(i, r, g, b);
-    leds->show();
+SolidColor::SolidColor(Adafruit_NeoPixel* np, int nleds, unsigned short n_r, unsigned short n_g, unsigned short n_b) : Pattern(np, nleds, n_r, n_g, n_b) {
+
 }
 
-void SolidColor::next_step() {
-    first_step();
+void SolidColor::firstStep() {
+    for (int i=0; i<num_leds; i++) {
+        leds->setPixelColor(1, r, g, b);
+        leds->show();
+    }
+}
+
+void SolidColor::nextStep() {
+    firstStep();
 }

@@ -1,6 +1,6 @@
 #include "Operator.h"
 
-#define LED_PIN D0
+#define LED_PIN 26
 #define NumLeds 300
 #define AUDIO_PIN A2
 

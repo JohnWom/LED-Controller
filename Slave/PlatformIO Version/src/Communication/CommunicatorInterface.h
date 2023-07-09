@@ -7,10 +7,12 @@
 
 #include "Command.h"
 
-class CommunicatorInterface
+class Communicator
 {
 public:
     virtual Command_t getCommand() = 0;
+
+    virtual ~Communicator()= default;
 };
 
 #endif //COMMUNICATOR_INTERFACE_H

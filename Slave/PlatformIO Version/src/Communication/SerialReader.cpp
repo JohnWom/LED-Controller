@@ -33,7 +33,7 @@ Command_t SerialReader::getCommand() {
     return command;
 }
 
-void SerialReader::processColor(String code, Command_t *command) {
+void SerialReader::processColor(const String& code, Command_t *command) {
     command->type = Command::COLOR;
 
     // decode code into RGB values
@@ -43,17 +43,17 @@ void SerialReader::processColor(String code, Command_t *command) {
 
     String blue = code.substring(7,10);
 
-    command->r = red.toInt();
-    command->g = green.toInt();
-    command->b = blue.toInt();
+    command->r = static_cast<unsigned short>(red.toInt());
+    command->g = static_cast<unsigned short>(green.toInt());
+    command->b = static_cast<unsigned short>(blue.toInt());
 }
 
-void SerialReader::processMusic(String code, Command_t *command) {
+void SerialReader::processMusic(const String& code, Command_t *command) {
     command->type = Command::MUSIC_P;
     command->value = code.substring(2,10).toInt();
 }
 
-void SerialReader::processStatic(String code, Command_t *command) {
+void SerialReader::processStatic(const String& code, Command_t *command) {
     command->type = Command::STATIC_P;
     command->value = code.substring(2,10).toInt();
 }
