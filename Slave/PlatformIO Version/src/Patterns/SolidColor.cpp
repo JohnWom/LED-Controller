@@ -10,9 +10,10 @@ SolidColor::SolidColor(Adafruit_NeoPixel* np, int nleds, unsigned short n_r, uns
 
 void SolidColor::firstStep() {
     for (int i=0; i<num_leds; i++) {
-        leds->setPixelColor(1, r, g, b);
-        leds->show();
+        leds->setPixelColor(i, r, g, b);
     }
+    leds->show();
+    delay(300);
 }
 
 void SolidColor::nextStep() {

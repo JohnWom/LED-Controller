@@ -2,12 +2,12 @@
 #include "Operator.h"
 
 #define LED_PIN 26
-#define NumLeds 300
+#define NUM_LEDS 300
 #define AUDIO_PIN 28
 
-Adafruit_NeoPixel pixels(NumLeds, LED_PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel pixels(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);
 
-Operator Op(new SerialReader(), &pixels, NumLeds);
+Operator Op(new SerialReader(), &pixels, NUM_LEDS);
 void setup()
 {
     Serial.begin(115200);
@@ -23,10 +23,6 @@ void setup()
 
 void loop()
 {
-    digitalWrite(LED_BUILTIN, HIGH);
     Op.main();
-    digitalWrite(LED_BUILTIN, LOW);
 
-    pixels.setPixelColor(11, 255, 0, 0);
-    pixels.show();
 }

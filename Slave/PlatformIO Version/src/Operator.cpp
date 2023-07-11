@@ -10,9 +10,8 @@ Operator::Operator(Communicator* c, Adafruit_NeoPixel* l, int nleds) {
     num_leds = nleds;
 
     // default setting is SolidColor and Off
-    r = 0; g = 0; b = 200;
+    r = 20; g = 0; b = 0;
     pattern = new SolidColor(leds, num_leds, r, g, b);
-    pattern->firstStep();
 
 }
 
@@ -29,16 +28,18 @@ void Operator::main() {
             r = command.r;
             g = command.g;
             b = command.b;
-//            pattern->setColors(r, g, b);
+            pattern->setColors(r, g, b);
+            Serial.println("Color Changed");
             break;
         case Command::STATIC_P: {   // curly braces here keep new_p in case's scope
-//            Pattern *new_p = processStatic(command.value);
-//            startPattern(new_p);
+            Pattern *new_p = processStatic(command.value);
+            startPattern(new_p);
             break;
         }
         case Command::MUSIC_P: {
-//            Pattern *new_p = processMusic(command.value);
-//            startPattern(new_p);
+            Pattern *new_p = processMusic(command.value);
+            startPattern(new_p);
+            Serial.println("Music Pattern Selected");
             break;
         }
         case Command::NONE:
@@ -58,8 +59,13 @@ void Operator::startPattern(Pattern* new_pattern) {
 Pattern* Operator::processStatic(int code) {
     switch (code) {
         case 0:
+            Serial.println("Solid Color Selected");
             return new SolidColor(leds, num_leds, r, g, b);
+        case 1:
+            Serial.println("Party 1 Selected");
+            return new CenterPulseWhole(leds, num_leds, r, g, b);
         default:
+            Serial.println("Default Selected");
             return new SolidColor(leds, num_leds, r, g, b);
     }
 }
