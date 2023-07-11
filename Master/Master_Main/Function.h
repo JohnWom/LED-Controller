@@ -50,9 +50,9 @@ void setColorViolet();
 // Pattern Functions --------------------------------
 void setSolid();
 
-void setColorCycle();
+void setParty1();
 
-void setRainbow();
+void setParty2();
 
 
 

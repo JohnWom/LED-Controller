@@ -23,8 +23,8 @@ Selectable Blue;
 Selectable Indigo;
 Selectable Violet;
 Selectable Solid;
-Selectable ColorCycle;
-Selectable Rainbow;
+Selectable Party2;
+Selectable Party1;
 Selectable SimpleMusic;
 Selectable Guitar;
 
@@ -85,8 +85,8 @@ void setup() {
   funcptr VioletPtr = &setColorViolet;
 
   funcptr SolidPtr = &setSolid;
-  funcptr ColorCyclePtr = &setColorCycle;
-  funcptr RainbowPtr = &setRainbow;
+  funcptr Party2Ptr = &setParty2;
+  funcptr Party1Ptr = &setParty1;
   funcptr SimpleMusicPtr = &setSimpleMusic;
   */
   //Initialize Function Selectables
@@ -115,11 +115,11 @@ void setup() {
   Solid.text = "Solid          ";
   Solid.functpoint = &setSolid;
   
-  ColorCycle.text = "Color Cycle    ";
-  ColorCycle.functpoint = &setColorCycle;
+  Party2.text = "Party 2        ";
+  Party2.functpoint = &setParty2;
   
-  Rainbow.text = "Rainbow        ";
-  Rainbow.functpoint = &setRainbow;
+  Party1.text = "Party 1        ";
+  Party1.functpoint = &setParty1;
 
   SimpleMusic.text = "Simple Music   ";
   SimpleMusic.functpoint = &setSimpleMusic;
@@ -167,11 +167,11 @@ void setup() {
   Guitar.prev = &SimpleMusic;
 
   backStatic.next = &Solid;
-  Solid.next = &ColorCycle;
+  Solid.next = &Party2;
   Solid.prev = &backStatic;
-  ColorCycle.next = &Rainbow;
-  ColorCycle.prev = &Solid;
-  Rainbow.prev = &ColorCycle;
+  Party2.next = &Party1;
+  Party2.prev = &Solid;
+  Party1.prev = &Party2;
 
   backPattern.next = &toMusic;
   toMusic.next = &toStatic;

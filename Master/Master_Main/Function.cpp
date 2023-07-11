@@ -39,11 +39,11 @@ void setSolid(){
   Serial1.println("SP00000000");
 }
 
-void setColorCycle(){
+void setParty1(){
   Serial1.println("SP00000001");
 }
 
-void setRainbow(){
+void setParty2(){
   Serial1.println("SP00000002");
 }
 
