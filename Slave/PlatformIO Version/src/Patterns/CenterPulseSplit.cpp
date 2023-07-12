@@ -24,21 +24,20 @@ void CenterPulseSplit::firstStep() {
 }
 
 void CenterPulseSplit::nextStep() {
-
-    for (int g=0; g<num_groups; g++){
+    int s;
+    for (s=0; s<num_groups; s++){
         if (invert == 1)
             invertColors();
 
         for (int i=prev_state; i < state and i <= max_state; i++){
-            Serial.println(i);
-            leds->setPixelColor((40*g) + i, r, g, b);
-            leds->setPixelColor((40*g) + 40 - i, r, g, b);
+            leds->setPixelColor((40*s) + i, r, g, b);
+            leds->setPixelColor((40*s) + 40 - i, r, g, b);
         }
     }
     leds->show();
     delay(300);
 
-    if (invert == 1 && g % 2 == 1)
+    if (invert == 1 && s % 2 == 1)
         invertColors();
 
     if (state > max_state)

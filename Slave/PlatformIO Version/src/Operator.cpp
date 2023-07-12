@@ -63,10 +63,10 @@ Pattern* Operator::processStatic(int code) {
             return new SolidColor(leds, num_leds, r, g, b);
         case 1:
             Serial.println("Party 1 Selected");
-            return new CenterPulseWhole(leds, num_leds, r, g, b);
+            return new ThreeColor(leds, num_leds, r, g, b);
         case 2:
             Serial.println("Party 2 Selected");
-            return new CenterPulseSplit(leds, num_leds, r, g, b, 1);
+            return new Rainbow(leds, num_leds);
         default:
             Serial.println("Default Selected");
             return new SolidColor(leds, num_leds, r, g, b);

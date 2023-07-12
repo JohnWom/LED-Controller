@@ -18,7 +18,7 @@ void setup()
     pinMode(LED_BUILTIN, OUTPUT);
 
     pixels.begin();
-    pixels.setBrightness(50);
+    pixels.setBrightness(30);
 }
 
 void loop()
