@@ -26,7 +26,11 @@ public:
     }
 
     virtual ~Pattern()= default;
-
+    void invertColors() {
+        r = 255-r;
+        g = 255-g;
+        b = 255-b;
+    }
 protected:
     unsigned short r;
     unsigned short g;
@@ -34,6 +38,5 @@ protected:
     Adafruit_NeoPixel* leds;
     int num_leds;
 };
-
 
 #endif  //PATTERN_INTERFACE_H

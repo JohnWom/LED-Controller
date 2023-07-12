@@ -9,5 +9,6 @@
 // Done to clean up includes on main file
 #include "Patterns/SolidColor.h"
 #include "Patterns/CenterPulseWhole.h"
+#include "Patterns/CenterPulseSplit.h"
 
 #endif //PATTERN_INCLUDES
