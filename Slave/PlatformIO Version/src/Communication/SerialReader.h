@@ -18,6 +18,7 @@ private:
     void processColor(const String& code, Command* command);
     void processStatic(const String& code, Command* command);
     void processMusic(const String& code, Command* command);
+    void processCustomColor(const String& code, Command* command);
     void noCommand(Command* command);
 };
 

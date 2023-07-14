@@ -25,9 +25,12 @@ void Operator::main() {
 
     switch (command.type) {
         case Command::COLOR:
-            r = command.r;
-            g = command.g;
-            b = command.b;
+            if (command.r <= 255)
+                r = command.r;
+            if (command.g <= 255)
+                g = command.g;
+            if (command.b <= 255)
+                b = command.b;
             pattern->setColors(r, g, b);
             Serial.println("Color Changed");
             break;
@@ -67,6 +70,15 @@ Pattern* Operator::processStatic(int code) {
         case 2:
             Serial.println("Party 2 Selected");
             return new Rainbow(leds, num_leds);
+        case 3:
+            Serial.println("Party 3 Selected");
+            return new CenterPulseSplit(leds, num_leds, r, g, b, 1);
+        case 4:
+            Serial.println("Rainbow Selected");
+            return new Rainbow(leds, num_leds);
+        case 5:
+            Serial.println("Three Color Selected");
+            return new ThreeColor(leds, num_leds, r, g, b);
         default:
             Serial.println("Default Selected");
             return new SolidColor(leds, num_leds, r, g, b);

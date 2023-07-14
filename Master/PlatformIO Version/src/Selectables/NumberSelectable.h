@@ -20,6 +20,7 @@ public:
     void leftScroll() override;
 
 private:
+    void refresh();
     int val;
     int minV;
     int maxV;

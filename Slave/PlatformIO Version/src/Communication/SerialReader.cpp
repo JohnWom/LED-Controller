@@ -18,6 +18,8 @@ Command_t SerialReader::getCommand() {
         // make the change
         if (code.charAt(0) == 'C')
             processColor(code, &command);
+        else if (code.charAt(0) == 'K')
+            processCustomColor(code, &command);
         else if (code.charAt(0) == 'M')
             processMusic(code, &command);
         else if (code.charAt(0) == 'S')
@@ -46,6 +48,32 @@ void SerialReader::processColor(const String& code, Command_t *command) {
     command->r = static_cast<unsigned short>(red.toInt());
     command->g = static_cast<unsigned short>(green.toInt());
     command->b = static_cast<unsigned short>(blue.toInt());
+}
+
+void SerialReader::processCustomColor(const String &code, Command *command) {
+    command->type = Command::COLOR;
+
+    String red = code.substring(1,4);
+
+    String green = code.substring(4,7);
+
+    String blue = code.substring(7,10);
+
+    if (!red.equals("---")) {
+        command->r = static_cast<unsigned short>(red.toInt());
+        command->g = 999;
+        command->b = 999;
+    }
+    else if (!green.equals("---")) {
+        command->g = static_cast<unsigned short>(green.toInt());
+        command->r = 999;
+        command->b = 999;
+    }
+    else if (!blue.equals("---")) {
+        command->b = static_cast<unsigned short>(blue.toInt());
+        command->r = 999;
+        command->g = 999;
+    }
 }
 
 void SerialReader::processMusic(const String& code, Command_t *command) {

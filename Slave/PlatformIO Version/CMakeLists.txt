@@ -30,4 +30,4 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_executable(Z_DUMMY_TARGET ${SRC_LIST} src/Patterns/CenterPulseWhole.cpp src/Patterns/CenterPulseWhole.h src/Patterns/CenterPulseSplit.cpp src/Patterns/CenterPulseSplit.h src/Patterns/ThreeColor.cpp src/Patterns/ThreeColor.h src/Patterns/Rainbow.cpp src/Patterns/Rainbow.h)
+add_executable(Z_DUMMY_TARGET ${SRC_LIST})

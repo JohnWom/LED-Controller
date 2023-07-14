@@ -29,7 +29,7 @@ Operator* Op = new Operator(Home);
 // Home Screen Selectables
 Selectable* toColors = new ScreenSelectable("Colors         ", Color, Op);
 Selectable* toPatterns = new ScreenSelectable("Patterns       ",Patterns, Op);
-
+Selectable* powerOff = new FunctionSelectable("Power off      ", "C000000000");
 // Color Screen Selectables
 Selectable* backColors = new ScreenSelectable("back           ", Home, Op);
 Selectable* toCustomColors = new ScreenSelectable("Custom Color   ", CustomColor, Op);
@@ -88,6 +88,7 @@ void setup() {
 
     Serial.println("Linking Selectables...");
     // Home Screen Selectables
+    SelectableFactory::addSelectable(toColors, powerOff);
     SelectableFactory::addSelectable(toColors, toPatterns);
     Home->setTopItem(toColors);
     Home->setBottomItem(toPatterns);

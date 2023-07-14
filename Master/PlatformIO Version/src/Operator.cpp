@@ -67,11 +67,13 @@ void Operator::downScroll() {
 void Operator::rightScroll() {
     Selectable* current = getCurrent();
     current->rightScroll();
+    draw();
 }
 
 void Operator::leftScroll() {
     Selectable* current = getCurrent();
     current->leftScroll();
+    draw();
 }
 
 void Operator::click() {
@@ -85,7 +87,7 @@ void Operator::joystickRead() {
     int SW_state = digitalRead(SW);
 
     if (SW_state == 0) {
-        Serial.print("Button Clicked!");
+        Serial.println("Button Clicked!");
         click();
         draw();
     }
@@ -103,9 +105,10 @@ void Operator::joystickRead() {
     // Define mapX
     if (xPosition > 910) {
         leftScroll();
+        delay(200);
     } else if (xPosition < 150) {
-
         rightScroll();
+        delay(200);
     }
 }
 

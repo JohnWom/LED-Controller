@@ -20,9 +20,12 @@ public:
     virtual void firstStep() = 0;
     virtual void nextStep() = 0;
     void setColors(unsigned short n_r, unsigned short  n_g, unsigned short  n_b) {
-        r = n_r;
-        g = n_g;
-        b = n_b;
+        if (r <= 255)
+            r = n_r;
+        if (g <= 255)
+            g = n_g;
+        if (b <= 255)
+            b = n_b;
     }
 
     virtual ~Pattern()= default;
