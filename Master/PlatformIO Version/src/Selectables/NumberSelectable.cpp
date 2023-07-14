@@ -13,30 +13,32 @@ NumberSelectable::NumberSelectable(char *t, int min, int max, int tp):
 }
 
 void NumberSelectable::execute() {
-    String msg = "C";
+    String msg = "K";
     String stub = "---";
-    if (type == HUE){
+    if (type == R){
         msg += String(val);
         msg += stub;
         msg += stub;
-    } else if (type == SAT) {
+    } else if (type == G) {
         msg += stub;
         msg += String(val);
         msg += stub;
-    } else if (type == V) {
+    } else if (type == B) {
         msg += stub;
         msg += stub;
         msg += String(val);
     }
-    Serial1.print(msg);
+    Serial1.println(msg);
 }
 
 void NumberSelectable::rightScroll() {
+    Serial.println("Incrementing...");
     if ((val + 1) <= maxV)
         val++;
 }
 
 void NumberSelectable::leftScroll() {
+    Serial.println("Decrementing");
     if ((val - 1) <= minV)
         val--;
 }

@@ -23,6 +23,9 @@ public:
 
     void joystickRead();
 
+    void callback(Screen*);
+    DFRobot_RGBLCD1602 *getDisplay() const;
+
 private:
     void upScroll();
     void downScroll();
@@ -34,6 +37,7 @@ private:
 
     Screen* current_screen;
     DFRobot_RGBLCD1602* display;
+
     int cursor_position;
 };
 

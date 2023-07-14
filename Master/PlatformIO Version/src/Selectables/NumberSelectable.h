@@ -11,8 +11,9 @@
 class NumberSelectable: public Selectable
 {
 public:
-    enum types {HUE, SAT, V};
+    enum types {R, G, B};
     NumberSelectable(char*, int, int, int);
+    // min, max, type
 
     void execute() override;
     void rightScroll() override;

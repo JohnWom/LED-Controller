@@ -7,19 +7,26 @@
 
 #include "SelectableInterface.h"
 #include "../Screen.h"
-
-class Screen;
+#include "Operator.h"
 
 class ScreenSelectable: public Selectable
 {
 public:
-    ScreenSelectable(char*, Screen*, void (*c)(Screen*), Selectable*, Selectable*);
+    ScreenSelectable(char*, Screen*, Operator*);
 
     void execute() override;
 
+    Screen *getNextScreen() const;
+
+    void setNextScreen(Screen *s);
+
 private:
     Screen* nextScreen;
-    void (*callback)(Screen*);
+    Operator* op;
+public:
+    Operator *getOp() const;
+
+    void setOp(Operator *op);
 };
 
 

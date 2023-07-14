@@ -1,5 +1,5 @@
 //
-// Created by johnw on 7/12/2023.
+// Created by johnw on 7/13/2023.
 //
 
 #include "SelectableFactory.h"
@@ -9,65 +9,49 @@ SelectableFactory::SelectableFactory() {
     num_static = 0;
 }
 
-
-void SelectableFactory::addSelectable(Selectable* newSelectable, Selectable* head) {
-    // Adds selectable to linked list
+void SelectableFactory::addSelectable(Selectable *head, Selectable *s) {
     if (head->getNext() == nullptr) {
-        head->setNext(newSelectable);
-        newSelectable->setPrev(head);
+        head->setNext(s);
+        s->setPrev(head);
     }
     else {
-        Selectable* next = head->getNext();
-        head->setNext(newSelectable);
-        newSelectable->setPrev(newSelectable);
-        newSelectable->setNext(next);
-        next->setPrev(newSelectable);
+        Selectable* n = head->getNext();
+        head->setNext(s);
+        n->setPrev(s);
+        s->setPrev(head);
+        s->setNext(n);
+    }
+
+}
+
+
+Selectable* SelectableFactory::make_selectable(String text, int type) {
+    text = fillText(text);
+    char txt[15];
+    text.toCharArray(txt, 15);
+    if (type == COLOR) {
+        return new FunctionSelectable(txt, nullptr);
+    }
+    else if (type == STATIC) {
+        String msg = "SP";
+         msg += String(num_static++);
+
+        return new FunctionSelectable(txt, nullptr);
+    }
+    else if (type == MUSIC) {
+        return new FunctionSelectable(txt, nullptr);
+    }
+    else if (type == NUM) {
+        return new NumberSelectable(txt, 0, 0, 0);
+    }
+    else if (type == SCREEN) {
+        return new ScreenSelectable(txt, nullptr, nullptr);
     }
 }
 
 
-String SelectableFactory::createCommand(int type, int h, int s, int v) {
-    String message;
-    if (type == Command::COLOR) {
-        message = "C";
-        message += String(h);
-        message += String(s);
-        message += String(v);
-    }
-    else if (type == Command::STATIC_P) {
-        message = "SP";
-        String num = String(num_static);
-
-        // Add in 0's
-        unsigned int len = num.length();
-        for (int i=0; i<(8-len); i++)
-            message += "0";
-
-        message += num;
-        num_static++;
-
-    }
-    else if (type == Command::MUSIC_P) {
-        message = "MP";
-        String num = String(num_music);
-
-        // Add in 0's
-        unsigned int len = num.length();
-        for (int i=0; i<(8-len); i++)
-            message += "0";
-
-        message += num;
-        num_music++;
-    }
-
-    char msg[10];
-    message.toCharArray(msg, 10);
-    return msg;
-}
-
-String SelectableFactory::fillText(char* msg) {
-    String text = String(msg);
-    int len = text.length();
+String SelectableFactory::fillText(String text) {
+    unsigned int len = text.length();
     for (int i=0; i<(15-len); i++)
         text += " ";
 

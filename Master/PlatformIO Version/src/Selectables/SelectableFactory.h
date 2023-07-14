@@ -6,31 +6,29 @@
 #define SELECTABLEFACTORY_H
 
 #include "SelectableInterface.h"
+#include "ScreenSelectable.h"
+#include "NumberSelectable.h"
+#include "FunctionSelectable.h"
 #include <Arduino.h>
 
-typedef struct Command {
-    enum {COLOR, STATIC_P, MUSIC_P, NONE};
-    int type;
-    int value;
-    unsigned short r;
-    unsigned short g;
-    unsigned short b;
-} Command_t;
 
 class SelectableFactory
 {
 public:
     SelectableFactory();
 
-    void addSelectable(Selectable*, Selectable*);
+    enum {COLOR, STATIC, MUSIC, NUM, SCREEN};
 
-    String createCommand(int, int, int, int);
+    Selectable* make_selectable(String, int);
 
-    String fillText(char* msg);
+    static void addSelectable(Selectable*, Selectable*);
 
 private:
+    String fillText(String);
+
     int num_static;
     int num_music;
+
 };
 
 

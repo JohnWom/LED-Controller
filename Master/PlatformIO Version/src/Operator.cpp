@@ -35,6 +35,10 @@ void Operator::draw_cursor() {
     }
 }
 
+void Operator::callback(Screen *s) {
+    current_screen = s;
+}
+
 void Operator::upScroll() {
     if (cursor_position == 0) {
         // Roll Options
@@ -98,9 +102,10 @@ void Operator::joystickRead() {
 
     // Define mapX
     if (xPosition > 910) {
-        rightScroll();
-    } else if (xPosition < 150) {
         leftScroll();
+    } else if (xPosition < 150) {
+
+        rightScroll();
     }
 }
 
@@ -114,4 +119,8 @@ Selectable* Operator::getCurrent() {
     }
 
     return current;
+}
+
+DFRobot_RGBLCD1602 *Operator::getDisplay() const {
+    return display;
 }
