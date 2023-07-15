@@ -9,6 +9,8 @@ CenterPulseSplit::CenterPulseSplit(Adafruit_NeoPixel* np, int nleds, unsigned sh
     num_groups = num_leds / 40;
     max_state = 20;
     invert = i;
+    state = 1;
+    prev_state = 0;
 }
 
 void CenterPulseSplit::firstStep() {

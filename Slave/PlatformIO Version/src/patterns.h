@@ -13,6 +13,7 @@
 #include "Patterns/CenterPulseSplit.h"
 #include "Patterns/ThreeColor.h"
 
+#include "Patterns/Party1.h"
 #include "Patterns/Rainbow.h"
 
 

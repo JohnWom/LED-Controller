@@ -66,7 +66,7 @@ Pattern* Operator::processStatic(int code) {
             return new SolidColor(leds, num_leds, r, g, b);
         case 1:
             Serial.println("Party 1 Selected");
-            return new ThreeColor(leds, num_leds, r, g, b);
+            return new Party1(leds, num_leds, r, g, b);
         case 2:
             Serial.println("Party 2 Selected");
             return new Rainbow(leds, num_leds);

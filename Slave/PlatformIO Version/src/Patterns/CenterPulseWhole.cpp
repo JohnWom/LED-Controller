@@ -9,7 +9,8 @@ CenterPulseWhole::CenterPulseWhole(Adafruit_NeoPixel *l, int num_leds, unsigned 
     state = 0;
     prev = 0;
     max_state = num_leds / 2;
-    Serial.println(max_state);
+    prev = state + 1;
+    state++;
 }
 
 void CenterPulseWhole::firstStep() {
