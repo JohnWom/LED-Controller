@@ -69,7 +69,7 @@ Pattern* Operator::processStatic(int code) {
             return new Party1(leds, num_leds, r, g, b);
         case 2:
             Serial.println("Party 2 Selected");
-            return new Rainbow(leds, num_leds);
+            return new Party2(leds, num_leds, r, g, b);
         case 3:
             Serial.println("Party 3 Selected");
             return new CenterPulseSplit(leds, num_leds, r, g, b, 1);

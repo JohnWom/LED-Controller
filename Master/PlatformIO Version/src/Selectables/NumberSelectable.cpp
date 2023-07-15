@@ -53,6 +53,9 @@ void NumberSelectable::leftScroll() {
 void NumberSelectable::refresh() {
     Serial.println("Starting refresh");
     String num = String(val);
+    text.setCharAt(12, ' ');
+    text.setCharAt(13, ' ');
+    text.setCharAt(14, ' ');
     text = text.substring(0, 15-num.length());
     text += num;
 

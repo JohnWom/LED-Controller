@@ -105,10 +105,10 @@ void Operator::joystickRead() {
     // Define mapX
     if (xPosition > 910) {
         leftScroll();
-        delay(200);
+//        delay(10);
     } else if (xPosition < 150) {
         rightScroll();
-        delay(200);
+//        delay(10);
     }
 }
 

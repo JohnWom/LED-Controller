@@ -14,6 +14,7 @@
 #include "Patterns/ThreeColor.h"
 
 #include "Patterns/Party1.h"
+#include "Patterns/Party2.h"
 #include "Patterns/Rainbow.h"
 
 
