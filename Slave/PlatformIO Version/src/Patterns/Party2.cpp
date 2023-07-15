@@ -33,7 +33,7 @@ void Party2::nextStep() {
         case 2:
             p3->setColors(r, g, b);
             p3->nextStep();
-            if (count > 5*3) {
+            if (count > 17) {
                 state = 1;
                 p3->firstStep();
                 firstStep();
