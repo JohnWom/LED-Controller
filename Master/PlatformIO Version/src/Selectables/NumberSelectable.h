@@ -12,7 +12,7 @@ class NumberSelectable: public Selectable
 {
 public:
     enum types {R, G, B};
-    NumberSelectable(char*, int, int, int);
+    NumberSelectable(String, int, int, int);
     // min, max, type
 
     void execute() override;

@@ -12,7 +12,7 @@
 class ScreenSelectable: public Selectable
 {
 public:
-    ScreenSelectable(char*, Screen*, Operator*);
+    ScreenSelectable(String, Screen*, Operator*);
 
     void execute() override;
 

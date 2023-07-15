@@ -4,11 +4,19 @@
 
 #include "FunctionSelectable.h"
 
-FunctionSelectable::FunctionSelectable(char *t, char* m):
+FunctionSelectable::FunctionSelectable(String t, String m):
         Selectable(t, nullptr, nullptr){
     command = m;
 }
 
 void FunctionSelectable::execute() {
     Serial1.print(command);
+}
+
+const String &FunctionSelectable::getCommand() const {
+    return command;
+}
+
+void FunctionSelectable::setCommand(const String &command) {
+    FunctionSelectable::command = command;
 }

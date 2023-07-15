@@ -5,10 +5,12 @@
 #ifndef SELECTABLEINTERFACE_H
 #define SELECTABLEINTERFACE_H
 
+#include <Arduino.h>
+
 class Selectable
 {
 public:
-    Selectable(char*, Selectable*, Selectable*);
+    Selectable(String, Selectable*, Selectable*);
     virtual void execute()=0;
 
     // Special Commands for in-selectable controls
@@ -18,14 +20,14 @@ public:
 
     Selectable* getNext();
     Selectable* getPrev();
-    char* getText();
-    void setText(char *text);
+    String getText();
+    void setText(String text);
     void setNext(Selectable *next);
     void setPrev(Selectable *prev);
 
 protected:
 
-    char* text;
+    String text;
     Selectable* next;
     Selectable* prev;
 };

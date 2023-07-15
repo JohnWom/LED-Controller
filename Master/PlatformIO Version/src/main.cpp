@@ -84,7 +84,8 @@ void setup() {
     display->setBacklight(true);
     display->display();
     display->customSymbol(0, cursor_symbol);
-    delay(3000);
+    display->print("Welcome to LED");
+    delay(2000);
 
     Serial.println("Linking Selectables...");
     // Home Screen Selectables

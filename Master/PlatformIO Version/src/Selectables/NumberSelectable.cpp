@@ -4,12 +4,17 @@
 
 #include "NumberSelectable.h"
 
-NumberSelectable::NumberSelectable(char *t, int min, int max, int tp):
+NumberSelectable::NumberSelectable(String t, int min, int max, int tp):
         Selectable(t, nullptr, nullptr){
     val = 125;
     minV = min;
     maxV = max;
     type = tp;
+
+    // functions can't be run outside of setup & loop, so refresh is just copied
+    String num = String(val);
+    text = text.substring(0, 15-num.length());
+    text += num;
 }
 
 void NumberSelectable::execute() {
@@ -35,30 +40,20 @@ void NumberSelectable::rightScroll() {
     Serial.println("Incrementing...");
     if ((val + 1) <= maxV)
         val++;
-    //refresh();
-
+    refresh();
 }
 
 void NumberSelectable::leftScroll() {
     Serial.println("Decrementing");
     if ((val - 1) >= minV)
         val--;
-    //refresh();
+    refresh();
 }
 
 void NumberSelectable::refresh() {
     Serial.println("Starting refresh");
-    // Clear the old numbers
-    char* test = "Red         123";
-    for (int i=12; i<12; i++)
-        test[i] = ' ';
-    Serial.println(test);
-    // Write the new ones in
-    int tmp = val;
-    int i = 14;
-    do {
-        test[i--] = tmp % 10 + '0';
-        tmp /= 10;
-    } while(tmp > 0);
-    Serial.println(test);
+    String num = String(val);
+    text = text.substring(0, 15-num.length());
+    text += num;
+
 }

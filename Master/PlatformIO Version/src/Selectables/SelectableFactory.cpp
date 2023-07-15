@@ -27,25 +27,23 @@ void SelectableFactory::addSelectable(Selectable *head, Selectable *s) {
 
 Selectable* SelectableFactory::make_selectable(String text, int type) {
     text = fillText(text);
-    char txt[15];
-    text.toCharArray(txt, 15);
     if (type == COLOR) {
-        return new FunctionSelectable(txt, nullptr);
+        return new FunctionSelectable(text, String());
     }
     else if (type == STATIC) {
         String msg = "SP";
          msg += String(num_static++);
 
-        return new FunctionSelectable(txt, nullptr);
+        return new FunctionSelectable(text, String());
     }
     else if (type == MUSIC) {
-        return new FunctionSelectable(txt, nullptr);
+        return new FunctionSelectable(text, String());
     }
     else if (type == NUM) {
-        return new NumberSelectable(txt, 0, 0, 0);
+        return new NumberSelectable(text, 0, 0, 0);
     }
     else if (type == SCREEN) {
-        return new ScreenSelectable(txt, nullptr, nullptr);
+        return new ScreenSelectable(text, nullptr, nullptr);
     }
 }
 

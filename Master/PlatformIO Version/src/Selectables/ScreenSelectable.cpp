@@ -4,7 +4,7 @@
 
 #include "ScreenSelectable.h"
 
-ScreenSelectable::ScreenSelectable(char *t, Screen* s, Operator* o):
+ScreenSelectable::ScreenSelectable(String t, Screen* s, Operator* o):
         Selectable(t, nullptr, nullptr){
     nextScreen = s;
     op = o;
@@ -26,6 +26,6 @@ Operator *ScreenSelectable::getOp() const {
     return op;
 }
 
-void ScreenSelectable::setOp(Operator *op) {
-    ScreenSelectable::op = op;
+void ScreenSelectable::setOp(Operator *o) {
+    ScreenSelectable::op = o;
 }
