@@ -28,9 +28,9 @@
  ## Photos
 <br />
  <p align="center">
-  <img src="Physicals/Photos/Cornor View 1.PNG" alt="Cornor View" width="500" />
-  <img src="Physicals/Photos/Isometric Closed.PNG" alt="Isometric Closed" width="500" />
-  <img src="Physicals/Photos/Isometric.PNG" alt="Isometric" width="500" />
-  <img src="Physicals/Photos/Top.PNG" alt="Top" width="500" />
+  <img src="Physicals/Photos/Cornor View 1.PNG" alt="Cornor View" width="400" />
+  <img src="Physicals/Photos/Isometric Closed.PNG" alt="Isometric Closed" width="400" />
+  <img src="Physicals/Photos/Isometric.PNG" alt="Isometric" width="400" />
+  <img src="Physicals/Photos/Top.PNG" alt="Top" width="400" />
  </p>
 
