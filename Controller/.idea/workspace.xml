@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9eaa1550-2244-40ce-a45c-82ae855582da" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Master/Arduino Pinout.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/.idea/PlatformIO Version.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/include/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/lib/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/platformio.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Operator.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Operator.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Screen.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Screen.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Selectables/FunctionSelectable.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Selectables/FunctionSelectable.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Selectables/NumberSelectable.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Selectables/NumberSelectable.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Selectables/ScreenSelectable.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Selectables/ScreenSelectable.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Selectables/SelectableFactory.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Selectables/SelectableFactory.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Selectables/SelectableInterface.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/Selectables/SelectableInterface.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/src/setup.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Master/Master/test/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Receiver_Notes.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Seeedo Pinout.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/.idea/PlatformIO Version.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/CMakeListsUser.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/include/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/lib/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/platformio.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Communication/Command.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Communication/CommunicatorInterface.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Communication/SerialReader.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Communication/SerialReader.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Operator.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Operator.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/CenterPulseSplit.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/CenterPulseSplit.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/CenterPulseWhole.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/CenterPulseWhole.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/Party1.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/Party1.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/Party2.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/Party2.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/PatternInterface.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/Rainbow.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/Rainbow.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/SolidColor.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/SolidColor.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/ThreeColor.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/Patterns/ThreeColor.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/src/patterns.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Slave/Slave/test/README" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2SuPmi6lD53fIDCcGXDNpz3ymcY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/johnw/Documents/GitHub/LED-Controller/Controller/Controller",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9eaa1550-2244-40ce-a45c-82ae855582da" name="Changes" comment="" />
+      <created>1689993653814</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689993653814</updated>
+      <workItem from="1689993655011" duration="14000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
