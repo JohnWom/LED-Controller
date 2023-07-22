@@ -4,6 +4,10 @@
 ## Use
 
  This LED Controller uses 5V Neopixel lights and a 4.0mm DC power jack. The LEDs can be controlled using the joystick to navigate the LCD Display Menu and select between different patterns and colors. The color section has both preset colors, as well as the option to set custom RGB values. The patterns are divided into two groups, Static Patterns and Music Patterns. Static patterns will not respond to music inputted to the aux jack, but the music patterns will. 
+
+<img src="Imgs/Actual1.jpg" alt="Actual Picture 1" width="200"/>
+
+<img src="Imgs/Actual2.jpg" alt="Actual Picture 1" width="200"/>
  
 ---
 
