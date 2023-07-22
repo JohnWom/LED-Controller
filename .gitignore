@@ -1,0 +1,10 @@
+# Ignore Builds
+**/cmake-build-*/
+
+
+# Jetbrains IDE Files
+*.idea
+*CMakeLisitsPrivate.txt
+
+# Platform IO Files
+*.pio
