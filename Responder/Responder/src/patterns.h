@@ -16,6 +16,6 @@
 #include "Patterns/Party1.h"
 #include "Patterns/Party2.h"
 #include "Patterns/Rainbow.h"
-
+#include "Patterns/Ocean.h"
 
 #endif //PATTERN_INCLUDES

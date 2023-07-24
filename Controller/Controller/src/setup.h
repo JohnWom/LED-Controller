@@ -61,6 +61,7 @@ Selectable* sp2 =           new FunctionSelectable("Party 2        ", "SP0000000
 Selectable* sp3 =           new FunctionSelectable("Party 3        ", "SP00000003");
 Selectable* rainbow =       new FunctionSelectable("Rainbow        ", "SP00000004");
 Selectable* triColor =      new FunctionSelectable("Three Color    ", "SP00000005");
+Selectable* ocean =         new FunctionSelectable("Ocean          ", "SP00000006");
 
 void connect_selectables() {
     // Home Screen Selectables
@@ -100,6 +101,7 @@ void connect_selectables() {
     Music->setBottomItem(mp1);
 
     // Static Selectables
+    SelectableFactory::addSelectable(backStatic, ocean);
     SelectableFactory::addSelectable(backStatic, triColor);
     SelectableFactory::addSelectable(backStatic, rainbow);
     SelectableFactory::addSelectable(backStatic, sp3);
