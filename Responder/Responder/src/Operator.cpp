@@ -82,6 +82,9 @@ Pattern* Operator::processStatic(int code) {
         case 6:
             Serial.println("Ocean Selected");
             return new Ocean(leds, num_leds);
+        case 7:
+            Serial.println("Insanity Selected");
+            return new Insanity(leds, num_leds);
         default:
             Serial.println("Default Selected");
             return new SolidColor(leds, num_leds, r, g, b);
