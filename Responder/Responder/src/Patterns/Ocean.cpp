@@ -5,42 +5,93 @@
 #include "Ocean.h"
 
 Ocean::Ocean(Adafruit_NeoPixel* leds, int num_leds): Pattern(leds, num_leds, 0, 0, 0) {
+    state = 0;
 }
 
 void Ocean::firstStep() {
-    leds->clear();
+    for (int i=0; i<num_waves; i++) {
+        wavePoints[i] = random(300);
+    }
+    calm();
     leds->show();
 }
 
 void Ocean::nextStep() {
+
+    switch(state) {
+        case 0 ... 4:
+            calm();
+            break;
+        case 5:
+            beginning();
+            break;
+        case 6:
+            swelling();
+            break;
+        case 7:
+            peak();
+            break;
+        case 8:
+            swelling();
+            break;
+        case 9:
+            beginning();
+            break;
+        case 10:
+            firstStep();
+            break;
+    }
+    state = (state + 1) % 11;
+    leds->show();
+    delay(400);
+
+}
+
+void Ocean::calm() {
+    int color[3] = {colors[DEEP][0],colors[DEEP][1],colors[DEEP][2]};
     // fill with basic blue
     for (int i=0; i<num_leds; i++) {
-        leds->setPixelColor(i, colors[DEEP][0],colors[DEEP][1],colors[DEEP][2]);
+        leds->setPixelColor(i, color[0],color[1],color[2] + random(-20, 20));
     }
 
     // fill with deep specs
     for (int i=0; i<20; i++) {
         int point = (int) random(300);
-        leds->setPixelColor(point, colors[MAIN][0],colors[MAIN][1],colors[MAIN][2]);
+        leds->setPixelColor(point, colors[DEEP][0],colors[DEEP][1],colors[DEEP][2]-20);
     }
+}
 
-    // fill in with waves
-    for (int i=0; i<8; i++) {
-        int wave_tip = (int) random(300);
-        for (int j=0; j<16; j++) {
-            int point = wave_tip + j - 8;
-            if (random(5) != 0)
-                leds->setPixelColor(point, colors[CARIBBEAN][0],colors[CARIBBEAN][1],colors[CARIBBEAN][2]);
+void Ocean::beginning() {
+    calm();
+    int color[3] = {colors[MAIN][0], colors[MAIN][1], colors[MAIN][2]};
+    for (int i=0; i<num_waves; i++) {
+        // fill around the waves with brighter blues
+        for (int j=-6; j<=6; j++) {
+            if ((int) random(8) != 0)
+                leds->setPixelColor(wavePoints[i] + j, color[0] + random(20), color[1], color[2] + random(10));
         }
-        for (int j=0; j<6; j++) {
-            int point = wave_tip + j - 3;   // set point 3 pixes back from wave tip
-            if (random(4) != 0)
-                leds->setPixelColor(point, colors[WAVE_CREST][0],colors[WAVE_CREST][1],colors[WAVE_CREST][2]);
-        }
-
     }
-    leds->show();
-    delay(300);
+}
 
+void Ocean::swelling() {
+    beginning();
+    int color[3] = {colors[CARIBBEAN][0], colors[CARIBBEAN][1], colors[CARIBBEAN][2]};
+    for (int i=0; i<num_waves; i++) {
+        for (int j=-1; j<=1; j++) {
+            if ((int) random(8) != 0)
+                leds->setPixelColor(wavePoints[i] + j, color[0] + random(20), color[1], color[2]);
+        }
+    }
+}
 
+void Ocean::peak() {
+    beginning();
+    int color[3] = {colors[SEA_FOAM][0], colors[SEA_FOAM][1], colors[SEA_FOAM][2]};
+    for (int i=0; i<num_waves; i++) {
+        for (int j=-2; j<=2; j++) {
+            if ((int) random(8) != 0)
+                leds->setPixelColor(wavePoints[i] + j, color[0] + random(20), color[1], color[2]);
+        }
+        leds->setPixelColor(wavePoints[i], colors[WAVE_CREST][0],colors[WAVE_CREST][1],colors[WAVE_CREST][2]);
+    }
 }

@@ -10,20 +10,31 @@
 
 class Ocean: public Pattern
 {
-    enum color_names {DEEP, MAIN, CARIBBEAN, WAVE_CREST, SEA_FOAM};
+    enum color_names {DEEP, MAIN, CARIBBEAN, SEA_FOAM, WAVE_CREST};
     int colors[5][3] = {
-            {3,4,94},
+            {3,4,80},
+            {2,62,118},
             {0,119,182},
             {0,180,216},
-            {144,224,239},
-            {202,240,248}
+            {144,224,239}
     };
+     int num_waves = 8;
 
 public:
     Ocean(Adafruit_NeoPixel*, int);
 
     void firstStep() override;
     void nextStep() override;
+
+private:
+    void calm();
+    void beginning();
+    void swelling();
+    void peak();
+
+    int state;
+
+    int wavePoints[8];
 };
 
 
