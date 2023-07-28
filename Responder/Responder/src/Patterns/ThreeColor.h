@@ -6,11 +6,12 @@
 #define PLATFORMIO_VERSION_THREECOLOR_H
 
 #include "PatternInterface.h"
+#include "../../.pio/libdeps/pico/FastLED/src/pixeltypes.h"
 
 class ThreeColor: public Pattern
 {
 public:
-    ThreeColor(Adafruit_NeoPixel* np, int nleds, unsigned short n_r, unsigned short  n_g, unsigned short  n_b);
+    ThreeColor(CRGB *np, int nleds, unsigned short n_r, unsigned short  n_g, unsigned short  n_b);
 
     void firstStep();
     void nextStep();

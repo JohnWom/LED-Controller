@@ -13,7 +13,7 @@
 class Party1: public Pattern
 {
 public:
-    Party1(Adafruit_NeoPixel*, int, unsigned short, unsigned short, unsigned short);
+    Party1(CRGB*, int, unsigned short, unsigned short, unsigned short);
 
     void firstStep() override;
     void nextStep() override;

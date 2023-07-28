@@ -3,8 +3,9 @@
 //
 
 #include "ThreeColor.h"
+#include "../../.pio/libdeps/pico/FastLED/src/pixeltypes.h"
 
-ThreeColor::ThreeColor(Adafruit_NeoPixel *np, int nleds, unsigned short n_r, unsigned short n_g, unsigned short n_b):
+ThreeColor::ThreeColor(CRGB *np, int nleds, unsigned short n_r, unsigned short n_g, unsigned short n_b):
     Pattern(np, nleds, n_r, n_g, n_b){
     group_size = 10;
     num_groups = num_leds / group_size;
@@ -13,9 +14,9 @@ ThreeColor::ThreeColor(Adafruit_NeoPixel *np, int nleds, unsigned short n_r, uns
 void ThreeColor::firstStep() {
     // Clear the string
     for (int i=0; i<num_leds; i++) {
-        leds->setPixelColor(i, 0, 0, 0); // Clear any old pattern out
+        leds[i].setRGB(0, 0, 0); // Clear any old pattern out
     }
-    leds->show();
+    FastLED.show();
     delay(300);
 }
 
@@ -40,9 +41,9 @@ void ThreeColor::nextStep() {
                 t_b = r;
             }
             for (int i=0; i<group_size and (i+(s*10))<num_leds; i++)
-                leds->setPixelColor((s*10) + i, t_r, t_g, t_b);
+                leds[(s*10) + i].setRGB(t_r, t_g, t_b);
         }
-    leds->show();
+    FastLED.show();
     delay(300);
     int temp = r;
     r = b;

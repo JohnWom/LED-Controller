@@ -21,7 +21,7 @@ class Ocean: public Pattern
      int num_waves = 8;
 
 public:
-    Ocean(Adafruit_NeoPixel*, int);
+    Ocean(CRGB*, int);
 
     void firstStep() override;
     void nextStep() override;

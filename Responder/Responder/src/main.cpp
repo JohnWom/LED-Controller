@@ -5,9 +5,9 @@
 #define NUM_LEDS 300
 #define AUDIO_PIN 28
 
-Adafruit_NeoPixel pixels(NUM_LEDS, LED_PIN, NEO_GRB + NEO_KHZ800);
+CRGB leds[NUM_LEDS];
 
-Operator Op(new SerialReader(), &pixels, NUM_LEDS);
+Operator Op(new SerialReader(), leds, NUM_LEDS);
 void setup()
 {
     Serial.begin(115200);
@@ -17,12 +17,10 @@ void setup()
     pinMode(LED_PIN, OUTPUT);
     pinMode(LED_BUILTIN, OUTPUT);
 
-    pixels.begin();
-    pixels.setBrightness(30);
+    FastLED.addLeds<WS2812B, LED_PIN, RGB>(leds, NUM_LEDS);
 }
 
 void loop()
 {
     Op.main();
-
 }

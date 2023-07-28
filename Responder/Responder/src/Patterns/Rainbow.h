@@ -10,13 +10,12 @@
 class Rainbow: public Pattern
 {
 public:
-    Rainbow(Adafruit_NeoPixel* np, int nleds);
+    Rainbow(CRGB* np, int nleds);
 
     void firstStep();
     void nextStep();
 
 private:
-    int state;
 };
 
 

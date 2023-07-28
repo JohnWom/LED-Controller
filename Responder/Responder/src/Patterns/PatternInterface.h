@@ -5,12 +5,13 @@
 #ifndef PATTERN_INTERFACE_H
 #define PATTERN_INTERFACE_H
 
-#include <Adafruit_NeoPixel.h>
+// Including FastLED this way lets IntelliSense read it
+#include "../../.pio/libdeps/pico/FastLED/src/FastLED.h"
 
 class Pattern
 {
 public:
-    Pattern(Adafruit_NeoPixel* np, int nleds, unsigned short n_r, unsigned short  n_g, unsigned short  n_b) {
+    Pattern(CRGB* np, int nleds, unsigned short n_r, unsigned short  n_g, unsigned short  n_b) {
         r = n_r;
         g = n_g;
         b = n_b;
@@ -38,7 +39,7 @@ protected:
     unsigned short r;
     unsigned short g;
     unsigned short b;
-    Adafruit_NeoPixel* leds;
+    CRGB* leds;
     int num_leds;
 };
 
