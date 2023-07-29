@@ -15,9 +15,7 @@ CenterPulseSplit::CenterPulseSplit(CRGB *np, int nleds, unsigned short n_r, unsi
 
 void CenterPulseSplit::firstStep() {
     // Clear the string
-    for (int i=0; i<num_leds; i++) {
-        leds[i].setRGB(0, 0, 0); // Clear any old pattern out
-    }
+    fill_solid(leds, num_leds, CRGB::Black);
     FastLED.show();
     delay(300);
 

@@ -19,6 +19,7 @@ public:
 private:
     int num_groups;
     int group_size;
+    int state;
 };
 
 
