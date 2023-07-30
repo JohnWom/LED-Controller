@@ -9,7 +9,7 @@
 
 class SolidColor: public Pattern{
 public:
-    SolidColor(Adafruit_NeoPixel* np, int nleds, unsigned short n_r, unsigned short  n_g, unsigned short  n_b);
+    SolidColor(CRGB* np, int nleds, unsigned short n_r, unsigned short  n_g, unsigned short  n_b);
 
     void firstStep() override;
     void nextStep() override;

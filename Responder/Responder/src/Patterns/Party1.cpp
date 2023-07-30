@@ -4,7 +4,7 @@
 
 #include "Party1.h"
 
-Party1::Party1(Adafruit_NeoPixel* leds, int num_leds, unsigned short n_r, unsigned short n_g, unsigned short n_b):
+Party1::Party1(CRGB* leds, int num_leds, unsigned short n_r, unsigned short n_g, unsigned short n_b):
     Pattern(leds, num_leds, n_r, n_g, n_b){
     p1 = new ThreeColor(leds, num_leds, r, g, b);
     p2 = new CenterPulseWhole(leds, num_leds, r, g, b);
@@ -14,8 +14,8 @@ Party1::Party1(Adafruit_NeoPixel* leds, int num_leds, unsigned short n_r, unsign
 }
 
 void Party1::firstStep() {
-    leds->clear();
-    leds->show();
+    fill_solid(leds, num_leds, CRGB::Black);
+    FastLED.show();
     count = 0;
 }
 

@@ -10,7 +10,7 @@
 class Insanity: public Pattern
 {
 public:
-    Insanity(Adafruit_NeoPixel*, int);
+    Insanity(CRGB*, int);
 
     void firstStep() override;
     void nextStep() override;

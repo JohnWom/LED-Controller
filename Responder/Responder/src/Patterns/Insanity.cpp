@@ -4,18 +4,18 @@
 
 #include "Insanity.h"
 
-Insanity::Insanity(Adafruit_NeoPixel* l, int leds): Pattern(l, leds, 0, 0, 0) {
+Insanity::Insanity(CRGB* l, int leds): Pattern(l, leds, 0, 0, 0) {
 
 }
 
 void Insanity::firstStep() {
-    leds->clear();
-    leds->show();
+    fill_solid(leds, num_leds, CRGB::Black);
+    FastLED.show();
 }
 
 void Insanity::nextStep() {
     for (int i=0; i<num_leds; i++)
-        leds->setPixelColor(i, random(255), random(255), random(255));
-    leds->show();
+        leds[i].setRGB(random(255), random(255), random(255));
+    FastLED.show();
     delay(300);
 }

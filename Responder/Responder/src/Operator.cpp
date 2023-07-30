@@ -4,7 +4,7 @@
 
 #include "Operator.h"
 
-Operator::Operator(Communicator* c, Adafruit_NeoPixel* l, int nleds) {
+Operator::Operator(Communicator* c, CRGB* l, int nleds) {
     communicator = c;
     leds = l;
     num_leds = nleds;

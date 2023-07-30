@@ -12,7 +12,7 @@
 class Operator
 {
 public:
-    Operator(Communicator*, Adafruit_NeoPixel*, int);
+    Operator(Communicator*, CRGB*, int);
 
     void main();
 
@@ -27,7 +27,7 @@ private:
 
     Communicator* communicator;
     Pattern* pattern;
-    Adafruit_NeoPixel* leds;
+    CRGB* leds;
     int num_leds;
 
     unsigned short r;  // allows color to persist through patterns

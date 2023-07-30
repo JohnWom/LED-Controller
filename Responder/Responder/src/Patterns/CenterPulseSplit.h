@@ -6,11 +6,12 @@
 #define PLATFORMIO_VERSION_CENTERPULSESPLIT_H
 
 #include "PatternInterface.h"
+#include "../../.pio/libdeps/pico/FastLED/src/pixeltypes.h"
 
 class CenterPulseSplit: public Pattern
 {
 public:
-    CenterPulseSplit(Adafruit_NeoPixel* np, int nleds, unsigned short n_r, unsigned short  n_g, unsigned short  n_b, int);
+    CenterPulseSplit(CRGB *np, int nleds, unsigned short n_r, unsigned short  n_g, unsigned short  n_b, int);
     void firstStep();
     void nextStep();
 private:

@@ -4,7 +4,7 @@
 
 #include "Ocean.h"
 
-Ocean::Ocean(Adafruit_NeoPixel* leds, int num_leds): Pattern(leds, num_leds, 0, 0, 0) {
+Ocean::Ocean(CRGB* leds, int num_leds): Pattern(leds, num_leds, 0, 0, 0) {
     state = 0;
 }
 
@@ -13,7 +13,7 @@ void Ocean::firstStep() {
         wavePoints[i] = random(300);
     }
     calm();
-    leds->show();
+    FastLED.show();
 }
 
 void Ocean::nextStep() {
@@ -42,7 +42,7 @@ void Ocean::nextStep() {
             break;
     }
     state = (state + 1) % 11;
-    leds->show();
+    FastLED.show();
     delay(400);
 
 }
@@ -51,13 +51,13 @@ void Ocean::calm() {
     int color[3] = {colors[DEEP][0],colors[DEEP][1],colors[DEEP][2]};
     // fill with basic blue
     for (int i=0; i<num_leds; i++) {
-        leds->setPixelColor(i, color[0],color[1],color[2] + random(-20, 20));
+        leds[i].setRGB(color[0],color[1],color[2] + random(-20, 20));
     }
 
     // fill with deep specs
     for (int i=0; i<20; i++) {
         int point = (int) random(300);
-        leds->setPixelColor(point, colors[DEEP][0],colors[DEEP][1],colors[DEEP][2]-20);
+        leds[point].setRGB(colors[DEEP][0],colors[DEEP][1],colors[DEEP][2]-20);
     }
 }
 
@@ -68,7 +68,7 @@ void Ocean::beginning() {
         // fill around the waves with brighter blues
         for (int j=-6; j<=6; j++) {
             if ((int) random(8) != 0)
-                leds->setPixelColor(wavePoints[i] + j, color[0] + random(20), color[1], color[2] + random(10));
+                leds[wavePoints[i] + j].setRGB(color[0] + random(20), color[1], color[2] + random(10));
         }
     }
 }
@@ -79,7 +79,7 @@ void Ocean::swelling() {
     for (int i=0; i<num_waves; i++) {
         for (int j=-1; j<=1; j++) {
             if ((int) random(8) != 0)
-                leds->setPixelColor(wavePoints[i] + j, color[0] + random(20), color[1], color[2]);
+                leds[wavePoints[i] + j].setRGB(color[0] + random(20), color[1], color[2]);
         }
     }
 }
@@ -90,8 +90,8 @@ void Ocean::peak() {
     for (int i=0; i<num_waves; i++) {
         for (int j=-2; j<=2; j++) {
             if ((int) random(8) != 0)
-                leds->setPixelColor(wavePoints[i] + j, color[0] + random(20), color[1], color[2]);
+                leds[wavePoints[i] + j].setRGB(color[0] + random(20), color[1], color[2]);
         }
-        leds->setPixelColor(wavePoints[i], colors[WAVE_CREST][0],colors[WAVE_CREST][1],colors[WAVE_CREST][2]);
+        leds[wavePoints[i]].setRGB(colors[WAVE_CREST][0],colors[WAVE_CREST][1],colors[WAVE_CREST][2]);
     }
 }

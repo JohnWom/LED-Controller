@@ -10,7 +10,7 @@
 class CenterPulseWhole: public Pattern
 {
 public:
-    CenterPulseWhole(Adafruit_NeoPixel* , int , unsigned short, unsigned short  , unsigned short);
+    CenterPulseWhole(CRGB* , int , unsigned short, unsigned short  , unsigned short);
     void firstStep();
     void nextStep();
 
