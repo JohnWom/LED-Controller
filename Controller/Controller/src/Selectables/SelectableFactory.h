@@ -15,13 +15,13 @@
 class SelectableFactory
 {
 public:
-    SelectableFactory();
-
     enum {COLOR, STATIC, MUSIC, NUM, SCREEN};
 
-    Selectable* make_selectable(String, int);
+    void buildScreen(Screen* , Selectable*, int);
 
-    static void addSelectable(Selectable*, Selectable*);
+    Selectable* colorFunction(String, int, const int color[3]);
+
+    void addSelectable(Selectable &, Selectable &);
 
 private:
     String fillText(String);

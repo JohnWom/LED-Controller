@@ -17,27 +17,47 @@ Screen* Home = new Screen(nullptr, nullptr);
 Screen* Patterns = new Screen(nullptr, nullptr);
 Screen* Static = new Screen(nullptr, nullptr);
 Screen* Music = new Screen(nullptr, nullptr);
-Screen* Color = new Screen(nullptr, nullptr);
+Screen* Colors = new Screen(nullptr, nullptr);
+Screen* PrimaryColor = new Screen(nullptr, nullptr);
+Screen* SecondaryColor = new Screen(nullptr, nullptr);
+Screen* TertiaryColor = new Screen(nullptr, nullptr);
 Screen* CustomColor = new Screen(nullptr, nullptr);
 
 Operator* Op = new Operator(Home);
 
 // Home Screen Selectables
-Selectable* toColors = new ScreenSelectable("Colors         ", Color, Op);
+Selectable* toColors = new ScreenSelectable("Colors         ", PrimaryColor, Op);
 Selectable* toPatterns = new ScreenSelectable("Patterns       ",Patterns, Op);
 Selectable* powerOff = new FunctionSelectable("Power off      ", "C000000000");
+
 // Color Screen Selectables
-Selectable* backColors = new ScreenSelectable("back           ", Home, Op);
-Selectable* toCustomColors = new ScreenSelectable("Custom Color   ", CustomColor, Op);
-Selectable* red =    new FunctionSelectable("Red            ", "C200000000");
-Selectable* orange = new FunctionSelectable("Orange         ", "C255140000");
-Selectable* green =  new FunctionSelectable("Green          ", "C000200000");
-Selectable* blue =   new FunctionSelectable("Blue           ", "C000000200");
-Selectable* indigo = new FunctionSelectable("Indigo         ", "C060000255");
-Selectable* violet = new FunctionSelectable("Violet         ", "C140000255");
+Selectable* backColor =         new ScreenSelectable("back           ", Home, Op);
+Selectable* toPrimaryColor =    new ScreenSelectable("Colors         ", PrimaryColor, Op);
+Selectable* toSecondaryColor =  new ScreenSelectable("Colors         ", SecondaryColor, Op);
+Selectable* toTertiaryColor =   new ScreenSelectable("Colors         ", TertiaryColor, Op);
+
+// PrimaryColor Screen Selectables
+Selectable* backPrimaryColor = new ScreenSelectable("back           ", Colors, Op);
+Selectable* toCustomColors = new ScreenSelectable("Custom PrimaryColor   ", CustomColor, Op);
+Selectable* pred =    new FunctionSelectable("Red            ", "C0200000000");
+Selectable* porange = new FunctionSelectable("Orange         ", "C0255140000");
+Selectable* pgreen =  new FunctionSelectable("Green          ", "C0000200000");
+Selectable* pblue =   new FunctionSelectable("Blue           ", "C0000000200");
+Selectable* pindigo = new FunctionSelectable("Indigo         ", "C0060000255");
+Selectable* pviolet = new FunctionSelectable("Violet         ", "C0140000255");
+
+// SecondaryColor Screen Selectables
+Selectable* backSecondaryColor =    new ScreenSelectable("back           ", Colors, Op);
+Selectable* toCustomColors =        new ScreenSelectable("Custom PrimaryColor   ", CustomColor, Op);
+Selectable* sred =    new FunctionSelectable("Red            ", "C0200000000");
+Selectable* sorange = new FunctionSelectable("Orange         ", "C0255140000");
+Selectable* sgreen =  new FunctionSelectable("Green          ", "C0000200000");
+Selectable* sblue =   new FunctionSelectable("Blue           ", "C0000000200");
+Selectable* sindigo = new FunctionSelectable("Indigo         ", "C0060000255");
+Selectable* sviolet = new FunctionSelectable("Violet         ", "C0140000255");
 
 // Custom Colors Selectables
-Selectable* backCustomColors = new ScreenSelectable("back           ", Color, Op);
+Selectable* backCustomColors = new ScreenSelectable("back           ", PrimaryColor, Op);
 Selectable* setR = new NumberSelectable("Set R          ", 0, 255, NumberSelectable::R);
 Selectable* setG = new NumberSelectable("Set G          ", 0, 255, NumberSelectable::G);
 Selectable* setB = new NumberSelectable("Set B          ", 0, 255, NumberSelectable::B);
@@ -55,12 +75,12 @@ Selectable* mp2 = new FunctionSelectable("Music Pattern 2", "MP00000001");
 
 // Static Selectables
 Selectable* backStatic = new ScreenSelectable("back           ", Patterns, Op);
-Selectable* solidColor =    new FunctionSelectable("Solid Color    ", "SP00000000");
+Selectable* solidColor =    new FunctionSelectable("Solid PrimaryColor    ", "SP00000000");
 Selectable* sp1 =           new FunctionSelectable("Party 1        ", "SP00000001");
 Selectable* sp2 =           new FunctionSelectable("Party 2        ", "SP00000002");
 Selectable* sp3 =           new FunctionSelectable("Party 3        ", "SP00000003");
 Selectable* rainbow =       new FunctionSelectable("Rainbow        ", "SP00000004");
-Selectable* triColor =      new FunctionSelectable("Three Color    ", "SP00000005");
+Selectable* triColor =      new FunctionSelectable("Three PrimaryColor    ", "SP00000005");
 Selectable* ocean =         new FunctionSelectable("Ocean          ", "SP00000006");
 Selectable* insanity =      new FunctionSelectable("Insanity       ", "SP00000007");
 
@@ -71,16 +91,16 @@ void connect_selectables() {
     Home->setTopItem(toColors);
     Home->setBottomItem(toPatterns);
 
-    // Color Screen Selectables
-    SelectableFactory::addSelectable(backColors, violet);
-    SelectableFactory::addSelectable(backColors, indigo);
-    SelectableFactory::addSelectable(backColors, blue);
-    SelectableFactory::addSelectable(backColors, green);
-    SelectableFactory::addSelectable(backColors, orange);
-    SelectableFactory::addSelectable(backColors, red);
-    SelectableFactory::addSelectable(backColors, toCustomColors);
-    Color->setTopItem(backColors);
-    Color->setBottomItem(toCustomColors);
+    // PrimaryColor Screen Selectables
+    SelectableFactory::addSelectable(backPrimaryColor, violet);
+    SelectableFactory::addSelectable(backPrimaryColor, indigo);
+    SelectableFactory::addSelectable(backPrimaryColor, blue);
+    SelectableFactory::addSelectable(backPrimaryColor, green);
+    SelectableFactory::addSelectable(backPrimaryColor, orange);
+    SelectableFactory::addSelectable(backPrimaryColor, red);
+    SelectableFactory::addSelectable(backPrimaryColor, toCustomColors);
+    PrimaryColor->setTopItem(backPrimaryColor);
+    PrimaryColor->setBottomItem(toCustomColors);
 
     // Custom Color Selectables
     SelectableFactory::addSelectable(backCustomColors, setB);
