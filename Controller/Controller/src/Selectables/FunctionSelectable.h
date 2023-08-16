@@ -8,6 +8,16 @@
 #include "SelectableInterface.h"
 #include <Arduino.h>
 
+/*
+ * This Selectable is used for sending commands to the responder chip
+ * The command member should follow a standard pattern
+ * Current Patterns in use are:
+ *      - C...: Set Color
+ *      - K...: Custom Color
+ *      - MP..: Music Pattern
+ *      - SP..: Static Pattern
+*/
+
 class FunctionSelectable: public Selectable
 {
 public:
@@ -15,13 +25,13 @@ public:
 
     void execute() override;
 
-    const String &getCommand() const;
-
-    void setCommand(const char* command);
-
 private:
     String command;
 
+public:
+    // Getters & Setters
+    const String &getCommand() const;
+    void setCommand(const char* command);
 };
 
 

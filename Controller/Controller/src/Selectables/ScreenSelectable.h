@@ -19,7 +19,6 @@ typedef void (*callback_t)(Screen*);
 class ScreenSelectable: public Selectable
 {
 public:
-
     explicit ScreenSelectable(char*);
     ScreenSelectable(char*, Screen*, callback_t);
 
@@ -30,6 +29,7 @@ private:
     callback_t callback;
 
 public:
+    // Getters & Setters
     void setCallback(callback_t);
 
     void setNextScreen(Screen *s);
