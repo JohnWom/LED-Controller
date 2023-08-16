@@ -2,31 +2,38 @@
 // Created by johnw on 7/12/2023.
 //
 
-#ifndef PLATFORMIO_VERSION_SCREENSELECTABLE_H
-#define PLATFORMIO_VERSION_SCREENSELECTABLE_H
+#ifndef SCREENSELECTABLE_H
+#define SCREENSELECTABLE_H
 
 #include "SelectableInterface.h"
 #include "../Screen.h"
-#include "Operator.h"
+
+/*
+ * This Selectable is used for changing Screens.
+ * On execute, it uses a callback to change the screen
+*/
+
+// callback to set the new screen
+typedef void (*callback_t)(Screen*);
 
 class ScreenSelectable: public Selectable
 {
 public:
-    ScreenSelectable(String, Screen*, Operator*);
+
+    explicit ScreenSelectable(char*);
+    ScreenSelectable(char*, Screen*, callback_t);
 
     void execute() override;
 
-    Screen *getNextScreen() const;
-
-    void setNextScreen(Screen *s);
-
 private:
     Screen* nextScreen;
-    Operator* op;
-public:
-    Operator *getOp() const;
+    callback_t callback;
 
-    void setOp(Operator *op);
+public:
+    void setCallback(callback_t);
+
+    void setNextScreen(Screen *s);
+    Screen *getNextScreen() const;
 };
 
 

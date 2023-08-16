@@ -2,17 +2,23 @@
 // Created by johnw on 7/12/2023.
 //
 
-#ifndef PLATFORMIO_VERSION_NUMBERSELECTABLE_H
-#define PLATFORMIO_VERSION_NUMBERSELECTABLE_H
+#ifndef CustomRGBSELECTABLE_H
+#define CustomRGBSELECTABLE_H
 
 #include "SelectableInterface.h"
 #include <Arduino.h>
 
-class NumberSelectable: public Selectable
+/*
+ * Selectable to set a custom RGB Number
+ * It comes in 3 types, R, G, and B
+ * Builds custom code for each type
+*/
+
+class CustomRGBSelectable: public Selectable
 {
 public:
     enum types {R, G, B};
-    NumberSelectable(String, int, int, int);
+    CustomRGBSelectable(char*, int, int, int);
     // min, max, type
 
     void execute() override;
@@ -28,4 +34,4 @@ private:
 };
 
 
-#endif //PLATFORMIO_VERSION_NUMBERSELECTABLE_H
+#endif //CustomRGBSELECTABLE_H

@@ -4,19 +4,19 @@
 
 #include "FunctionSelectable.h"
 
-FunctionSelectable::FunctionSelectable(String t, String m):
-        Selectable(t, nullptr, nullptr){
-    command = m;
-}
+FunctionSelectable::FunctionSelectable(char* t, char* m):
+        Selectable(t),
+        command(m)
+        {}
 
 void FunctionSelectable::execute() {
-    Serial1.print(command);
+    Serial1.print(command); // Send command to responder chip
 }
 
 const String &FunctionSelectable::getCommand() const {
     return command;
 }
 
-void FunctionSelectable::setCommand(const String &command) {
+void FunctionSelectable::setCommand(const char* command) {
     FunctionSelectable::command = command;
 }

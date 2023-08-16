@@ -3,11 +3,17 @@
 //
 #include "SelectableInterface.h"
 
-Selectable::Selectable(String t, Selectable*p, Selectable*n) {
-    text = t;
-    next = n;
-    prev = p;
-}
+Selectable::Selectable(char *t):
+    text(t),
+    next(),
+    prev()
+{}
+
+Selectable::Selectable(char* t, Selectable*p, Selectable*n):
+    text(t),
+    next(n),
+    prev(p)
+    {}
 
 
 
@@ -23,14 +29,14 @@ Selectable* Selectable::getPrev() {
     return prev;
 }
 
-void Selectable::setText(String text) {
-    Selectable::text = text;
+void Selectable::setText(char* t) {
+    Selectable::text = t;
 }
 
-void Selectable::setNext(Selectable *next) {
-    Selectable::next = next;
+void Selectable::setNext(Selectable *n) {
+    Selectable::next = n;
 }
 
-void Selectable::setPrev(Selectable *prev) {
-    Selectable::prev = prev;
+void Selectable::setPrev(Selectable *p) {
+    Selectable::prev = p;
 }

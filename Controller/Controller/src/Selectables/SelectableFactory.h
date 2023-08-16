@@ -7,7 +7,7 @@
 
 #include "SelectableInterface.h"
 #include "ScreenSelectable.h"
-#include "NumberSelectable.h"
+#include "CustomRGBSelectable.h"
 #include "FunctionSelectable.h"
 #include <Arduino.h>
 

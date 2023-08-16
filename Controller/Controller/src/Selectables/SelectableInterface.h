@@ -7,29 +7,41 @@
 
 #include <Arduino.h>
 
+/*
+ * This is the base class for Selectable elements
+ * These elements from the lines of the GUI, and
+ * are joined in an acyclic doubly linked list
+*/
+
 class Selectable
 {
 public:
-    Selectable(String, Selectable*, Selectable*);
+    explicit Selectable(char*);
+    Selectable(char*, Selectable*, Selectable*);
+
     virtual void execute()=0;
 
     // Special Commands for in-selectable controls
-    // Enables joystick input -> Selectable
+    // Enables joystick input to control a Selectable
+    // does nothing by default, but can be implemented by choice
     virtual void rightScroll(){}
     virtual void leftScroll(){}
 
-    Selectable* getNext();
-    Selectable* getPrev();
-    String getText();
-    void setText(String text);
-    void setNext(Selectable *next);
-    void setPrev(Selectable *prev);
-
 protected:
-
     String text;
     Selectable* next;
     Selectable* prev;
+
+public:
+    // Getters & Setters
+    Selectable* getNext();
+    void setNext(Selectable *next);
+
+    Selectable* getPrev();
+    void setPrev(Selectable *prev);
+
+    String getText();
+    void setText(char* text);
 };
 
 #endif //SELECTABLEINTERFACE_H

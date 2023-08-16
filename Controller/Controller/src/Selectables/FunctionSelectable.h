@@ -11,13 +11,13 @@
 class FunctionSelectable: public Selectable
 {
 public:
-    FunctionSelectable(String, String);
+    FunctionSelectable(char*, char*);
 
     void execute() override;
 
     const String &getCommand() const;
 
-    void setCommand(const String &command);
+    void setCommand(const char* command);
 
 private:
     String command;
