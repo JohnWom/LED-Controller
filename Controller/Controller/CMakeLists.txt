@@ -30,4 +30,4 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-add_executable(Z_DUMMY_TARGET ${SRC_LIST} src/setup.h src/setup1.h)
+add_executable(Z_DUMMY_TARGET ${SRC_LIST} src/old_setup.h src/setup.h src/setup.cpp)

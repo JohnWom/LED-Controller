@@ -23,9 +23,8 @@ public:
 
     void addSelectable(Selectable &, Selectable &);
 
+    static String fillText(String);
 private:
-    String fillText(String);
-
     int numStatic;
     int numMusic;
 

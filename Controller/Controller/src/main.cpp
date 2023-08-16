@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "setup.h"
+#include "old_setup.h"
 
 byte cursor_symbol[8] {
         0b00000,
