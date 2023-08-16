@@ -2,30 +2,39 @@
 // Created by johnw on 7/12/2023.
 //
 
-#include "Operator.h"
+#include "ScreenManager.h"
 
-Operator::Operator(Screen *s) {
-    current_screen = s;
-    display = new DFRobot_RGBLCD1602(16, 2);
-    cursor_position = 0;
-}
+ScreenManager::ScreenManager():
+        currentScreen(),
+        display(new DFRobot_RGBLCD1602(16,2)),
+        cursorPosition(0)
+    {}
 
-void Operator::draw() {
+ScreenManager::ScreenManager(Screen *s):
+        currentScreen(s),
+        display(new DFRobot_RGBLCD1602(16,2)),
+        cursorPosition(0)
+        {}
+
+void ScreenManager::draw() {
+    // Prints Selectables onto LCD
     Serial.println("Drawing...");
 
     display->setCursor(1, 0);
-    display->print(current_screen->getTopItem()->getText());
+    display->print(currentScreen->getTopItem()->getText());
 
     display->setCursor(1, 1);
-    display->print(current_screen->getBottomItem()->getText());
+    display->print(currentScreen->getBottomItem()->getText());
     Serial.println("Drawing Done");
 }
 
-void Operator::draw_cursor() {
-    display->setCursor(0, cursor_position);
+void ScreenManager::draw_cursor() {
+    // Draws the Cursor
+    display->setCursor(0, cursorPosition);
     display->write((unsigned char)0);
+
     // Clear other cursor
-    if (cursor_position) {
+    if (cursorPosition) {
         display->setCursor(0, 0);
         display->print(" ");
     }
@@ -35,53 +44,54 @@ void Operator::draw_cursor() {
     }
 }
 
-void Operator::callback(Screen *s) {
-    current_screen = s;
+void ScreenManager::callback(Screen *s) {
+    // Callback for screen pointers
+    currentScreen = s;
 }
 
-void Operator::upScroll() {
-    if (cursor_position == 0) {
+void ScreenManager::upScroll() {
+    if (cursorPosition == 0) {
         // Roll Options
-        current_screen->scrollUp();
+        currentScreen->scrollUp();
         draw();
     }
     else {
-        cursor_position = 0;
+        cursorPosition = 0;
         draw_cursor();
         Serial.println("Cursor Drawn");
     }
 }
 
-void Operator::downScroll() {
-    if (cursor_position == 1) {
-        current_screen->scrollDown();
+void ScreenManager::downScroll() {
+    if (cursorPosition == 1) {
+        currentScreen->scrollDown();
         draw();
     }
     else {
-        cursor_position = 1;
+        cursorPosition = 1;
         draw_cursor();
         Serial.println("Cursor Drawn");
     }
 }
 
-void Operator::rightScroll() {
+void ScreenManager::rightScroll() {
     Selectable* current = getCurrent();
     current->rightScroll();
     draw();
 }
 
-void Operator::leftScroll() {
+void ScreenManager::leftScroll() {
     Selectable* current = getCurrent();
     current->leftScroll();
     draw();
 }
 
-void Operator::click() {
+void ScreenManager::click() {
     Selectable* current = getCurrent();
     current->execute();
 }
 
-void Operator::joystickRead() {
+void ScreenManager::joystickRead() {
     int yPosition = analogRead(VRy);
     int xPosition = analogRead(VRx);
     int SW_state = digitalRead(SW);
@@ -103,27 +113,33 @@ void Operator::joystickRead() {
     }
 
     // Define mapX
-    if (xPosition > 910) {
+    // Defined as else if so that only one direction is scrollable at a time
+    else if (xPosition > 910) {
         leftScroll();
-//        delay(10);
+    // delay(10);
     } else if (xPosition < 150) {
         rightScroll();
-//        delay(10);
+    // delay(10);
     }
 }
 
-Selectable* Operator::getCurrent() {
+Selectable* ScreenManager::getCurrent() {
+    // Helper Method for locating current Selectable
     Selectable* current;
     // Set current to item cursor is on
-    if (cursor_position == 0) {
-        current = current_screen->getTopItem();
+    if (cursorPosition == 0) {
+        current = currentScreen->getTopItem();
     } else {
-        current = current_screen->getBottomItem();
+        current = currentScreen->getBottomItem();
     }
 
     return current;
 }
 
-DFRobot_RGBLCD1602 *Operator::getDisplay() const {
+DFRobot_RGBLCD1602 *ScreenManager::getDisplay() const {
     return display;
+}
+
+void ScreenManager::setScreen(Screen *s) {
+    currentScreen = s;
 }

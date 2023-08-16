@@ -26,8 +26,8 @@ public:
 private:
     String fillText(String);
 
-    int num_static;
-    int num_music;
+    int numStatic;
+    int numMusic;
 
 };
 

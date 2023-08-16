@@ -4,10 +4,15 @@
 
 #include "Screen.h"
 
-Screen::Screen(Selectable *t, Selectable *b) {
-    topItem = t;
-    bottomItem = b;
-}
+Screen::Screen():
+    topItem(),
+    bottomItem()
+    {}
+
+Screen::Screen(Selectable *t, Selectable *b):
+    topItem(t),
+    bottomItem(b)
+    {}
 
 void Screen::scrollUp() {
     if (topItem->getPrev() != nullptr){
