@@ -4,18 +4,20 @@
 
 #include "ScreenSelectable.h"
 
-ScreenSelectable::ScreenSelectable(char *t):
-        Selectable(t)
+ScreenSelectable::ScreenSelectable(char *t, ScreenManager &sm):
+        Selectable(t),
+        nextScreen(),
+        screenManager(sm)
 {}
 
-ScreenSelectable::ScreenSelectable(char* t, Screen* s, callback_t c):
+ScreenSelectable::ScreenSelectable(char* t, Screen* s, ScreenManager &sm):
         Selectable(t),
         nextScreen(s),
-        callback(c)
+        screenManager(sm)
         {}
 
 void ScreenSelectable::execute() {
-    callback(nextScreen);
+    screenManager.callback(nextScreen);
 }
 
 Screen *ScreenSelectable::getNextScreen() const {
@@ -25,8 +27,3 @@ Screen *ScreenSelectable::getNextScreen() const {
 void ScreenSelectable::setNextScreen(Screen *s) {
     nextScreen = s;
 }
-
-void ScreenSelectable::setCallback(callback_t c) {
-    callback = c;
-}
-

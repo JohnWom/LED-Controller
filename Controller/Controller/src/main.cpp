@@ -1,6 +1,7 @@
 #include <Arduino.h>
-#include "old_setup.h"
+#include "setup.h"
 
+// Cursor Symbol for LCD
 byte cursor_symbol[8] {
         0b00000,
         0b01000,
@@ -11,6 +12,8 @@ byte cursor_symbol[8] {
         0b00100,
         0b01000
 };
+
+ScreenManager *SM;
 
 void setup() {
     Serial.begin(115200);
@@ -24,24 +27,25 @@ void setup() {
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, HIGH);
 
+    Serial.println("Building Screens...");
+    SM = setupScreens::main();
+    Serial.println("Screens Built");
+
     Serial.println("Starting LCD...");
-    DFRobot_RGBLCD1602* display = Op->getDisplay();
+    DFRobot_RGBLCD1602* display = SM->getDisplay();
     display->init();
     display->setBacklight(true);
     display->display();
     display->customSymbol(0, cursor_symbol);
     display->print("Welcome to LED");
-    delay(2000);
 
-    Serial.println("Linking Selectables...");
-    connect_selectables();
 
     Serial.println("Starting first Screen...");
-    Op->draw();
-    Op->draw_cursor();
+    SM->draw();
+    SM->draw_cursor();
     Serial.println("Finished Boot Up");
 }
 
 void loop() {
-    Op->joystickRead();
+    SM->joystickRead();
 }

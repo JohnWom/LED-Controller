@@ -7,31 +7,28 @@
 
 #include "SelectableInterface.h"
 #include "../Screen.h"
-
+#include "../ScreenManager.h"
 /*
  * This Selectable is used for changing Screens.
  * On execute, it uses a callback to change the screen
 */
 
-// callback to set the new screen
-typedef void (*callback_t)(Screen*);
+
 
 class ScreenSelectable: public Selectable
 {
 public:
-    explicit ScreenSelectable(char*);
-    ScreenSelectable(char*, Screen*, callback_t);
+    explicit ScreenSelectable(char*, ScreenManager&);
+    ScreenSelectable(char*, Screen*, ScreenManager&);
 
     void execute() override;
 
 private:
     Screen* nextScreen;
-    callback_t callback;
+    ScreenManager &screenManager;
 
 public:
     // Getters & Setters
-    void setCallback(callback_t);
-
     void setNextScreen(Screen *s);
     Screen *getNextScreen() const;
 };

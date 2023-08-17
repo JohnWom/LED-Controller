@@ -4,12 +4,13 @@
 
 #include "CustomRGBSelectable.h"
 
-CustomRGBSelectable::CustomRGBSelectable(char* t, int min, int max, int tp):
+CustomRGBSelectable::CustomRGBSelectable(char* t, int min, int max, int tp, int c):
     Selectable(t),
     val(max / 2),
     minV(min),
     maxV(max),
-    type(tp)
+    type(tp),
+    cOrder(c)
     {
     // functions can't be run outside of setup & loop, so refresh is just copied
     // this builds the shown text, placing the value at the end
@@ -20,6 +21,7 @@ CustomRGBSelectable::CustomRGBSelectable(char* t, int min, int max, int tp):
 
 void CustomRGBSelectable::execute() {
     String msg = "K";       // C is taken by regular colors
+    msg += String(cOrder);  // Add Color Order Number (Primary, Secondary, Tertiary, etc...)
     String stub = "---";    // This is the blank that replaces the other RGB values
     if (type == R){
         msg += String(val);

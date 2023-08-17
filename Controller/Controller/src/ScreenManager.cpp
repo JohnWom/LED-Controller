@@ -102,7 +102,7 @@ void ScreenManager::joystickRead() {
         draw();
     }
     //Define mapY
-    if (yPosition > 910) {
+    if (yPosition > 930) {
         upScroll();
         Serial.println("Scrolled Up");
         delay(200);
