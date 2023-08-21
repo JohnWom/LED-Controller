@@ -17,76 +17,76 @@ Command_t SerialReader::getCommand() {
 
         // make the change
         if (code.charAt(0) == 'C')
-            processColor(code, &command);
+            processColor(code, command);
         else if (code.charAt(0) == 'K')
-            processCustomColor(code, &command);
+            processCustomColor(code, command);
         else if (code.charAt(0) == 'M')
-            processMusic(code, &command);
+            processMusic(code, command);
         else if (code.charAt(0) == 'S')
-            processStatic(code, &command);
+            processStatic(code, command);
         else
-            noCommand(&command);
-
+            noCommand(command);
     }
     else {
-        noCommand(&command);
+        noCommand(command);
     }
-
     return command;
 }
 
-void SerialReader::processColor(const String& code, Command_t *command) {
-    command->type = Command::COLOR;
+void SerialReader::processColor(const String& code, Command &command) {
+    command.type = Command::COLOR;
+    command.value = code.substring(1,1).toInt();    // Set Primary, Secondary, or Tertiary
 
     // decode code into RGB values
-    String red = code.substring(1,4);
+    String red = code.substring(2,5);
 
-    String green = code.substring(4,7);
+    String green = code.substring(5,8);
 
-    String blue = code.substring(7,10);
+    String blue = code.substring(8,11);
 
-    command->r = static_cast<unsigned short>(red.toInt());
-    command->g = static_cast<unsigned short>(green.toInt());
-    command->b = static_cast<unsigned short>(blue.toInt());
+    command.r = static_cast<unsigned short>(red.toInt());
+    command.g = static_cast<unsigned short>(green.toInt());
+    command.b = static_cast<unsigned short>(blue.toInt());
 }
 
-void SerialReader::processCustomColor(const String &code, Command *command) {
-    command->type = Command::COLOR;
+void SerialReader::processCustomColor(const String &code, Command &command) {
+    command.type = Command::COLOR;
+    command.value = code.substring(1,1).toInt(); // Set Primary, Secondary, or Tertiary
 
-    String red = code.substring(1,4);
+    String red = code.substring(2,5);
 
-    String green = code.substring(4,7);
+    String green = code.substring(5,8);
 
-    String blue = code.substring(7,10);
+    String blue = code.substring(8,11);
 
     if (!red.equals("---")) {
-        command->r = static_cast<unsigned short>(red.toInt());
-        command->g = 999;
-        command->b = 999;
+        command.r = static_cast<unsigned short>(red.toInt());
+        command.g = 999;
+        command.b = 999;
     }
     else if (!green.equals("---")) {
-        command->g = static_cast<unsigned short>(green.toInt());
-        command->r = 999;
-        command->b = 999;
+        command.g = static_cast<unsigned short>(green.toInt());
+        command.r = 999;
+        command.b = 999;
     }
     else if (!blue.equals("---")) {
-        command->b = static_cast<unsigned short>(blue.toInt());
-        command->r = 999;
-        command->g = 999;
+        command.b = static_cast<unsigned short>(blue.toInt());
+        command.r = 999;
+        command.g = 999;
     }
 }
 
-void SerialReader::processMusic(const String& code, Command_t *command) {
-    command->type = Command::MUSIC_P;
-    command->value = code.substring(2,10).toInt();
+void SerialReader::processMusic(const String& code, Command &command) {
+    command.type = Command::MUSIC_P;
+    command.value = code.substring(2,10).toInt();
 }
 
-void SerialReader::processStatic(const String& code, Command_t *command) {
-    command->type = Command::STATIC_P;
-    command->value = code.substring(2,10).toInt();
+void SerialReader::processStatic(const String& code, Command &command) {
+    command.type = Command::STATIC_P;
+    command.value = code.substring(2,10).toInt();
 }
 
-void SerialReader::noCommand(Command *command) {
-    command->type = Command::NONE;
-    command->value = Command::NONE;
+void SerialReader::noCommand(Command &command) {
+    command.type = Command::NONE;
+    command.value = Command::NONE;
 }

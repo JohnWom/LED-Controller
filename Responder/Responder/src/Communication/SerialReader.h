@@ -7,7 +7,13 @@
 
 #include "CommunicatorInterface.h"
 #include <Arduino.h>
-#include <string.h>
+
+/*
+ *  This Class reads from the Serial Port, interprets the command,
+ *  and returns it formatted as a Command Struct. The main entry point
+ *  is getCommand, which then calls different private methods depending
+ *  on the type of command encountered.
+*/
 
 class SerialReader: public Communicator
 {
@@ -15,11 +21,11 @@ public:
     Command getCommand();
 
 private:
-    void processColor(const String& code, Command* command);
-    void processStatic(const String& code, Command* command);
-    void processMusic(const String& code, Command* command);
-    void processCustomColor(const String& code, Command* command);
-    void noCommand(Command* command);
+    void processColor(const String& code, Command &command);
+    void processStatic(const String& code, Command &command);
+    void processMusic(const String& code, Command &command);
+    void processCustomColor(const String& code, Command &command);
+    void noCommand(Command& command);
 };
 
 

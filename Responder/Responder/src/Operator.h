@@ -11,6 +11,7 @@
 
 class Operator
 {
+    enum rgb {RED, GREEN, BLUE};
 public:
     Operator(Communicator*, CRGB*, int);
 
@@ -28,11 +29,9 @@ private:
     Communicator* communicator;
     Pattern* pattern;
     CRGB* leds;
-    int num_leds;
+    int numLeds   ;
 
-    unsigned short r;  // allows color to persist through patterns
-    unsigned short g;
-    unsigned short b;
+    unsigned short colors[3][3];    // Array of Primary, Secondary, and Tertiary Colors
 };
 
 
