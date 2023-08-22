@@ -14,7 +14,7 @@ Party2::Party2(CRGB* leds, int num_leds, unsigned short n_r, unsigned short n_g,
 }
 
 void Party2::firstStep() {
-    fill_solid(leds, num_leds, CRGB::Black);
+    fill_solid(leds, numLeds, CRGB::Black);
     FastLED.show();
     count = 0;
 }
@@ -24,7 +24,7 @@ void Party2::nextStep() {
         case 1:
             p2->setColors(r, g, b);
             p2->nextStep();
-            if (count > (int) (log10(num_leds/2) / log10(2) )) {
+            if (count > (int) (log10(numLeds / 2) / log10(2) )) {
                 state++;
                 p2->firstStep();
                 firstStep();

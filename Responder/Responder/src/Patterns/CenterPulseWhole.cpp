@@ -15,7 +15,7 @@ CenterPulseWhole::CenterPulseWhole(CRGB *l, int num_leds, unsigned short r, unsi
 
 void CenterPulseWhole::firstStep() {
     // Clear the string
-    fill_solid(leds, num_leds, CRGB::Black);
+    fill_solid(leds, numLeds, CRGB::Black);
     FastLED.show();
     delay(300);
 
@@ -27,7 +27,7 @@ void CenterPulseWhole::nextStep() {
     // Move inward graudally faster
     for (int i=prev; i<=state and i < max_state; i++) {
         leds[i].setRGB(r, g, b);
-        leds[num_leds-i-1].setRGB(r, g, b);
+        leds[numLeds - i - 1].setRGB(r, g, b);
     }
     FastLED.show();
     delay(300);

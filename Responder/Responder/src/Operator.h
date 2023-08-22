@@ -31,7 +31,7 @@ private:
     CRGB* leds;
     int numLeds   ;
 
-    unsigned short colors[3][3];    // Array of Primary, Secondary, and Tertiary Colors
+    uint8_t colors[3][3];    // Array of Primary, Secondary, and Tertiary Colors
 };
 
 

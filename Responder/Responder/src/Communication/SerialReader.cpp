@@ -44,9 +44,9 @@ void SerialReader::processColor(const String& code, Command &command) {
 
     String blue = code.substring(8,11);
 
-    command.r = static_cast<unsigned short>(red.toInt());
-    command.g = static_cast<unsigned short>(green.toInt());
-    command.b = static_cast<unsigned short>(blue.toInt());
+    command.r = dynamic_cast<uint8_t>(red.toInt());
+    command.g = dynamic_cast<uint8_t>(green.toInt());
+    command.b = dynamic_cast<uint8_t>(blue.toInt());
 }
 
 void SerialReader::processCustomColor(const String &code, Command &command) {
@@ -60,17 +60,17 @@ void SerialReader::processCustomColor(const String &code, Command &command) {
     String blue = code.substring(8,11);
 
     if (!red.equals("---")) {
-        command.r = static_cast<unsigned short>(red.toInt());
+        command.r = dynamic_cast<uint8_t>(red.toInt());
         command.g = 999;
         command.b = 999;
     }
     else if (!green.equals("---")) {
-        command.g = static_cast<unsigned short>(green.toInt());
+        command.g = dynamic_cast<uint8_t>(green.toInt());
         command.r = 999;
         command.b = 999;
     }
     else if (!blue.equals("---")) {
-        command.b = static_cast<unsigned short>(blue.toInt());
+        command.b = dynamic_cast<uint8_t>(blue.toInt());
         command.r = 999;
         command.g = 999;
     }

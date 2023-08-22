@@ -6,7 +6,7 @@
 
 CenterPulseSplit::CenterPulseSplit(CRGB *np, int nleds, unsigned short n_r, unsigned short  n_g, unsigned short  n_b, int i):
         Pattern(np, nleds, n_r, n_g, n_b) {
-    num_groups = num_leds / 40;
+    num_groups = numLeds / 40;
     max_state = 20;
     invert = i;
     state = 1;
@@ -15,7 +15,7 @@ CenterPulseSplit::CenterPulseSplit(CRGB *np, int nleds, unsigned short n_r, unsi
 
 void CenterPulseSplit::firstStep() {
     // Clear the string
-    fill_solid(leds, num_leds, CRGB::Black);
+    fill_solid(leds, numLeds, CRGB::Black);
     FastLED.show();
     delay(300);
 

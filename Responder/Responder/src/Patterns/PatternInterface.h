@@ -7,40 +7,34 @@
 
 // Including FastLED this way lets IntelliSense read it
 #include "../../.pio/libdeps/pico/FastLED/src/FastLED.h"
+#include <Arduino.h>
 
 class Pattern
 {
 public:
-    Pattern(CRGB* np, int nleds, unsigned short n_r, unsigned short  n_g, unsigned short  n_b) {
-        r = n_r;
-        g = n_g;
-        b = n_b;
-        leds = np;
-        num_leds = nleds;
-    }
-    virtual void firstStep() = 0;
-    virtual void nextStep() = 0;
-    void setColors(unsigned short n_r, unsigned short  n_g, unsigned short  n_b) {
-        if (r <= 255)
-            r = n_r;
-        if (g <= 255)
-            g = n_g;
-        if (b <= 255)
-            b = n_b;
+    enum ranking {PRIMARY, SECONDARY, TERTIARY};
+
+    Pattern(CRGB* np, int nleds, uint8_t **c):
+            colors(c),
+            leds(np),
+            numLeds(nleds)
+            {}
+
+    virtual void firstStep() {
+        // Default First Step is to clear the LEDs
+        FastLED.clear();
+        FastLED.show();
     }
 
-    virtual ~Pattern()= default;
-    void invertColors() {
-        r = 255-r;
-        g = 255-g;
-        b = 255-b;
-    }
+    virtual void nextStep() = 0;
+
+
+    virtual ~Pattern() = default;
+
 protected:
-    unsigned short r;
-    unsigned short g;
-    unsigned short b;
+    uint8_t **colors;
     CRGB* leds;
-    int num_leds;
+    int numLeds;
 };
 
 #endif  //PATTERN_INTERFACE_H

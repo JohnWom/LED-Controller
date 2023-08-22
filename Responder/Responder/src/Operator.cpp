@@ -6,10 +6,11 @@
 
 Operator::Operator(Communicator* c, CRGB* l, int nleds):
         communicator(c),
-        pattern(new SolidColor(leds, numLeds, 0, 0, 0)),
+        colors(),
+        pattern(new SolidColor(leds, numLeds, colors)),
         leds(l),
-        numLeds(nleds),
-        colors()
+        numLeds(nleds)
+
 {
     // default setting is SolidColor and Off
 }
@@ -33,7 +34,6 @@ void Operator::main() {
                 colors[command.value][BLUE] = command.b;
 
             // Change Color in the Pattern
-            pattern->setColors(r, g, b);
             Serial.println("Color Changed");
             break;
 
@@ -65,7 +65,7 @@ Pattern* Operator::processStatic(int code) {
     switch (code) {
         case 0:
             Serial.println("Solid Color Selected");
-            return new SolidColor(leds, numLeds, r, g, b);
+            return new SolidColor(leds, numLeds, colors);
         case 1:
             Serial.println("Party 1 Selected");
             return new Party1(leds, numLeds, r, g, b);

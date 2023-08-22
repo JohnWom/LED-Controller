@@ -11,14 +11,13 @@
 class ThreeColor: public Pattern
 {
 public:
-    ThreeColor(CRGB *np, int nleds, unsigned short n_r, unsigned short  n_g, unsigned short  n_b);
+    ThreeColor(CRGB *np, int nleds, uint8_t **c);
 
-    void firstStep();
-    void nextStep();
+    void nextStep() override;
 
 private:
-    int num_groups;
-    int group_size;
+    int numGroups;
+    int groupSize;
     int state;
 };
 

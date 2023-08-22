@@ -50,7 +50,7 @@ void Ocean::nextStep() {
 void Ocean::calm() {
     int color[3] = {colors[DEEP][0],colors[DEEP][1],colors[DEEP][2]};
     // fill with basic blue
-    for (int i=0; i<num_leds; i++) {
+    for (int i=0; i < numLeds; i++) {
         leds[i].setRGB(color[0],color[1],color[2] + random(-20, 20));
     }
 

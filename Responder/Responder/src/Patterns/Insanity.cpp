@@ -9,12 +9,12 @@ Insanity::Insanity(CRGB* l, int leds): Pattern(l, leds, 0, 0, 0) {
 }
 
 void Insanity::firstStep() {
-    fill_solid(leds, num_leds, CRGB::Black);
+    fill_solid(leds, numLeds, CRGB::Black);
     FastLED.show();
 }
 
 void Insanity::nextStep() {
-    for (int i=0; i<num_leds; i++)
+    for (int i=0; i < numLeds; i++)
         leds[i].setRGB(random(255), random(255), random(255));
     FastLED.show();
     delay(300);

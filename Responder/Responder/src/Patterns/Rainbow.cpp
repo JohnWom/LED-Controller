@@ -9,14 +9,14 @@ Rainbow::Rainbow(CRGB *np, int nleds):
 }
 
 void Rainbow::firstStep() {
-    fill_solid(leds, num_leds, CRGB::Black);
+    fill_solid(leds, numLeds, CRGB::Black);
     FastLED.show();
     delay(300);
 }
 
 void Rainbow::nextStep() {
     uint8_t startHue = beat8(10,255);
-    fill_rainbow(leds, num_leds, startHue);
+    fill_rainbow(leds, numLeds, startHue);
     FastLED.show();
     delay(300);
 
