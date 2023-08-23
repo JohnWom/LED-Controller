@@ -4,18 +4,14 @@
 
 #include "Insanity.h"
 
-Insanity::Insanity(CRGB* l, int leds): Pattern(l, leds, 0, 0, 0) {
+Insanity::Insanity(CRGB* l, int leds):
+    Pattern(l, leds)
+    {}
 
-}
-
-void Insanity::firstStep() {
-    fill_solid(leds, numLeds, CRGB::Black);
-    FastLED.show();
-}
 
 void Insanity::nextStep() {
     for (int i=0; i < numLeds; i++)
-        leds[i].setRGB(random(255), random(255), random(255));
+        leds[i].setRGB(random8(), random8(), random8());
     FastLED.show();
-    delay(300);
+    delay(333);
 }

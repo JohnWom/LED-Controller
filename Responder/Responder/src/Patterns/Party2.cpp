@@ -5,37 +5,34 @@
 #include "Party2.h"
 
 
-Party2::Party2(CRGB* leds, int num_leds, unsigned short n_r, unsigned short n_g, unsigned short n_b):
-        Pattern(leds, num_leds, n_r, n_g, n_b){
-    p2 = new CenterPulseWhole(leds, num_leds, r, g, b);
-    p3 = new CenterPulseSplit(leds, num_leds, r, g, b, 1);
-    state = 1;
-    count = 0;
-}
+Party2::Party2(CRGB* leds, int num_leds, uint8_t **c):
+        Pattern(leds, num_leds, c),
+        p1(new CenterPulseWhole(leds, num_leds, c)),
+        p2(new CenterPulseSplit(leds, num_leds, c)),
+        state(0),
+        count(0)
+        {}
 
 void Party2::firstStep() {
-    fill_solid(leds, numLeds, CRGB::Black);
-    FastLED.show();
+    Pattern::firstStep();
     count = 0;
 }
 
 void Party2::nextStep() {
     switch (state) {
         case 1:
-            p2->setColors(r, g, b);
-            p2->nextStep();
+            p1->nextStep();
             if (count > (int) (log10(numLeds / 2) / log10(2) )) {
                 state++;
-                p2->firstStep();
+                p1->firstStep();
                 firstStep();
             }
             break;
         case 2:
-            p3->setColors(r, g, b);
-            p3->nextStep();
+            p2->nextStep();
             if (count > 17) {
                 state = 1;
-                p3->firstStep();
+                p2->firstStep();
                 firstStep();
             }
             break;

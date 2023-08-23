@@ -7,12 +7,16 @@
 
 #include "PatternInterface.h"
 
+/*
+ *  This pattern simply sets every LED to a random RGB value
+*/
+
+
 class Insanity: public Pattern
 {
 public:
     Insanity(CRGB*, int);
 
-    void firstStep() override;
     void nextStep() override;
 };
 

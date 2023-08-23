@@ -30,4 +30,5 @@ void ThreeColor::nextStep() {
     }
     FastLED.show();
     state = (state + 1) % numLeds;
+    delay(333);
 }

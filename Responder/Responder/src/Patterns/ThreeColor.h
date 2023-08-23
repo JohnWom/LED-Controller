@@ -8,6 +8,12 @@
 #include "PatternInterface.h"
 #include "../../.pio/libdeps/pico/FastLED/src/pixeltypes.h"
 
+/*
+ * This pattern splits the LED strip into groups of 10, and rotates the
+ * Primary, Secondary, and Tertiary colors through the groups
+*/
+
+
 class ThreeColor: public Pattern
 {
 public:

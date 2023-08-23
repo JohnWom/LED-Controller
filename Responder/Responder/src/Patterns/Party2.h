@@ -10,17 +10,24 @@
 #include "CenterPulseWhole.h"
 #include "ThreeColor.h"
 
+/*
+ * This pattern combines other subpatterns
+ * This pattern combines:
+ *      CenterPulseWhole
+ *      CenterPulseSplit
+*/
+
 class Party2: public Pattern
 {
 public:
-    Party2(CRGB*, int, unsigned short, unsigned short, unsigned short);
+    Party2(CRGB*, int, uint8_t **);
 
     void firstStep() override;
     void nextStep() override;
-    void setColors(unsigned short, unsigned short, unsigned short);
+
 private:
+    Pattern* p1;
     Pattern* p2;
-    Pattern* p3;
 
     int state;
     int count;

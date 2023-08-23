@@ -12,8 +12,7 @@ class Rainbow: public Pattern
 public:
     Rainbow(CRGB* np, int nleds);
 
-    void firstStep();
-    void nextStep();
+    void nextStep() override;
 
 private:
 };

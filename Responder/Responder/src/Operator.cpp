@@ -6,13 +6,17 @@
 
 Operator::Operator(Communicator* c, CRGB* l, int nleds):
         communicator(c),
-        colors(),
+        colors(new vector<CRGB>()),
         pattern(new SolidColor(leds, numLeds, colors)),
         leds(l),
         numLeds(nleds)
 
 {
-    // default setting is SolidColor and Off
+    // default pattern is Solid Color
+
+    colors->push(CRGB(100, 0, 0));   // Default Primary Color is Red
+    colors->push(CRGB(0, 100, 0));   // Default Secondary Color is Green
+    colors->push(CRGB(0, 0, 100));   // Default Tertiary Color is Blue
 }
 
 Operator::~Operator() {
@@ -26,14 +30,7 @@ void Operator::main() {
     switch (command.type) {
         case Command::COLOR:
             // Change Color in Operator
-            if (command.r <= 255)
-                colors[command.value][RED] = command.r;
-            if (command.g <= 255)
-                colors[command.value][GREEN] = command.g;
-            if (command.b <= 255)
-                colors[command.value][BLUE] = command.b;
-
-            // Change Color in the Pattern
+            colors->push(CRGB(command.r, command.g, command.b), command.value);
             Serial.println("Color Changed");
             break;
 
@@ -55,7 +52,7 @@ void Operator::main() {
 }
 
 void Operator::startPattern(Pattern* newPattern) {
-    delete pattern;
+    delete pattern;       // Reset the Pattern
     pattern = newPattern;
     pattern->firstStep();
 
@@ -68,19 +65,19 @@ Pattern* Operator::processStatic(int code) {
             return new SolidColor(leds, numLeds, colors);
         case 1:
             Serial.println("Party 1 Selected");
-            return new Party1(leds, numLeds, r, g, b);
+            return new Party1(leds, numLeds, colors);
         case 2:
             Serial.println("Party 2 Selected");
-            return new Party2(leds, numLeds, r, g, b);
+            return new Party2(leds, numLeds, colors);
         case 3:
             Serial.println("Party 3 Selected");
-            return new CenterPulseSplit(leds, numLeds, r, g, b, 1);
+            return new CenterPulseSplit(leds, numLeds, colors);
         case 4:
             Serial.println("Rainbow Selected");
             return new Rainbow(leds, numLeds);
         case 5:
             Serial.println("Three Color Selected");
-            return new ThreeColor(leds, numLeds, r, g, b);
+            return new ThreeColor(leds, numLeds, colors);
         case 6:
             Serial.println("Ocean Selected");
             return new Ocean(leds, numLeds);
@@ -89,13 +86,13 @@ Pattern* Operator::processStatic(int code) {
             return new Insanity(leds, numLeds);
         default:
             Serial.println("Default Selected");
-            return new SolidColor(leds, numLeds, r, g, b);
+            return new SolidColor(leds, numLeds, colors);
     }
 }
 
 Pattern* Operator::processMusic(int code) {
     switch (code) {
         default:
-            return new SolidColor(leds, numLeds, r, g, b);
+            return new SolidColor(leds, numLeds, colors);
     }
 }

@@ -7,6 +7,11 @@
 
 #include "PatternInterface.h"
 
+/*
+ * This pattern just lights the whole string to the Primary Color
+*/
+
+
 class SolidColor: public Pattern{
 public:
     SolidColor(CRGB* np, int nleds, uint8_t **c);

@@ -9,16 +9,32 @@
 #include "../../.pio/libdeps/pico/FastLED/src/FastLED.h"
 #include <Arduino.h>
 
+#include "../Tools/vector.h"
+#include "../Tools/SharedPointer.h"
+
+/*
+ * Base Class for Patterns
+ * Defines firstStep as clearing the LED's
+*/
+
+
 class Pattern
 {
 public:
+    typedef SharedPointer<vector<CRGB>> colors_t;
     enum ranking {PRIMARY, SECONDARY, TERTIARY};
 
-    Pattern(CRGB* np, int nleds, uint8_t **c):
-            colors(c),
-            leds(np),
-            numLeds(nleds)
-            {}
+    Pattern(CRGB *np, int nleds):
+        colors(new vector<CRGB>()),
+        leds(np),
+        numLeds(nleds)
+        {}
+
+    Pattern(CRGB* np, int nleds, colors_t c):
+        colors(c),
+        leds(np),
+        numLeds(nleds)
+        {}
 
     virtual void firstStep() {
         // Default First Step is to clear the LEDs
@@ -28,11 +44,10 @@ public:
 
     virtual void nextStep() = 0;
 
-
     virtual ~Pattern() = default;
 
 protected:
-    uint8_t **colors;
+    colors_t colors;
     CRGB* leds;
     int numLeds;
 };

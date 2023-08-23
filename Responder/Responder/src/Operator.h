@@ -8,6 +8,8 @@
 #include "patterns.h"
 #include "Communication/Command.h"
 #include "Communication/SerialReader.h"
+#include "Tools/vector.h"
+#include "Tools/SharedPointer.h"
 
 class Operator
 {
@@ -29,9 +31,9 @@ private:
     Communicator* communicator;
     Pattern* pattern;
     CRGB* leds;
-    int numLeds   ;
+    int numLeds;
 
-    uint8_t colors[3][3];    // Array of Primary, Secondary, and Tertiary Colors
+    SharedPointer<vector<CRGB>> colors;    // Vector of color arrays
 };
 
 
