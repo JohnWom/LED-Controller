@@ -17,7 +17,7 @@
 class CenterPulseSplit: public Pattern
 {
 public:
-    CenterPulseSplit(CRGB *np, int nleds, uint8_t **c);
+    CenterPulseSplit(CRGB *np, int nleds, colors_t  c);
 
     void firstStep() override;
     void nextStep() override;

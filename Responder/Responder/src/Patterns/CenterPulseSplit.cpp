@@ -4,7 +4,7 @@
 
 #include "CenterPulseSplit.h"
 
-CenterPulseSplit::CenterPulseSplit(CRGB *np, int nleds, uint8_t **c):
+CenterPulseSplit::CenterPulseSplit(CRGB *np, int nleds, colors_t c):
         Pattern(np, nleds, c),
         num_groups(nleds / 40),
         state(1),
@@ -30,8 +30,8 @@ void CenterPulseSplit::nextStep() {
             type = SECONDARY;
 
         for (int i=prev_state; i < state and i <= max_state; i++){
-            leds[(40*s) + i] = CRGB(colors[type][0], colors[type][1], colors[type][2]);
-            leds[(40*s) + 40 - i] = CRGB(colors[type][0], colors[type][1], colors[type][2]);
+            leds[(40*s) + i] = colors->get(type);
+            leds[(40*s) + 40 - i] = colors->get(type);
         }
     }
     FastLED.show();

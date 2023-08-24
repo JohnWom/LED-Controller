@@ -5,7 +5,7 @@
 #include "Party2.h"
 
 
-Party2::Party2(CRGB* leds, int num_leds, uint8_t **c):
+Party2::Party2(CRGB* leds, int num_leds, colors_t c):
         Pattern(leds, num_leds, c),
         p1(new CenterPulseWhole(leds, num_leds, c)),
         p2(new CenterPulseSplit(leds, num_leds, c)),

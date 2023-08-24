@@ -17,7 +17,7 @@
 class ThreeColor: public Pattern
 {
 public:
-    ThreeColor(CRGB *np, int nleds, uint8_t **c);
+    ThreeColor(CRGB *np, int nleds, colors_t c);
 
     void nextStep() override;
 

@@ -38,41 +38,31 @@ void SerialReader::processColor(const String& code, Command &command) {
     command.value = code.substring(1,1).toInt();    // Set Primary, Secondary, or Tertiary
 
     // decode code into RGB values
-    String red = code.substring(2,5);
+    int red     = code.substring(2,5).toInt() % 255;
+    int green   = code.substring(5,8).toInt() % 255;
+    int blue    = code.substring(8,11).toInt() % 255;
 
-    String green = code.substring(5,8);
-
-    String blue = code.substring(8,11);
-
-    command.r = dynamic_cast<uint8_t>(red.toInt());
-    command.g = dynamic_cast<uint8_t>(green.toInt());
-    command.b = dynamic_cast<uint8_t>(blue.toInt());
+    command.r = (uint8_t) (red);
+    command.g = (uint8_t) (green);
+    command.b = (uint8_t) (blue);
 }
 
 void SerialReader::processCustomColor(const String &code, Command &command) {
     command.type = Command::COLOR;
     command.value = code.substring(1,1).toInt(); // Set Primary, Secondary, or Tertiary
 
-    String red = code.substring(2,5);
-
-    String green = code.substring(5,8);
-
-    String blue = code.substring(8,11);
+    String red     = code.substring(2,5);
+    String green   = code.substring(5,8);
+    String blue    = code.substring(8,11);
 
     if (!red.equals("---")) {
-        command.r = dynamic_cast<uint8_t>(red.toInt());
-        command.g = 999;
-        command.b = 999;
+        command.r = (uint8_t) (red.toInt());
     }
     else if (!green.equals("---")) {
-        command.g = dynamic_cast<uint8_t>(green.toInt());
-        command.r = 999;
-        command.b = 999;
+        command.g = (uint8_t) (green.toInt());
     }
     else if (!blue.equals("---")) {
-        command.b = dynamic_cast<uint8_t>(blue.toInt());
-        command.r = 999;
-        command.g = 999;
+        command.b = (uint8_t) (blue.toInt());
     }
 }
 

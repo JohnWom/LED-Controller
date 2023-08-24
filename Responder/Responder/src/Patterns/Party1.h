@@ -21,11 +21,11 @@
 class Party1: public Pattern
 {
 public:
-    Party1(CRGB*, int, uint8_t **);
+    Party1(CRGB*, int, colors_t);
 
     void firstStep() override;
     void nextStep() override;
-    void setColors(unsigned short, unsigned short, unsigned short);
+
 private:
     Pattern* p1;
     Pattern* p2;

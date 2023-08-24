@@ -26,7 +26,7 @@ public:
     unsigned int get_count() const;
 
     SharedPointer(SharedPointer && dyingObj);            // Move Constructor
-    SharedPointer& operator=(SharedPointer && dyingObj); // Move assignment
+    SharedPointer& operator=(SharedPointer && dyingObj); // M ove assignment
 
     ~SharedPointer();
 

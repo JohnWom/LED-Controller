@@ -14,7 +14,7 @@
 
 class SolidColor: public Pattern{
 public:
-    SolidColor(CRGB* np, int nleds, uint8_t **c);
+    SolidColor(CRGB* np, int nleds, colors_t c);
 
     void nextStep() override;
 };

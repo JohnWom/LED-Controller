@@ -20,7 +20,7 @@
 class Party2: public Pattern
 {
 public:
-    Party2(CRGB*, int, uint8_t **);
+    Party2(CRGB*, int, colors_t);
 
     void firstStep() override;
     void nextStep() override;

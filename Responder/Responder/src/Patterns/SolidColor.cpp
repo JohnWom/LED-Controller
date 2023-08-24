@@ -4,19 +4,12 @@
 
 #include "SolidColor.h"
 
-SolidColor::SolidColor(CRGB* np, int nleds, uint8_t **c):
+SolidColor::SolidColor(CRGB* np, int nleds, colors_t c):
     Pattern(np, nleds, c)
     {}
 
 
 void SolidColor::nextStep() {
-    fill_solid(
-leds,
-numLeds,
-    CRGB(
-        colors[PRIMARY][0],
-        colors[PRIMARY][1],
-        colors[PRIMARY][2]
-    ));
+    fill_solid(leds, numLeds, colors->get(PRIMARY));
     FastLED.show();
 }

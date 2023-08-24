@@ -29,8 +29,7 @@ void Operator::main() {
 
     switch (command.type) {
         case Command::COLOR:
-            // Change Color in Operator
-            colors->push(CRGB(command.r, command.g, command.b), command.value);
+            processColor(command);
             Serial.println("Color Changed");
             break;
 
@@ -48,7 +47,6 @@ void Operator::main() {
             pattern->nextStep();
             break;
     }
-
 }
 
 void Operator::startPattern(Pattern* newPattern) {
@@ -57,6 +55,19 @@ void Operator::startPattern(Pattern* newPattern) {
     pattern->firstStep();
 
 }
+
+
+void Operator::processColor(Command_t &command) {
+    // Change Color in Operator
+    CRGB color = colors->get(command.value);
+    if (command.r && command.r <= 255 && command.r >= 0)
+        color.r = command.r;
+    if (command.g && command.g <= 255 && command.g >= 0)
+        color.g = command.g;
+    if (command.b && command.b <= 255 && command.b >= 0)
+        color.b = command.b;
+}
+
 
 Pattern* Operator::processStatic(int code) {
     switch (code) {
@@ -79,9 +90,6 @@ Pattern* Operator::processStatic(int code) {
             Serial.println("Three Color Selected");
             return new ThreeColor(leds, numLeds, colors);
         case 6:
-            Serial.println("Ocean Selected");
-            return new Ocean(leds, numLeds);
-        case 7:
             Serial.println("Insanity Selected");
             return new Insanity(leds, numLeds);
         default:

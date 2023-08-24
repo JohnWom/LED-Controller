@@ -4,7 +4,7 @@
 
 #include "CenterPulseWhole.h"
 
-CenterPulseWhole::CenterPulseWhole(CRGB *l, int num_leds, uint8_t **c):
+CenterPulseWhole::CenterPulseWhole(CRGB *l, int num_leds, colors_t c):
     Pattern(l, num_leds, c),
     state(1),
     prev(1),
@@ -23,8 +23,8 @@ void CenterPulseWhole::firstStep() {
 void CenterPulseWhole::nextStep() {
     // Move inward graudally faster
     for (int i=prev; i<=state and i < max_state; i++) {
-        leds[i] = CRGB(colors[PRIMARY][0], colors[PRIMARY][1], colors[PRIMARY][2]);
-        leds[numLeds - i - 1] = CRGB(colors[PRIMARY][0], colors[PRIMARY][1], colors[PRIMARY][2]);
+        leds[i] = colors->get(PRIMARY);
+        leds[numLeds - i - 1] = colors->get(PRIMARY);
     }
     FastLED.show();
     delay(333);

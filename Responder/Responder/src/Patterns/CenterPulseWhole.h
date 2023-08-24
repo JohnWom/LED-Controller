@@ -15,7 +15,7 @@
 class CenterPulseWhole: public Pattern
 {
 public:
-    CenterPulseWhole(CRGB* , int , uint8_t**);
+    CenterPulseWhole(CRGB* , int , colors_t);
 
     void firstStep() override;
     void nextStep() override;

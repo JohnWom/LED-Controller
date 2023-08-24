@@ -11,6 +11,7 @@
 #include "Tools/vector.h"
 #include "Tools/SharedPointer.h"
 
+
 class Operator
 {
     enum rgb {RED, GREEN, BLUE};
@@ -24,16 +25,17 @@ private:
 
     void startPattern(Pattern*);  // Swap pattern pointer, freeing old pattern, and start new pattern
 
-
-    Pattern* processStatic(int);   // Factory Function for Static Patterns
-    Pattern* processMusic(int);    // Factor Function for Music Patterns
+    void processColor(Command_t &); // Processes Setting a Color
+    Pattern* processStatic(int);    // Factory Function for Static Patterns
+    Pattern* processMusic(int);     // Factor Function for Music Patterns
 
     Communicator* communicator;
+    SharedPointer<vector<CRGB>> colors;    // Vector of color arrays
     Pattern* pattern;
     CRGB* leds;
     int numLeds;
 
-    SharedPointer<vector<CRGB>> colors;    // Vector of color arrays
+
 };
 
 

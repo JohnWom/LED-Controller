@@ -5,7 +5,7 @@
 #include "ThreeColor.h"
 #include "../../.pio/libdeps/pico/FastLED/src/pixeltypes.h"
 
-ThreeColor::ThreeColor(CRGB *np, int nleds, uint8_t **c):
+ThreeColor::ThreeColor(CRGB *np, int nleds,  colors_t c):
     Pattern(np, nleds, c),
     groupSize(10),
     numGroups(),
@@ -26,7 +26,7 @@ void ThreeColor::nextStep() {
             type = TERTIARY;
         }
         for (int i=0; i < groupSize and (state + i + (s * 10)) < numLeds; i++)
-            leds[state + (s*10) + i] = CRGB(colors[type][0],colors[type][1],colors[type][2]);
+            leds[state + (s*10) + i] = colors->get(type);
     }
     FastLED.show();
     state = (state + 1) % numLeds;
